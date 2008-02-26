@@ -14,7 +14,10 @@
       h1 strong {
         color: #d00;
       }
-      h1, h2 {
+      h1 {
+        font-size: 2.5em;
+      }
+      h1, h2, h3 {
         font-weight: normal;
       }
       h2 {
@@ -22,6 +25,12 @@
       }
       ul {
         list-style-type: none;
+        padding: 0;
+      }
+      blockquote span {
+        display: block;
+        font-style: normal;
+        text-align: right;
       }
       footer, address.vcard {
         font-family: monospace;
@@ -129,16 +138,90 @@
       <h2>Curriculum Vitae</h2>
       <p>
         Available in
-        <a href="eivind.uggedal.cv.pdf" title="CV in PDF format">PDF format</a>.
+        <a href="eivind.uggedal.cv.pdf" title="CV in PDF format">PDF format</a>
+        typeset with LaTeX.
       </p>
     </article>
 
-    <h2>Contact</h2>
-    <address class="vcard">
-      <a class="url fn" href="http://redflavor.com">Eivind Uggedal</a>,<br>
-      <span class="org">University of Oslo</span>,<br>
-      <a class="email" href="mailto:eu@redflavor.com">eu@redflavor.com</a>
-    </address>
+    <article>
+      <h2>Quotes</h2>
+      <blockquote cite="http://www.tbray.org/ongoing/When/200x/2006/08/22/Lt-Lt#p-3">
+        &#8220;If Lisp's audience had been harried sysadmins rather than AI
+        researchers, it'd rule the world by now.&#8221;
+        <span>
+          &#8212;Tim Bray,
+          <a href="http://www.tbray.org/ongoing/When/200x/2006/08/22/Lt-Lt#p-3">
+            <cite>RAD V: &#x3c;&#x3c; !!</cite>
+          </a>
+        </span>
+      </blockquote>
+      <blockquote cite="http://codeulate.com/?p=12">
+        &#8220;If the thought of switching editors doesn’t fill you with quite a bit
+        of dread, what you’re using now is almost certainly underpowered, and
+        you definitely haven’t customized it enough.&#8221;
+        <span>
+          &#8212;Ben Orenstein,
+          <a href="http://codeulate.com/?p=12">
+            <cite>Switching editors is just as hard as switching languages</cite>
+          </a>
+        </span>
+      </blockquote>
+      <blockquote cite="http://www.paulgraham.com/quotes.html">
+        &#8220;Some may say Ruby is a bad rip-off of Lisp or Smalltalk, and I admit
+        that. But it is nicer to ordinary people.&#8221;
+        <span>
+          &#8212;Yukihiro Matsumoto,
+          <a href="http://www.paulgraham.com/quotes.html">
+            <cite>Lisp Quotes</cite>
+          </a>
+        </span>
+      </blockquote>
+    </article>
+
+    <article>
+      <h2>Contact</h2>
+      <address class="vcard">
+        <a class="url fn" href="http://redflavor.com">Eivind Uggedal</a>,<br>
+        <span class="org">University of Oslo</span>,<br>
+        <a class="email" href="mailto:eu@redflavor.com">eu@redflavor.com</a>
+      </address>
+
+      <h3>PGP-key</h3>
+      <pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+mQGiBEfEW6ARBADI9Y1hsP/asNwKew1TXMChtyP7VSmF24XrrM/cOe4GuenucEM5
+8q4EUoaCks7gegOyrTE9atx1BRnd3IiVYykcsJJG620K9VPk+vBZn/9Dd5i8T8v4
+P++1mTrIfWvbKIeUdw9QwA7tr2sX7YVNaMljUWfR8UredQ6bGmSb/6ocFwCgrfrC
+10mFaEVPM24udpeiEhf0mI0D/izQb1gVpY+GHp1olw0GS+ZvJNVCkDj8JFRCniCa
+ospSx9HvOv/nhxUmbGEmRZlm8VNZ8qrGXuUSWm56xtmytyA9Vn+VLPGHHDQQt2oG
+U0lwT8X+vGsDxhMTp7FrfKp4PyT3eOnts48gcXcRqB8h/AXJZ6mFyf6PCcf82IdY
+388vA/0TvQnL2nYcurxpy/5LHipv0rSX+kdB0jWoJli6vKpT4Kstx2yAj76nLVOL
+TpkHXmTnAA5ag4E8M0d5ldpjQr9l9M1SfBCdAeJNEox3N/5UkZxyR9UphnW41gPJ
+/ttGIBnqCPvzSGEoyCSNJceErj2LojXkuM+78QDD1B0T64ENCrQhRWl2aW5kIFVn
+Z2VkYWwgPGV1QHJlZGZsYXZvci5jb20+iGAEExECACAFAkfEW6ACGwMGCwkIBwMC
+BBUCCAMEFgIDAQIeAQIXgAAKCRBxXgh2icZWCl3SAJ9rfvfojXvaVudZ5vWqhXT7
+6Ur9SgCgi2xfAiNt7Jwp2/IiR+vEppHQAXS5Ag0ER8RbphAIAN/4Z0S9IFjkTl0I
+GKxn7wcPdzZURXpjAql8fSwZe6xXUNOXwtBh24kN9wCUmIAqt8Cc10osrEdvW1dQ
+q/6fEhOfuCkxWffCsDS5HZr2HCsXWndTDeiu5UFIsVog9fPKFdN13Vxi61JHsjfa
+Wltmd+szupabgWP0S5fFvkagnJaWn8aKIPhBQmqiu9X8LbuZsGgH/eN5wTWYj8k0
+D3y3y3O+M/jPBeJfqEuhwnqvYv/RB3VckAgIRUGXNNcJ7ZYUVgHwJQ+HRCCrdQO/
+qDEIe690wUyybudpsYOWbHnythtBZdQGa5Swh4wcedNuXiH5n8I/8CUNRtAlawzv
+xYMr7dcABAsIAIFdxdncemsZAvtY0DIuxCLlqqyiyw8iuPp2uX+CtsbVwSuxy0jd
+3jGrT0tvTwXcbU20EmET1NWKh5hHen45szYnT3lMKrlyy1arvseCrEfNCYgtueft
+IdPKXehCwzE6pxPs09Jg2zsKybNNSqlaB1QcS9EBrCOhvxaI9dzpbfZkEv9ey58j
+H6m6aKmqJfZThNP75tlicMHWvUVwSUkLuykb0z7x9J0oeCUTb3mqONjXNZrNo2Vu
+E8OwjeSgT/Lsbld9FRaQYV3qzxGzUsKTXUMi7qM73zNACWBYscxbkGYrTuX43kjX
+fdYCpcbzVOPAaMjyhMvwoOkXEwv1qw7IquaISQQYEQIACQUCR8RbpgIbDAAKCRBx
+Xgh2icZWCsm3AKCdL78ZKEkCeR0+8BqMsjZoYUaFfACfY8u6bVgKqdjEC5iQ+hZ6
+8iv6BwE=
+=tRfX
+-----END PGP PUBLIC KEY BLOCK-----</code></pre>
+    <p>Also available at the
+
+    <a href="http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x89C6560A">
+      MIT PGP Public Key Server</a>.
+    </article>
 
     <footer>
       <a href="http://html5.validator.nu/?doc=http%3A%2F%2Fredflavor.com"
