@@ -9,6 +9,9 @@
 
     <style type="text/css" media="screen">
       body {
+        font-family: 'DejaVu Sans','Bitstream Vera Sans',Verdana,sans-serif;
+        font-size: 90%;
+        line-height: 1.5;
         padding: 2em 0 0 2em;
       }
       h1 strong {
@@ -18,6 +21,7 @@
         font-size: 2.5em;
       }
       h1, h2, h3 {
+        font-family: Georgia,'DejaVu Serif','Bitstream Vera Serif',serif;
         font-weight: normal;
       }
       h2 {
@@ -32,7 +36,10 @@
         font-style: normal;
         text-align: right;
       }
-      footer, address.vcard {
+      nav, ul.nav {
+        font-size: 1.2em;
+      }
+      footer, nav, ul.nav, address.vcard {
         font-family: monospace;
       }
       footer {
@@ -46,12 +53,19 @@
     <h1><strong>Red</strong>flavor</h1>
 
     <nav>
-      <h2>Elsewhere</h2>
-      <ul>
+      <ul class="nav">
         <li>
           <a href="http://journal.redflavor.com/"
              title="Research Journal">journal</a>/
         </li>
+        <li>
+          <a href="http://tasks.redflavor.com/"
+             title="Research Task List">tasklist</a>/
+        </li>
+      </ul>
+
+      <h2>Elsewhere</h2>
+      <ul class="nav">
         <li>
           <a href="http://del.icio.us/uggedal"
              title="Delicious Bookmarks">delicious</a>/
@@ -104,6 +118,17 @@
           <a href="http://sinatra.rubyforge.org">Sinatra</a> web framework.
         </dd>
 
+        <dt><a href="accomplish.rb">Accomplish</a>
+        <dd>
+          Minimalistic task list.
+        </dd>
+        <dd>Creator and sole author.</dd>
+        <dd>86 lines of code including templates and logic.</dd>
+        <dd>
+          Implemented in Ruby with the
+          <a href="http://sinatra.rubyforge.org">Sinatra</a> web framework.
+        </dd>
+
         <dt><a href="http://github.com/uggedal/mofo">Mofo</a>
         <dd>
           <a href="http://microformats.org">Microformat</a> parser.
@@ -146,8 +171,20 @@
           Can be run with <code>cron</code> and
           <code>xscreensaver</code> for a nice slideshow screensaver.
         </dd>
-
         <dd>Implemented in Ruby.</dd>
+
+        <dt><a href="seoul.vim">Seoul</a>
+        <dd>
+          <a href="http://www.vim.org">Vim</a> color scheme for the
+          88 color mode of
+          <a href="http://software.schmorp.de/pkg/rxvt-unicode.html">
+            rxvt-unicode
+          </a>.
+        </dd>
+        <dd>
+          It's look can be seen in a <a href="seoul.png">screenshot</a>
+          taken while editing Ruby code.
+        </dd>
       </dl>
     </article>
 
@@ -251,12 +288,16 @@ Xgh2icZWCsm3AKCdL78ZKEkCeR0+8BqMsjZoYUaFfACfY8u6bVgKqdjEC5iQ+hZ6
          title="Powered by Debian">Debian</a>
     </footer>
 
-    <script src="http://www.google-analytics.com/urchin.js"
-            type="text/javascript">
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ?
+      "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost +
+      "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
-      _uacct = "UA-318847-1";
-      urchinTracker();
+      var pageTracker = _gat._getTracker("UA-1857692-4");
+      pageTracker._initData();
+      pageTracker._trackPageview();
     </script>
   </body>
 </html>
