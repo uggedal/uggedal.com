@@ -4,7 +4,6 @@ TODO
 * Make /journal list all posts separated by year.
 * Make / list a few posts and show additional info (elsewhere, etc).
 * Monospace font (Roboto or the new ICS font?).
-* Multi column /.
 * Show date per page on lists and details.
 * Remove linenumbers from code blocks.
 * Atom feed.
