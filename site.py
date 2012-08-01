@@ -11,11 +11,13 @@ FLATPAGES_EXTENSION = '.md'
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
-freezer = Freezer(app)
+
+def get_pages():
+    return (p for p in pages if not 'draft' in p.meta)
 
 @app.route('/')
 def index():
-    return render_template('index.html', pages=pages)
+    return render_template('index.html', pages=get_pages())
 
 @app.route('/pygments.css')
 def pygments_css():
@@ -23,11 +25,11 @@ def pygments_css():
 
 @app.route('/<path:path>/')
 def page(path):
-    page = pages.get_or_404(path)
+    page = get_pages().get_or_404(path)
     return render_template('page.html', page=page)
 
 if __name__ == '__main__':
     if 'build' in sys.argv[1:]:
-        freezer.freeze()
+        Freezer(app)
     elif 'serve' in sys.argv[1:]:
         app.run(host='0.0.0.0', port=40404)
