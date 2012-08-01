@@ -1,5 +1,4 @@
 import sys
-import datetime
 
 from flask import Flask, render_template
 from flask.ext.flatpages import FlatPages, pygments_style_defs
