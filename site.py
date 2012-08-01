@@ -8,19 +8,11 @@ from flask.ext.frozen import Freezer
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
-PAGE_DATE_FORMAT="%Y/%m/%d %H:%M:%S"
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-def parse_dates(pages):
-    for p in pages:
-        if 'date' in p.meta:
-            p.meta['date'] = datetime.datetime.strptime(p.meta['date'],
-                                                        PAGE_DATE_FORMAT)
-    return pages
-
-pages = parse_dates(FlatPages(app))
+pages = FlatPages(app)
 
 def get_latest_pages():
     return sorted((p for p in pages if not 'draft' in p.meta),
