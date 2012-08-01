@@ -2,22 +2,79 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
 
     {% block title %}
     <title>Eivind Uggedal</title>
     {% endblock title %}
 
     <link href=/static/normalize.css rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700|Alegreya+SC:400,700" rel="stylesheet">
     {% block head %}
     {% endblock head %}
+
+    <style>
+      /* TODO: move to file */
+
+      body {
+        font: 100%/1.5 "Alegreya", Georgia, serif;
+        color: #444;
+        padding: 1em .5em;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      h2 {
+        font-family: "Alegreya SC", Georgia, serif;
+      }
+
+      .byline {
+        font-style: italic;
+      }
+
+      @media screen and (min-width: 35em) {
+        body {
+          font-size: 1.1em;
+        }
+      }
+
+      @media screen and (min-width: 40em) {
+        body {
+          color: #555;
+          font-size: 1.25em;
+        }
+      }
+
+      @media screen and (min-width: 45em) {
+        body {
+          font-size: 1.5em;
+        }
+      }
+
+      @media screen and (min-width: 50em) {
+        body {
+          color: #666;
+          font-size: 1.75em;
+        }
+
+        #wrap {
+          margin: 0 auto;
+          max-width: 34em;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1><a href="{{ url_for("index") }}">Eivind Uggedal</a></h1>
-    {% block content %}
-    {% endblock content %}
+    <div id=wrap>
+      <h1><a href="{{ url_for("index") }}">Eivind Uggedal</a></h1>
+      {% block content %}
+      {% endblock content %}
 
-    <footer>
-      <a href=http://github.com/uggedal/uggedal.com>Source</a> for this site.
-    </footer>
+      <footer>
+        <a href=http://github.com/uggedal/uggedal.com>Source</a> for this site.
+      </footer>
+    </div>
   </body>
 </html>
