@@ -23,13 +23,12 @@ def parse_dates(pages):
 pages = parse_dates(FlatPages(app))
 
 def get_latest_pages():
-    latest = sorted(pages, reverse=True,
-                    key=lambda p: p.meta['date'])
-    return (p for p in latest if not 'draft' in p.meta)
+    return sorted((p for p in pages if not 'draft' in p.meta),
+                  reverse=True, key=lambda p: p.meta['date'])
 
 @app.route('/')
 def index():
-    return render_template('index.html', pages=get_latest_pages())
+    return render_template('index.html', pages=get_latest_pages()[:3])
 
 @app.route('/pygments.css')
 def pygments_css():
