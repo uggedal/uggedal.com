@@ -1,4 +1,7 @@
-.PHONY: all build
+.PHONY: serve build all
+
+serve:
+	@python site.py serve
 
 build:
 	@python site.py build
