@@ -77,7 +77,12 @@
   </head>
   <body>
     <div id=wrap>
-      <h1><a href="{{ url_for("index") }}">Eivind Uggedal</a></h1>
+      {% block h1 %}
+      <h1>
+        <a href="{{ url_for("index") }}">Eivind Uggedal</a>
+      </h1>
+      {% endblock h1 %}
+
       {% block content %}
       {% endblock content %}
 
