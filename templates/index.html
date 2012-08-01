@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Latest from Journal</h2>
+<h2>Latest Journal Entries</h2>
 {% include "_articles.html" %}
-<a href="{{ url_for("journal") }}">More</a>
+<p>
+  <a href="{{ url_for("journal") }}">All entries</a>
+</p>
 {% endblock content %}

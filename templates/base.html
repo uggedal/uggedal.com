@@ -2,10 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
+
     {% block title %}
     <title>Eivind Uggedal</title>
     {% endblock title %}
-    <link rel=stylesheet href=/pygments.css>
+
+    {% block head %}
+    {% endblock head %}
   </head>
   <body>
     <h1><a href="{{ url_for("index") }}">Eivind Uggedal</a></h1>
