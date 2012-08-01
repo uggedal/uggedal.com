@@ -10,7 +10,7 @@
 
 {% block content %}
 <h2>{{ article.title }}</h2>
-<p class="backnav">
+<p class="byline">
   An entry in the <a href="{{ url_for("journal") }}">Journal</a>.
 </p>
 {{ article.html|safe }}
