@@ -1,0 +1,4 @@
+Flask==0.9
+Frozen-Flask==0.9
+Flask-Flatpages==0.3
+Pygments==1.5
