@@ -11,7 +11,9 @@
 {% block content %}
 <h2>{{ article.title }}</h2>
 <p class="byline">
-  An entry in the <a href="{{ url_for("journal") }}">Journal</a>.
+  An entry from {{ article.date }} in the <a href="{{ url_for("journal") }}">Journal</a>.
 </p>
+<article>
 {{ article.html|safe }}
+</article>
 {% endblock content %}

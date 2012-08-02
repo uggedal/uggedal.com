@@ -3,7 +3,6 @@ TODO
 
 * Fix codeblocks, look at octopress for overflow scroll.
 * Remove linenumbers from code blocks.
-* Show date on entry details.
 * Atom feed.
 * Fix slugs.
 * Link to HN/Reddit comments.
