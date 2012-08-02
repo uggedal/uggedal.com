@@ -92,9 +92,16 @@
         color: #c00;
       }
 
-      #latest-entries dd,
+      #all-entries li,
+      #latest-entries li,
       #selected-projects dd {
         margin: 0 0 1em 0;
+        list-style-type: none;
+      }
+
+      #all-entries ol,
+      #latest-entries ol {
+        padding: 0;
       }
 
 
@@ -114,15 +121,27 @@
           font-size: 1.1em;
         }
 
+        #all-entries {
+          overflow: hidden;
+        }
+
+        #all-entries li,
         #latest-entries,
         #selected-projects {
           float: left;
           width: 47.5%;
         }
 
+        #all-entries li {
+          height: 5em;
+        }
+
+        #all-entries ol li:nth-child(odd),
         #latest-entries {
           margin-right: 2.5%;
         }
+
+        #all-entries ol li:nth-child(even),
         #selected-projects {
           margin-left: 2.5%;
         }

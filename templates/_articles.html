@@ -1,10 +1,9 @@
-<dl>
+<ol>
   {% for article in articles %}
-  <dt>
+  <li>
     {{ article.date }}
-  </dt>
-  <dd>
+    <br>
     <a href="{{ url_for("article", path=article.path) }}">{{ article.title }}</a>
-  </dd>
+  </li>
   {% endfor %}
-</dl>
+</ol>
