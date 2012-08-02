@@ -19,7 +19,7 @@ def get_latest_articles():
 
 @app.route('/')
 def index():
-    return render_template('index.html', articles=get_latest_articles()[:4])
+    return render_template('index.html', articles=get_latest_articles()[:5])
 
 @app.route('/pygments.css')
 def pygments_css():
