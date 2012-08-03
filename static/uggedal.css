@@ -1,0 +1,193 @@
+body {
+  font: 100%/1.5 "Alegreya", Georgia, serif;
+  color: #444;
+  padding: .5em 1em;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+h2,
+abbr,
+#elsewhere {
+  font-family: "Alegreya SC", Georgia, serif;
+}
+
+a {
+  color: #c00;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+}
+
+code,
+pre {
+  font-family: "PT Mono", monospace;
+  font-size: .9em;
+}
+
+pre {
+  overflow: auto;
+}
+
+#elsewhere {
+  font-size: .9em;
+  overflow:hidden;
+  position: relative;
+  padding-left: 2.8em;
+}
+
+#elsewhere:before,
+#elsewhere:after {
+  background: #fff;
+  border: 1px solid #c00;
+  content: "";
+  height: .8em;
+  left: 0;
+  margin-top: -.4em;
+  position: absolute;
+  top: 50%;
+  width: 1.2em;
+}
+
+#elsewhere:after {
+  left: .3em;
+  margin-top: -.7em;
+}
+
+#elsewhere:hover:before,
+#elsewhere:hover:after {
+  border-color: #444;
+}
+
+#elsewhere a {
+  color: #bbb;
+  float: left;
+  margin-right: .75em;
+}
+
+#elsewhere a:hover {
+  color: #c00;
+}
+
+#all-entries li,
+#latest-entries li,
+#selected-projects dd {
+  margin: 0 0 1em 0;
+  list-style-type: none;
+}
+
+#all-entries ol,
+#latest-entries ol {
+  padding: 0;
+}
+
+.codehilite {
+  padding: .25em .5em;
+  margin: 0 -.5em 0 -.5em;
+}
+
+.more,
+.byline {
+  font-style: italic;
+}
+
+footer {
+  font-size: .9em;
+  margin-top: 3em;
+  text-align: center;
+}
+
+@media screen and (min-width: 35em) {
+  body {
+    font-size: 1.1em;
+  }
+
+  #all-entries {
+    overflow: hidden;
+  }
+
+  #all-entries li,
+  #latest-entries,
+  #selected-projects {
+    float: left;
+    width: 47.5%;
+  }
+
+  #all-entries li {
+    height: 5em;
+  }
+
+  #all-entries ol li:nth-child(odd),
+  #latest-entries {
+    margin-right: 2.5%;
+  }
+
+  #all-entries ol li:nth-child(even),
+  #selected-projects {
+    margin-left: 2.5%;
+  }
+
+  pre {
+    font-size: .75em;
+  }
+
+  #elsewhere {
+    font-size: .8em;
+  }
+
+  footer {
+    font-size: .8em;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  body {
+    color: #555;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 45em) {
+  body {
+    font-size: 1.3em;
+  }
+}
+
+
+@media screen and (min-width: 50em) {
+  body {
+    font-size: 1.4em;
+  }
+}
+
+@media screen and (min-width: 55em) {
+  body {
+    color: #666;
+    font-size: 1.5em;
+    padding: .5em 2em;
+  }
+
+  #wrap {
+    margin: 0 auto;
+    max-width: 34em;
+  }
+
+  #elsewhere {
+    font-size: .7em;
+  }
+
+  .codehilite {
+    padding: .5em 1em;
+    margin: 0 -1em 0 -1em;
+  }
+
+
+  footer {
+    font-size: .7em;
+  }
+}
