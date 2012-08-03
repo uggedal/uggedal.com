@@ -180,11 +180,16 @@ footer {
   #wrap {
     margin: 0 auto;
     max-width: 34em;
-    overflow: hidden;
   }
 
   #elsewhere {
     font-size: .7em;
+  }
+
+
+  article ol,
+  article ul {
+    padding-left: 0;
   }
 
   .codehilite {
