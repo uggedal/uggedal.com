@@ -6,8 +6,6 @@ TODO
   - Images with captions.
 * Fix images with ![].
 * Add smartypants.
-* Stripp of some vertical margins (h1, etc) and add vertical media query to
-  reset them.
 * Compress/concatenate css and js.
 * Atom feed.
 * Fix slugs.
