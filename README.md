@@ -1,7 +1,6 @@
 TODO
 ----
 
-* Fix images with ![].
 * Port over responsive tables.
 * Add smartypants.
 * Compress/concatenate css and js.
