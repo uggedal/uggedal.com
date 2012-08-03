@@ -107,7 +107,7 @@ footer {
     font-size: 1.1em;
   }
 
-  #all-entries {
+  #all-entries ol {
     overflow: hidden;
   }
 
