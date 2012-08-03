@@ -243,10 +243,10 @@ footer {
     border-spacing: .2em;
   }
 
-    table th, table td {
-      padding-right: 1em;
-      text-align: left;
-    }
+  table th, table td {
+    padding-right: 1em;
+    text-align: left;
+  }
 }
 
 @media screen and (min-width: 55em) {
