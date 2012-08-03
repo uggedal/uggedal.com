@@ -16,7 +16,7 @@ abbr,
 }
 
 a {
-  color: #c00;
+  color: #cb4b16;
   text-decoration: none;
 }
 
@@ -34,6 +34,17 @@ pre {
   font-size: .9em;
 }
 
+code {
+  background: #fdf6e3;
+  -moz-border-radius: .25em;
+  -webkit-border-radius: .25em;
+  border-radius: .25em;
+  color: #B58900;
+  display: inline-block;
+  padding: 0 .25em;
+  white-space: no-wrap;
+}
+
 #wrap {
   position: relative;
 }
@@ -48,7 +59,7 @@ pre {
 #elsewhere:before,
 #elsewhere:after {
   background: #fff;
-  border: 1px solid #c00;
+  border: 1px solid #cb4b16;
   content: "";
   font-size: .75em;
   height: .8em;
@@ -76,7 +87,7 @@ pre {
 }
 
 #elsewhere a:hover {
-  color: #c00;
+  color: #cb4b16;
 }
 
 #all-entries li,
