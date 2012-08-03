@@ -24,6 +24,10 @@ a:hover {
   color: inherit;
 }
 
+img {
+  max-width: 100%;
+}
+
 code,
 pre {
   font-family: "PT Mono", monospace;
@@ -171,6 +175,7 @@ footer {
   #wrap {
     margin: 0 auto;
     max-width: 34em;
+    overflow: hidden;
   }
 
   #elsewhere {
