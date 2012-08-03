@@ -11,5 +11,6 @@ TODO
 * Fix slugs.
 * Port over responsive tables.
 * Link to HN/Reddit comments.
+* Analytics (merge journa and /?). Start fresh?
 * Fix packaging.
 * Setup redirect from journal.uggedal.com/ to uggedal.com/journal/ (301).
