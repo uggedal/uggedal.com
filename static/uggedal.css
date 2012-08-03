@@ -49,6 +49,11 @@ table caption {
   text-align: left;
 }
 
+blockquote {
+  font-style: italic;
+  margin-left: 0;
+  margin-right: 0;
+}
 
 code,
 pre {
