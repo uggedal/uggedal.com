@@ -58,7 +58,6 @@ blockquote {
 code,
 pre {
   font-family: "PT Mono", monospace;
-  font-size: .9em;
 }
 
 code {
@@ -76,8 +75,16 @@ code {
   position: relative;
 }
 
-#elsewhere {
+table caption,
+figure figcaption,
+#elsewhere,
+footer,
+pre,
+code {
   font-size: .9em;
+}
+
+#elsewhere {
   overflow:hidden;
   position: relative;
   padding-left: 2.1em;
@@ -145,7 +152,6 @@ article ul {
 }
 
 footer {
-  font-size: .9em;
   margin-top: 3em;
   text-align: center;
 }
@@ -184,10 +190,9 @@ footer {
     font-size: .75em;
   }
 
-  #elsewhere {
-    font-size: .8em;
-  }
-
+  table caption,
+  figure figcaption,
+  #elsewhere,
   footer {
     font-size: .8em;
   }
@@ -255,16 +260,14 @@ footer {
     max-width: 34em;
   }
 
-  #elsewhere {
-    font-size: .7em;
-  }
-
   .codehilite {
     padding: .5em 1em;
     margin: 0 -1em 0 -1em;
   }
 
-
+  table caption,
+  figure figcaption,
+  #elsewhere,
   footer {
     font-size: .7em;
   }
