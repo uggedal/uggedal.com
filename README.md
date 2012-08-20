@@ -1,7 +1,6 @@
 TODO
 ----
 
-* Rewrite responsive tables in plain JS with querySelectorAll et. al.
 * Add smartypants.
 * Compress/concatenate css and js.
 * Atom feed.

@@ -38,10 +38,14 @@ td {
   display: block;
 }
 
+tr {
+  margin-bottom: 1em;
+}
+
 th,
 td.headerless {
   text-align: left;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 table caption {
