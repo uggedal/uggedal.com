@@ -8,6 +8,7 @@ from werkzeug.contrib.atom import AtomFeed
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
+FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 
 BASE_URL = "http://uggedal.com"
 
@@ -54,6 +55,7 @@ def article(path):
 
 if __name__ == '__main__':
     if 'build' in sys.argv[1:]:
+        app.config.DEBUG = False
         Freezer(app).freeze()
     elif 'serve' in sys.argv[1:]:
         port = sys.argv[2] if len(sys.argv) > 2 else 40404
