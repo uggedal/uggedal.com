@@ -29,7 +29,7 @@ def index():
 def pygments_css():
     return pygments_style_defs('solarized'), 200, {'Content-Type': 'text/css'}
 
-@app.route('/journal')
+@app.route('/journal/')
 def journal():
     return render_template('journal.html', articles=get_latest_entries())
 
@@ -54,7 +54,7 @@ def article(path):
 
 if __name__ == '__main__':
     if 'build' in sys.argv[1:]:
-        Freezer(app)
+        Freezer(app).freeze()
     elif 'serve' in sys.argv[1:]:
         port = sys.argv[2] if len(sys.argv) > 2 else 40404
         app.run(host='0.0.0.0', port=int(port))
