@@ -38,4 +38,5 @@ if __name__ == '__main__':
     if 'build' in sys.argv[1:]:
         Freezer(app)
     elif 'serve' in sys.argv[1:]:
-        app.run(host='0.0.0.0', port=40404)
+        port = sys.argv[2] if len(sys.argv) > 2 else 40404
+        app.run(host='0.0.0.0', port=int(port))
