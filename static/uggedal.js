@@ -2,11 +2,11 @@
 
   var queryForEach = function(selector, fn, ctx) {
     [].forEach.call((ctx ? ctx : doc).querySelectorAll(selector), fn);
-  }
+  };
 
   var getStyle = function(el, prop) {
     return doc.defaultView.getComputedStyle(el, "")[prop];
-  }
+  };
 
   var throttle = function(fn, delay) {
     var timer = null;
@@ -17,7 +17,7 @@
         fn.apply(context, args);
       }, delay);
     };
-  }
+  };
 
   doc.addEventListener("DOMContentLoaded", function() {
     responsiveTables();
@@ -42,27 +42,29 @@
           if (header.trim() === "&nbsp;") {
             td.classList.add("headerless");
           } else {
-            td.innerHTML = "<span class='header'>" + header
-                           + ":</span> " + td.innerHTML;
+            td.innerHTML = "<span class='header'>" + header +
+                           ":</span> " + td.innerHTML;
           }
         }
         i++;
       }, tr);
     }, table);
-  }
+  };
 
   var removeHeadersFromTableCells = function(table) {
     queryForEach("th", function(th) {
       th.style.display = "";
     }, table);
     queryForEach("tr td .header", function(el) {
-      while (el.firstChild) el.removeChild(el.firstChild);
+      while (el.firstChild) {
+        el.removeChild(el.firstChild);
+      }
       el.parentNode.removeChild(el);
     }, table);
     queryForEach("tr td", function(td) {
       td.classList.remove("headerless");
     }, table);
-  }
+  };
 
   var responsiveTables = function() {
     queryForEach("article table", function(table) {
@@ -72,5 +74,5 @@
         removeHeadersFromTableCells(table);
       }
     });
-  }
+  };
 })(document, window);
