@@ -1,2 +1,4 @@
-pusher
 *.pyc
+build/
+/pkg/pkg/
+/pkg/src/
