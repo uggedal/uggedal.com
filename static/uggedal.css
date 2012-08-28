@@ -177,6 +177,12 @@ footer {
     width: 47.5%;
   }
 
+  #selected-projects:after {
+    clear: left;
+    content: ".";
+    visibility: hidden;
+  }
+
   #all-entries li {
     height: 5em;
   }

@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 
 pkgname=uggedal.com
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Static files for uggedal.com.'
 arch=('any')
