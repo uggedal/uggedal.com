@@ -1,7 +1,7 @@
 # Maintainer: Eivind Uggedal <eivind@uggedal.com>
 
 pkgname=uggedal.com
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc='Static files for uggedal.com.'
 arch=('any')
@@ -15,12 +15,8 @@ build() {
   local http_root="$pkgdir/srv/http"
   local http_dest="$http_root/$pkgname"
 
-  install -d $http_dest
-  install ../../src/*.html -t $http_dest
-  install ../../src/*.ico -t $http_dest
-  install ../../src/*.txt -t $http_dest
-  install ../../src/*.png -t $http_dest
-  install ../../src/*.pdf -t $http_dest
+  install -d $http_root
+  cp -r ../../build $http_dest
 
   # Preserve original /srv/http mode
   chmod 0750 $http_root
