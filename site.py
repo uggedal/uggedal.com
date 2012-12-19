@@ -58,5 +58,5 @@ if __name__ == '__main__':
         app.config.DEBUG = False
         Freezer(app).freeze()
     elif 'serve' in sys.argv[1:]:
-        port = sys.argv[2] if len(sys.argv) > 2 else 40404
+        port = sys.argv[2] if len(sys.argv) > 2 else 9294
         app.run(host='0.0.0.0', port=int(port))
