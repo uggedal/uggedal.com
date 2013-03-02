@@ -19,12 +19,11 @@ color for the body element and let the browser handle the cascade:
 
     ::javascript
     page.evaluate(function() {
-      var head = document.querySelector('head'),
-          style = document.createElement('style'),
+      var style = document.createElement('style'),
           text = document.createTextNode('body { background: #fff }');
       style.setAttribute('type', 'text/css');
       style.appendChild(text);
-      head.insertBefore(style, head.firstChild);
+      document.head.insertBefore(style, document.head.firstChild);
     });
 
 [faq]: http://phantomjs.org/faq.html
