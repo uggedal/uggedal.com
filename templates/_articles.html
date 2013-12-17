@@ -1,9 +1,0 @@
-<ol>
-  {% for article in articles %}
-  <li>
-    {{ article.date }}
-    <br>
-    <a href="{{ url_for("article", path=article.path) }}">{{ article.title }}</a>
-  </li>
-  {% endfor %}
-</ol>
