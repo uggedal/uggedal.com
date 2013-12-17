@@ -1,6 +1,3 @@
-Alpine Linux on Linode
-======================
-
 Instructions for installing a custom [Alpine Linux][] root fs on
 [Linode][].
 
