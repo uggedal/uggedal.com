@@ -1,5 +1,0 @@
-*.pyc
-build/
-/pkg/pkg/
-/pkg/src/
-/pkg/*.tar.xz
