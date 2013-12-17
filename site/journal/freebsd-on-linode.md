@@ -62,6 +62,7 @@ References
 
 * [PrgmrWiki](http://wiki.prgmr.com/mediawiki/index.php/FreeBSD_as_a_DomU)
 * [FreeBSD Forums](http://forums.freebsd.org/viewtopic.php?f=39&t=10268)
+* [Firstboot resize](http://lists.freebsd.org/pipermail/freebsd-rc/2013-October/003381.html)
 
 [FreeBSD]: https://www.freebsd.org/
 [Linode]: https://www.linode.com/
