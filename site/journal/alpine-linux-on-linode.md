@@ -1,7 +1,7 @@
 Alpine Linux on Linode
 ======================
 
-Instructions for installing a custom Alpine Linux root fs on
+Instructions for installing a custom [Alpine Linux][] root fs on
 [Linode][].
 
 1. Delete all disk images and create a new raw root image.
@@ -91,4 +91,5 @@ Instructions for installing a custom Alpine Linux root fs on
     ```
 5. Reboot.
 
+[Alpine Linux]: http://alpinelinux.org/
 [Linode]: https://www.linode.com/
