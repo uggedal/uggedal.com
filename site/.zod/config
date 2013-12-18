@@ -1,2 +1,2 @@
 [parse_convert]
-md curl --silent --data-binary @- https://api.github.com/markdown/raw -H "Content-Type: text/x-markdown"
+md ./md.sh
