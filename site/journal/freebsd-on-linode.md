@@ -17,11 +17,11 @@ Pre-install
 
 ```sh
 truncate -s 256M rootfs.img
-mdconfig -f rootfs.img
-fdisk -BI md0
-bsdlabel -wB md0s1
-newfs -U md0s1a
-mount /dev/md0s1a /mnt
+mdev=$(mdconfig -f rootfs.img)
+fdisk -BI $mdev
+bsdlabel -wB $mdevs1
+newfs -U $mdevs1a
+mount /dev/$mdevs1a /mnt
 
 sed -E '/(KDB|DDB|GDB|DEADLKRES|INVARIANT|WITNESS)/d' /usr/src/sys/i386/conf/XEN > /usr/src/sys/i386/conf/XEN-NODEBUG
 
@@ -44,7 +44,7 @@ EOF
 cp /mnt/boot/kernel/kernel xen-kernel
 
 umount /mnt
-mdconfig -d -u md0
+mdconfig -d -u $mdev
 ```
 
 Install
