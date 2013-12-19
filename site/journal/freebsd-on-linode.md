@@ -1,9 +1,8 @@
 Instructions for installing [FreeBSD][] on [Linode][].
 
-Pre-install
------------
+### Pre-install
 
-### Linode configuration
+#### Linode configuration
 
 1. Delete all disk images and create a two new disk images:
     1. ext2 128MB
@@ -13,7 +12,7 @@ Pre-install
 3. Boot into recovery mode.
 4. Attach to the recovery console with Lish.
 
-### Build Xen kernel and world
+#### Build Xen kernel and world
 
 Adjust the following if you're not building on an i386 installation.
 
@@ -54,18 +53,15 @@ umount /mnt
 mdconfig -d -u $mdev
 ```
 
-Install
--------
+### Install
 
 TODO
 
-Post-install
-------------
+### Post-install
 
 TODO
 
-References
-----------
+### References
 
 * [PrgmrWiki](http://wiki.prgmr.com/mediawiki/index.php/FreeBSD_as_a_DomU)
 * [FreeBSD Forums](http://forums.freebsd.org/viewtopic.php?f=39&t=10268)
