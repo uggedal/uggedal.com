@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{page_title}}</title>
+  </head>
+  <body>
+
+    <h1>
+      <a href="/">{{site_title}}</a>
+    </h1>
+
+    <article>
+      <h2>{{title}}</h2>
+
+      <p class="byline">
+        An entry from <strong>{{date}}</strong> in
+        the <a href="/journal">Journal</a>.
+      </p>
+
+      {{{yield}}}
+    </article>
+
+    <footer>
+      Read <a href=https://github.com/uggedal/uggedal.com>the source</a>.
+    </footer>
+
+  </body>
+</html>
