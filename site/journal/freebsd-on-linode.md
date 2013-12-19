@@ -19,37 +19,42 @@ Adjust the following if you're not building on an i386 installation.
 TODO: strip world
 
 ```sh
+#!/bin/sh
+
+rootfs=/tmp/xen-rootfs.img
+kernel=/tmp/xen-kernel
+dest=/mnt
 jobs=-j$(sysctl -n hw.ncpu)
 
-truncate -s 256M rootfs.img
-mdev=$(mdconfig -f rootfs.img)
+truncate -s 512M $rootfs
+mdev=$(mdconfig -f $rootfs)
 fdisk -BI $mdev
 bsdlabel -wB ${mdev}s1
 newfs -U ${mdev}s1a
-mount /dev/${mdev}s1a /mnt
+mount /dev/${mdev}s1a $dest
 
 sed -E '/(KDB|DDB|GDB|DEADLKRES|INVARIANT|WITNESS)/d' /usr/src/sys/i386/conf/XEN > /usr/src/sys/i386/conf/XEN-NODEBUG
 
 cd /usr/src
 make $jobs buildworld
 make $jobs buildkernel KERNCONF=XEN-NODEBUG
-export DESTDIR=/mnt
+export DESTDIR=$dest
 make installworld
 make installkernel KERNCONF=XEN-NODEBUG
 make distribution
 
-cat <<EOF >/mnt/etc/fstab
+cat <<EOF >$dest/etc/fstab
 /dev/xbd0 / ufs rw 1 1
 EOF
 
-sed -i '' '/^ttyv/d' /mnt/etc/ttys
-cat <<EOF >>/mnt/etc/ttys
+sed -i '' '/^ttyv/d' $dest/etc/ttys
+cat <<EOF >>$dest/etc/ttys
 xc0     "/usr/libexec/getty Pc"         vt100   on  secure
 EOF
 
-cp /mnt/boot/kernel/kernel xen-kernel
+cp $dest/boot/kernel/kernel $kernel
 
-umount /mnt
+umount $dest
 mdconfig -d -u $mdev
 ```
 
