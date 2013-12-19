@@ -27,6 +27,7 @@ mount /dev/$mdevs1a /mnt
 
 sed -E '/(KDB|DDB|GDB|DEADLKRES|INVARIANT|WITNESS)/d' /usr/src/sys/i386/conf/XEN > /usr/src/sys/i386/conf/XEN-NODEBUG
 
+cd /usr/src
 make buildworld
 make buildkernel KERNCONF=XEN-NODEBUG
 export DESTDIR=/mnt
