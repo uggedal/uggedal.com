@@ -15,6 +15,8 @@ Pre-install
 
 ### Build Xen kernel and world
 
+Adjust the following if you're not building on an i386 installation.
+
 ```sh
 truncate -s 256M rootfs.img
 mdev=$(mdconfig -f rootfs.img)
