@@ -1,8 +1,4 @@
-My ideal Linux distro
-=====================
-
-Design
-------
+### Design
 
 * Less code.
 * Small components.
@@ -16,26 +12,7 @@ Design
 * Stable core with ability to update or build more recent versions of
   non-core packages.
 
-Components
-----------
-
-### Core
-
-* init:
-  - [runit](http://smarden.org/runit/)
-    (see [ignite](https://github.com/chneukirchen/ignite))
-  - [s6](http://www.skarnet.org/software/s6/)
-  - sysvinit and [perp](http://b0llix.net/perp/)
-* sh:
-  - bash
-* reboot: [kexec](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/kernel/kexec.c)
-
-### Extra
-
-* bootloader: [gummiboot](http://freedesktop.org/wiki/Software/gummiboot)
-
-Alternatives
-------------
+### Alternatives
 
 Each distro is rated from 1 to 5 in various categories.
 
@@ -46,24 +23,24 @@ Each distro is rated from 1 to 5 in various categories.
 | Alpine Linux |         3 |          5 |       2 |         5 |     15 |
 | Slackware    |         5 |          3 |       5 |         3 |     16 |
 
-### Arch Linux
+#### Arch Linux
 
-#### +
+##### +
 
 * Mostly vanilla packages
 * Somewhat minimal base
 * Good package manager (but awful cli interface)
 * `PKGBUILD` and `makepkg` makes it really easy to create packages
 
-#### -
+##### -
 
 * Far from stable.
 * Packages carry too many dependencies
 * Systemd is not as pleasant and fexible as initialy thought
 
-### CRUX
+#### CRUX
 
-#### +
+##### +
 
 * Vanilla packages.
 * Somewhat minimal base
@@ -72,7 +49,7 @@ Each distro is rated from 1 to 5 in various categories.
 * Minimal set of dependencies for packages
 * Sysvinit
 
-#### -
+##### -
 
 * Recompiling ports could lead to unstable core
 * Fragmented set of package management tools
@@ -80,9 +57,9 @@ Each distro is rated from 1 to 5 in various categories.
 * Self-compiled kernel
 * Lacking good documentation
 
-### Alpine Linux
+#### Alpine Linux
 
-#### +
+##### +
 
 * Very minimal base
 * Good package manager
@@ -92,7 +69,7 @@ Each distro is rated from 1 to 5 in various categories.
 * Busybox
 * mdev for servers, udev for desktops
 
-#### -
+##### -
 
 * Heavily patched packages due to non glibc
 * No chromium package
@@ -100,9 +77,9 @@ Each distro is rated from 1 to 5 in various categories.
 * OpenRC (better than systemd, but too complex compared to sysvinit)
 * Custom configuration helpers
 
-### Slackware
+#### Slackware
 
-#### +
+##### +
 
 * Vanilla packages
 * Extremely stable
@@ -111,7 +88,7 @@ Each distro is rated from 1 to 5 in various categories.
 * `slackpkg+` handles third party repositories well
 * Sysvinit
 
-#### -
+##### -
 
 * Full install is Recommended to satisfy all dependencies
 * More work to make a minimal system due to manual dependency handling
