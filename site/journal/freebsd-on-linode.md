@@ -20,6 +20,8 @@ Adjust the following if you're not building on an i386 installation.
 TODO: strip world
 
 ```sh
+jobs=-j$(sysctl -n hw.ncpu)
+
 truncate -s 256M rootfs.img
 mdev=$(mdconfig -f rootfs.img)
 fdisk -BI $mdev
@@ -30,8 +32,8 @@ mount /dev/$mdevs1a /mnt
 sed -E '/(KDB|DDB|GDB|DEADLKRES|INVARIANT|WITNESS)/d' /usr/src/sys/i386/conf/XEN > /usr/src/sys/i386/conf/XEN-NODEBUG
 
 cd /usr/src
-make buildworld
-make buildkernel KERNCONF=XEN-NODEBUG
+make $jobs buildworld
+make $jobs buildkernel KERNCONF=XEN-NODEBUG
 export DESTDIR=/mnt
 make installworld
 make installkernel KERNCONF=XEN-NODEBUG
