@@ -24,9 +24,9 @@ jobs=-j$(sysctl -n hw.ncpu)
 truncate -s 256M rootfs.img
 mdev=$(mdconfig -f rootfs.img)
 fdisk -BI $mdev
-bsdlabel -wB $mdevs1
-newfs -U $mdevs1a
-mount /dev/$mdevs1a /mnt
+bsdlabel -wB ${mdev}s1
+newfs -U ${mdev}s1a
+mount /dev/${mdev}s1a /mnt
 
 sed -E '/(KDB|DDB|GDB|DEADLKRES|INVARIANT|WITNESS)/d' /usr/src/sys/i386/conf/XEN > /usr/src/sys/i386/conf/XEN-NODEBUG
 
