@@ -17,6 +17,8 @@ Pre-install
 
 Adjust the following if you're not building on an i386 installation.
 
+TODO: strip world
+
 ```sh
 truncate -s 256M rootfs.img
 mdev=$(mdconfig -f rootfs.img)
