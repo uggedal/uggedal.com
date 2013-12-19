@@ -2,16 +2,6 @@ Instructions for installing [FreeBSD][] on [Linode][].
 
 ### Pre-install
 
-#### Linode configuration
-
-1. Delete all disk images and create a two new disk images:
-    1. ext2 128MB
-    2. raw rest
-2. Rename config profile, select pv-grub-x86_32 kernel, disable
-   boot helpers and attach the two new disk images.
-3. Boot into recovery mode.
-4. Attach to the recovery console with Lish.
-
 #### Build Xen kernel and world
 
 Adjust the following if you're not building on an i386 installation.
@@ -58,6 +48,36 @@ gzip $rootfs
 umount $dest
 mdconfig -d -u $mdev
 ```
+
+#### Linode configuration
+
+1. Create a two new disk images:
+    1. ext3 128MB
+    2. raw rest
+2. Create a config profile: select pv-grub-x86_32 kernel, disable
+   boot helpers and attach the two new disk images.
+3. Boot into recovery mode.
+4. Attach to the recovery console with Lish and execute the following:
+    ```sh
+    passwd
+    /etc/init.d/ssh start
+    ```
+5. Upload the rootfs and kernel over ssh.
+6. Setup the boot and root partitions:
+    ```sh
+    mount /dev/xvda /mnt
+    mkdir -p /mnt/boot/grub
+    mv xen-kernel /mnt/boot/kernel
+
+    cat <<EOF > /mnt/boot/grub/menu.lst
+    timeout 0
+    root (hd0,0)
+    kernel /boot/kernel vfs.root.mountfrom=ufs:xbd0s1
+    EOF
+
+    gunzip -c xen-rootfs.img.gz | dd of=/dev/xvdb
+    ```
+7. Reboot.
 
 ### Install
 
