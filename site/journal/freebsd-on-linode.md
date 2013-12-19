@@ -53,6 +53,7 @@ xc0     "/usr/libexec/getty Pc"         vt100   on  secure
 EOF
 
 cp $dest/boot/kernel/kernel $kernel
+xz $rootfs
 
 umount $dest
 mdconfig -d -u $mdev
