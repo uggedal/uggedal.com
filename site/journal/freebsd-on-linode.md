@@ -71,7 +71,7 @@ mdconfig -d -u $mdev
 
     cat <<EOF > /mnt/boot/grub/menu.lst
     timeout 0
-    root (hd0,0)
+    root (hd0)
     kernel /boot/kernel vfs.root.mountfrom=ufs:xbd0s1
     EOF
 
