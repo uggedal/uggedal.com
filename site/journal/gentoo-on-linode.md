@@ -21,7 +21,8 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo 'MAKEOPTS="-j8"' >> /mnt/etc/portage/make.conf
     echo 'GENTOO_MIRRORS="http://mirror.bytemark.co.uk/gentoo/ http://distfiles.gentoo.org http://www.ibiblio.org/pub/Linux/distributions/gentoo"' >> /mnt/etc/portage/make.conf
     echo 'SYNC="rsync://rsync.uk.gentoo.org/gentoo-portage"' >> /mnt/etc/portage/make.conf
-    echo 'USE="-nls"' >> /mnt/etc/portage/make.conf
+    vi /mnt/etc/portage/make.conf
+    # Add -nls to USE
     cp /etc/resolv.conf /mnt/etc/resolv.conf
     mount -t proc proc /mnt/proc
     mount --rbind /sys /mnt/sys
