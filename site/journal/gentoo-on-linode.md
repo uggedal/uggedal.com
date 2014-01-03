@@ -71,6 +71,16 @@ Instructions for installing a custom [Gentoo][] root fs on
     EOF
     ```
 8. Reboot.
+9. Run the following:
+
+    ```sh
+    echo 'PYTHON_TARGETS="python3_3"' >> /etc/portage/make.conf
+    echo 'PYTHON_SINGLE_TARGET="python3_3"' >> /etc/portage/make.conf
+    emerge --update --deep --newuse @world
+    emerge --depclean
+    emerge gentoolkit
+    revdep-rebuild
+    ```
 
 TODO
 ----
