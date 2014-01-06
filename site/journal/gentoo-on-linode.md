@@ -137,7 +137,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge gentoolkit
     revdep-rebuild
 
-    echo 'set -o vi' > /etc/profile.d/vimode.sh
+    curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
     emerge vim
     eselect editor set 3
