@@ -169,6 +169,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     sysctl -p /etc/sysctl.d/docker.conf
     rc-update add docker default
     /etc/init.d/docker start
+    eselect bashcomp enable --global docker
     ```
 
 [gentoo]: http://gentoo.org/
