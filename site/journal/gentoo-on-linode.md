@@ -140,6 +140,8 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge vim
     eselect editor set 3
     emerge --unmerge nano
+
+    emerge tmux
     ```
 
 [gentoo]: http://gentoo.org/
