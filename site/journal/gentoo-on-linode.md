@@ -32,6 +32,60 @@ Instructions for installing a custom [Gentoo][] root fs on
     chroot /mnt /bin/bash
     . /etc/profile
     emerge-webrsync
+    echo 'PORTAGE_RSYNC_EXTRA_OPTS="--exclude-from=/etc/portage/rsync_excludes"' >> /etc/portage/make.conf
+    cat <<EOF > /etc/portage/rsync_excludes
+    app-accessibility/
+    app-antivirus/
+    app-crd/
+    app-emacs/
+    app-forensics/
+    app-laptop/
+    app-leechcraft/
+    app-mobilephone/
+    app-office*/
+    app-pda/
+    app-xemacs/
+    dev-ada/
+    dev-dotnet/
+    dev-embedded/
+    dev-games/
+    dev-haskell/
+    dev-java/
+    dev-lisp/
+    dev-lua/
+    dev-ml/
+    dev-php/
+    dev-qt/
+    dev-ruby/
+    dev-scheme/
+    dev-tcltk/
+    dev-tex*/
+    games-*/
+    gnome-*/
+    gnustep-*/
+    gpe-*/
+    java-virtuals/
+    kde-*/
+    lxde-base/
+    media-radio/
+    media-tv/
+    net-dialup/
+    net-ftp/
+    net-im/
+    net-news/
+    net-nntp/
+    net-print/
+    net-voip/
+    net-zope/
+    razorqa-base/
+    rox-*/
+    sci-*/
+    sys-freebsd/
+    sys-infiniband/
+    www-apache/
+    www-plugins/
+    xfce-*/
+    EOF
     emerge --sync
     echo UTC > /etc/timezone
     emerge --config sys-libs/timezone-data
@@ -83,11 +137,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge gentoolkit
     revdep-rebuild
     ```
-
-TODO
-----
-
-* [Partial portage tree](http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=5)
 
 [gentoo]: http://gentoo.org/
 [Linode]: https://www.linode.com/
