@@ -143,13 +143,15 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     emerge tmux
 
+    echo 'dev-vcs/git -gpg -webdav' >> /etc/portage/package.use
+    emerge git
+
     echo 'sys-block/thin-provisioning-tools ~amd64' >> /etc/portage/package.accept_keywords
     echo 'dev-lang/go ~amd64' >> /etc/portage/package.accept_keywords
     echo 'app-emulation/lxc ~amd64' >> /etc/portage/package.accept_keywords
     echo 'app-emulation/docker ~amd64' >> /etc/portage/package.accept_keywords
 
     echo 'sys-fs/lvm2 -lvm1' >> /etc/portage/package.use
-    echo 'dev-vcs/git -gpg -webdav' >> /etc/portage/package.use
 
     emerge app-emulation/docker
     echo net.ipv4.ip_forward = 1 > /etc/sysctl.d/docker.conf
