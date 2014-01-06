@@ -152,6 +152,10 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo 'dev-vcs/git -gpg -webdav' >> /etc/portage/package.use
 
     emerge app-emulation/docker
+    echo net.ipv4.ip_forward = 1 > /etc/sysctl.d/docker.conf
+    sysctl -p /etc/sysctl.d/docker.conf
+    rc-update add docker default
+    /etc/init.d/docker start
     ```
 
 [gentoo]: http://gentoo.org/
