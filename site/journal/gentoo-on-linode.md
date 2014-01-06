@@ -136,6 +136,10 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge --depclean
     emerge gentoolkit
     revdep-rebuild
+
+    emerge vim
+    eselect editor set 3
+    emerge --unmerge nano
     ```
 
 [gentoo]: http://gentoo.org/
