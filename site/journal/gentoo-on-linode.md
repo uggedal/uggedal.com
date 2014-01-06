@@ -146,6 +146,14 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo 'dev-vcs/git -gpg -webdav' >> /etc/portage/package.use
     emerge git
 
+    emerge base-completion
+    eselect bashcomp enable --global base
+    eselect bashcomp enable --global coreutils
+    eselect bashcomp enable --global gentoo
+    eselect bashcomp enable --global ssh
+    eselect bashcomp enable --global tmux
+    eselect bashcomp enable --global git
+
     echo 'sys-block/thin-provisioning-tools ~amd64' >> /etc/portage/package.accept_keywords
     echo 'dev-lang/go ~amd64' >> /etc/portage/package.accept_keywords
     echo 'app-emulation/lxc ~amd64' >> /etc/portage/package.accept_keywords
