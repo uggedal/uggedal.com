@@ -145,9 +145,6 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     emerge tmux
 
-    echo 'dev-vcs/git -gpg -webdav' >> /etc/portage/package.use
-    emerge git
-
     emerge base-completion
     eselect bashcomp enable --global base
     eselect bashcomp enable --global coreutils
