@@ -85,6 +85,57 @@ Instructions for installing a custom [Gentoo][] root fs on
     www-apache/
     www-plugins/
     xfce-*/
+    metadata/md5-cache/app-accessibility/
+    metadata/md5-cache/app-antivirus/
+    metadata/md5-cache/app-crd/
+    metadata/md5-cache/app-emacs/
+    metadata/md5-cache/app-forensics/
+    metadata/md5-cache/app-laptop/
+    metadata/md5-cache/app-leechcraft/
+    metadata/md5-cache/app-mobilephone/
+    metadata/md5-cache/app-office*/
+    metadata/md5-cache/app-pda/
+    metadata/md5-cache/app-xemacs/
+    metadata/md5-cache/dev-ada/
+    metadata/md5-cache/dev-dotnet/
+    metadata/md5-cache/dev-embedded/
+    metadata/md5-cache/dev-games/
+    metadata/md5-cache/dev-haskell/
+    metadata/md5-cache/dev-java/
+    metadata/md5-cache/dev-lisp/
+    metadata/md5-cache/dev-lua/
+    metadata/md5-cache/dev-ml/
+    metadata/md5-cache/dev-php/
+    metadata/md5-cache/dev-qt/
+    metadata/md5-cache/dev-ruby/
+    metadata/md5-cache/dev-scheme/
+    metadata/md5-cache/dev-tcltk/
+    metadata/md5-cache/dev-tex*/
+    metadata/md5-cache/games-*/
+    metadata/md5-cache/gnome-*/
+    metadata/md5-cache/gnustep-*/
+    metadata/md5-cache/gpe-*/
+    metadata/md5-cache/java-virtuals/
+    metadata/md5-cache/kde-*/
+    metadata/md5-cache/lxde-base/
+    metadata/md5-cache/media-radio/
+    metadata/md5-cache/media-tv/
+    metadata/md5-cache/net-dialup/
+    metadata/md5-cache/net-ftp/
+    metadata/md5-cache/net-im/
+    metadata/md5-cache/net-news/
+    metadata/md5-cache/net-nntp/
+    metadata/md5-cache/net-print/
+    metadata/md5-cache/net-voip/
+    metadata/md5-cache/net-zope/
+    metadata/md5-cache/razorqa-base/
+    metadata/md5-cache/rox-*/
+    metadata/md5-cache/sci-*/
+    metadata/md5-cache/sys-freebsd/
+    metadata/md5-cache/sys-infiniband/
+    metadata/md5-cache/www-apache/
+    metadata/md5-cache/www-plugins/
+    metadata/md5-cache/xfce-*/
     EOF
     emerge --sync
     echo UTC > /etc/timezone
@@ -167,6 +218,8 @@ Instructions for installing a custom [Gentoo][] root fs on
     rc-update add docker default
     /etc/init.d/docker start
     eselect bashcomp enable --global docker
+
+    echo 'CLEAN_DELAY=0' >> /etc/portage/make.conf
     ```
 
 [gentoo]: http://gentoo.org/
