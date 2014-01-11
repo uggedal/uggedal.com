@@ -32,6 +32,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     chroot /mnt /bin/bash
     . /etc/profile
     emerge-webrsync
+    echo 'INSTALL_MASK="/usr/lib/systemd"' >> /etc/portage/make.con
     echo 'PORTAGE_RSYNC_EXTRA_OPTS="--exclude-from=/etc/portage/rsync_excludes"' >> /etc/portage/make.conf
     cat <<EOF > /etc/portage/rsync_excludes
     app-accessibility/
