@@ -138,11 +138,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     metadata/md5-cache/xfce-*/
     EOF
     emerge --sync
-    echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
-    locale-gen
-    eselect locale set 3
-    env-update
-    . /etc/profile
     emerge gentoo-sources
     cd /usr/src/linux
     make menuconfig
