@@ -44,8 +44,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     ln -s net.lo net.eth0
     rc-update add net.eth0 default
     passwd
-    emerge sysklogd
-    rc-update add sysklogd default
     vi /etc/inittab
     # comment out terminals and add:
     #   hvc0::respawn:/sbin/agetty 38400 hvc0
