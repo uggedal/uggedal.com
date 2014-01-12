@@ -58,8 +58,6 @@ Instructions for installing a custom [Gentoo][] root fs on
 9. Run the following:
 
     ```sh
-    emerge gentoolkit
-
     curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
     eselect editor set 3
