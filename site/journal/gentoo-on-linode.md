@@ -18,18 +18,13 @@ Instructions for installing a custom [Gentoo][] root fs on
     mkfs.ext4 /dev/xvda
     mount /dev/xvda /mnt
     curl http://212.110.161.69/gentoo/releases/amd64/autobuilds/current-stage3-amd64-nomultilib/stage3-amd64-nomultilib-20131226.tar.bz2 | tar xjp -C /mnt
-    echo 'MAKEOPTS="-j8"' >> /mnt/etc/portage/make.conf
-    echo 'GENTOO_MIRRORS="http://mirror.bytemark.co.uk/gentoo/ http://distfiles.gentoo.org http://www.ibiblio.org/pub/Linux/distributions/gentoo"' >> /mnt/etc/portage/make.conf
-    echo 'SYNC="rsync://rsync.uk.gentoo.org/gentoo-portage"' >> /mnt/etc/portage/make.conf
-    echo 'FEATURES="$FEATURES nodoc noinfo clean-logs compressdebug"' >> /mnt/etc/portage/make.conf
-    vi /mnt/etc/portage/make.conf
-    # Add 'vim-syntax bash-completion -nls -cracklib -python -perl -fortran -openmp -zeroconf -tcpd' to USE
     cp /etc/resolv.conf /mnt/etc/resolv.conf
     mount -t proc proc /mnt/proc
     mount --rbind /sys /mnt/sys
     mount --rbind /dev /mnt/dev
     chroot /mnt /bin/bash
     . /etc/profile
+    # provision with conf.sh
     emerge --sync
     emerge gentoo-sources
     cd /usr/src/linux
