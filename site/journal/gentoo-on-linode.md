@@ -205,20 +205,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     eselect bashcomp enable --global tmux
     eselect bashcomp enable --global git
 
-    echo 'sys-block/thin-provisioning-tools ~amd64' >> /etc/portage/package.accept_keywords
-    echo 'dev-lang/go ~amd64' >> /etc/portage/package.accept_keywords
-    echo 'app-emulation/lxc ~amd64' >> /etc/portage/package.accept_keywords
-    echo 'app-emulation/docker ~amd64' >> /etc/portage/package.accept_keywords
-
-    echo 'sys-fs/lvm2 -lvm1' >> /etc/portage/package.use
-
-    emerge app-emulation/docker
-    echo net.ipv4.ip_forward = 1 > /etc/sysctl.d/docker.conf
-    sysctl -p /etc/sysctl.d/docker.conf
-    rc-update add docker default
-    /etc/init.d/docker start
-    eselect bashcomp enable --global docker
-
     echo 'CLEAN_DELAY=0' >> /etc/portage/make.conf
     ```
 
