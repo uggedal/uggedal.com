@@ -23,6 +23,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo 'SYNC="rsync://rsync.uk.gentoo.org/gentoo-portage"' >> /mnt/etc/portage/make.conf
     echo 'FEATURES="$FEATURES nodoc noinfo clean-logs compressdebug"' >> /mnt/etc/portage/make.conf
     echo 'app-shells/bash -net' >> /mnt/etc/portage/package.use
+    echo 'app-arch/tar minimal' >> /mnt/etc/portage/package.use
     vi /mnt/etc/portage/make.conf
     # Add 'vim-syntax bash-completion -nls -cracklib -python -perl -fortran -openmp -zeroconf -tcpd' to USE
     cp /etc/resolv.conf /mnt/etc/resolv.conf
