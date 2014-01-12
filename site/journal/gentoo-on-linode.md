@@ -138,8 +138,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     metadata/md5-cache/xfce-*/
     EOF
     emerge --sync
-    echo UTC > /etc/timezone
-    emerge --config sys-libs/timezone-data
     echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
     locale-gen
     eselect locale set 3
