@@ -62,8 +62,6 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     emerge --unmerge nano
 
-    emerge tmux
-
     eselect bashcomp enable --global base
     eselect bashcomp enable --global coreutils
     eselect bashcomp enable --global gentoo
