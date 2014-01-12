@@ -46,7 +46,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     passwd
     emerge sysklogd
     rc-update add sysklogd default
-    rc-update add sshd default
     vi /etc/inittab
     # comment out terminals and add:
     #   hvc0::respawn:/sbin/agetty 38400 hvc0
