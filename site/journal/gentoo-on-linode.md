@@ -43,7 +43,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     cd /etc/init.d
     ln -s net.lo net.eth0
     rc-update add net.eth0 default
-    vi /etc/hosts
     passwd
     emerge sysklogd
     rc-update add sysklogd default
