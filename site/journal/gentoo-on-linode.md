@@ -24,7 +24,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo 'FEATURES="$FEATURES nodoc noinfo"' >> /mnt/etc/portage/make.conf
     echo 'app-shells/bash -net' >> /mnt/etc/portage/package.use
     vi /mnt/etc/portage/make.conf
-    # Add 'vim-syntax bash-completion -nls -cracklib -python -perl -fortran -openmp' to USE
+    # Add 'vim-syntax bash-completion -nls -cracklib -python -perl -fortran -openmp -zeroconf' to USE
     cp /etc/resolv.conf /mnt/etc/resolv.conf
     mount -t proc proc /mnt/proc
     mount --rbind /sys /mnt/sys
