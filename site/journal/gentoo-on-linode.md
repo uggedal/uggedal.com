@@ -60,7 +60,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     ```sh
     curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
-    eselect editor set 3
     emerge --unmerge nano
 
     emerge tmux
