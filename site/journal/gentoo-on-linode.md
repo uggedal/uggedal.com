@@ -65,22 +65,15 @@ Instructions for installing a custom [Gentoo][] root fs on
 9. Run the following:
 
     ```sh
-    echo 'PYTHON_TARGETS="python3_3"' >> /etc/portage/make.conf
-    echo 'PYTHON_SINGLE_TARGET="python3_3"' >> /etc/portage/make.conf
-    emerge --update --deep --newuse @world
-    emerge --depclean
     emerge gentoolkit
-    revdep-rebuild
 
     curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
-    emerge vim
     eselect editor set 3
     emerge --unmerge nano
 
     emerge tmux
 
-    emerge base-completion
     eselect bashcomp enable --global base
     eselect bashcomp enable --global coreutils
     eselect bashcomp enable --global gentoo
