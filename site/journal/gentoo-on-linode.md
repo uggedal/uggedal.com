@@ -72,6 +72,9 @@ Instructions for installing a custom [Gentoo][] root fs on
     eselect bashcomp enable --global git
 
     echo 'CLEAN_DELAY=0' >> /etc/portage/make.conf
+
+    rm /etc/portage/make.profile
+    ln -s /usr/local/portage/profiles/uggedal/default/linux/amd64/minimal /etc/portage/make.profile
     ```
 
 [gentoo]: http://gentoo.org/
