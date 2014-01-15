@@ -60,6 +60,11 @@ Instructions for installing a custom [Gentoo][] root fs on
     ```sh
     curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
+    (
+      cd /usr/local
+      git clone https://github.com/uggedal/overlay.git portage
+    )
+
     emerge --unmerge nano
     emerge --unmerge man-pages man-pages-posix man
     emerge --unmerge udev busybox dev-manager
