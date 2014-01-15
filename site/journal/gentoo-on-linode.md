@@ -62,11 +62,10 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     emerge --unmerge nano
     emerge --unmerge man-pages man-pages-posix man
-    emerge --unmerge udev
+    emerge --unmerge udev busybox dev-manager
     emerge --depclean
 
     rc-update del udev sysinit
-    rc-update add mdev sysinit
 
     eselect bashcomp enable --global base
     eselect bashcomp enable --global coreutils
