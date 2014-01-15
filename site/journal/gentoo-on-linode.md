@@ -61,7 +61,12 @@ Instructions for installing a custom [Gentoo][] root fs on
     curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
     emerge --unmerge nano
-    emerge --unmerge --deep man-pages man-pages-posix man man-db groff
+    emerge --unmerge man-pages man-pages-posix man
+    emerge --unmerge udev
+    emerge --depclean
+
+    rc-update del udev sysinit
+    rc-update add mdev sysinit
 
     eselect bashcomp enable --global base
     eselect bashcomp enable --global coreutils
