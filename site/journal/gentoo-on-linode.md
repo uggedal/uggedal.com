@@ -26,7 +26,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     . /etc/profile
     # provision with conf.sh
     emerge --sync
-    emerge gentoo-sources
+    git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git -b linux-3.10.y --depth 1 /usr/src/linux
     cd /usr/src/linux
     make menuconfig
     make -j8 && make modules_install
