@@ -27,6 +27,33 @@ Instructions for installing a custom [Gentoo][] root fs on
     ```sh
     . /etc/profile
 
+    wget -O- https://github.com/uggedal/conf/archive/master.tar.gz | tar xz
+    (
+      cd conf-master
+      cat <<EOF > env.sh
+    host=local
+    roles='portage'
+    _portage_makeopts=-j8
+    _portage_use='bindist vim-syntax bash-completion'
+    _portage_install_mask='/usr/lib/systemd'
+    _portage_mirrors='http://mirror.bytemark.co.uk/gentoo http://distfiles.gentoo.org http://www.ibiblio.org/pub/Linux/distributions/gentoo'
+    _portage_sync='rsync://rsync.uk.gentoo.org/gentoo-portage'
+    EOF
+      ./push env.sh
+    )
+    rm -r conf-master
+
+    emerge --sync
+    emerge git
+
+    (
+      cd /usr/local
+      git clone https://github.com/uggedal/overlay.git portage
+    )
+    rm /etc/portage/make.profile
+    ln -s /usr/local/portage/profiles/uggedal/default/linux/amd64/minimal /etc/portage/make.profile
+
+
     git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git -b linux-3.10.y --depth 1 /usr/src/linux
     (
       cd /usr/src/linux
@@ -43,7 +70,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo 'config_eth0="dhcp"' > /etc/conf.d/net
     ln -s /etc/init.d/net.lo /etc/init.d/net.eth0
     rc-update add net.eth0 default
-    USE=-zeroconf emerge dhcpcd
+    emerge dhcpcd
 
     passwd
 
@@ -68,13 +95,6 @@ TODO
 
 ```sh
 curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
-
-(
-  cd /usr/local
-  git clone https://github.com/uggedal/overlay.git portage
-)
-rm /etc/portage/make.profile
-ln -s /usr/local/portage/profiles/uggedal/default/linux/amd64/minimal /etc/portage/make.profile
 
 emerge --unmerge nano
 emerge --unmerge udev busybox dev-manager
