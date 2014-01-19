@@ -31,7 +31,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     (
       cd conf-master
       cat <<EOF > env.sh
-    host=local
+    host=localhost
     roles='portage'
     _portage_makeopts=-j8
     _portage_use='bindist vim-syntax bash-completion'
