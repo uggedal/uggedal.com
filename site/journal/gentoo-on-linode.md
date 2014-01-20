@@ -43,16 +43,16 @@ Instructions for installing a custom [Gentoo][] root fs on
     )
     rm -r conf-master
 
-    emerge --sync
-    emerge git
-
+    mkdir /usr/local/portage
     (
-      cd /usr/local
-      git clone https://github.com/uggedal/overlay.git portage
+      cd /usr/local/portage
+      wget -O- https://github.com/uggedal/overlay/archive/master.tar.gz | tar xz --strip-components=1
     )
-    rm /etc/portage/make.profile
-    ln -s /usr/local/portage/profiles/uggedal/default/linux/amd64/minimal /etc/portage/make.profile
 
+    eselect profile set x-portage:uggedal/default/linux/amd64/minimal
+
+    emerge --sync
+    emerge dev-vcs/git
 
     git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git -b linux-3.10.y --depth 1 /usr/src/linux
     (
@@ -94,10 +94,11 @@ TODO
 ----
 
 ```sh
+# convert /usr/local/portage to git
+
 curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
 emerge --unmerge nano
-emerge --unmerge udev busybox dev-manager
 emerge --depclean
 rc-update del udev sysinit
 
