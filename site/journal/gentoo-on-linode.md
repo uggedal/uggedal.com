@@ -27,6 +27,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     ```sh
     . /etc/profile
 
+    # bootstrap provisioning
     wget -O- https://github.com/uggedal/conf/archive/master.tar.gz | tar xz
     (
       cd conf-master
@@ -98,6 +99,8 @@ Instructions for installing a custom [Gentoo][] root fs on
 7. Execute the following:
 
     ```sh
+    # provision from remote host
+
     emerge --ask --verbose --tree --update --deep --with-bdeps=y --newuse @world
     emerge --unmerge nano
     emerge --depclean
@@ -107,12 +110,7 @@ TODO
 ----
 
 ```sh
-
-# provision fully with conf.sh
-
 curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
-
-emerge --unmerge nano
 
 eselect bashcomp enable --global base
 eselect bashcomp enable --global coreutils
