@@ -66,12 +66,12 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     echo '/dev/xvda / ext4 noatime 0 1' > /etc/fstab
 
+    emerge dhcpcd
     echo 'hostname="potassium"' > /etc/conf.d/hostname
     echo 'dns_domain_lo="uggedal.com"' > /etc/conf.d/net
     echo 'config_eth0="dhcp"' > /etc/conf.d/net
     ln -s /etc/init.d/net.lo /etc/init.d/net.eth0
     rc-update add net.eth0 default
-    emerge dhcpcd
 
     passwd
 
