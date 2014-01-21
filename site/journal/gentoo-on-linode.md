@@ -34,7 +34,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     host=localhost
     roles='portage dhcp'
     _portage_makeopts=-j8
-    _portage_use='bindist vim-syntax bash-completion'
+    _portage_use='bindist'
     _portage_install_mask='/usr/lib/systemd'
     _portage_mirrors='http://mirror.bytemark.co.uk/gentoo http://distfiles.gentoo.org http://www.ibiblio.org/pub/Linux/distributions/gentoo'
     _portage_sync='rsync://rsync.uk.gentoo.org/gentoo-portage'
@@ -99,6 +99,8 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     ```sh
     emerge --ask --verbose --tree --update --deep --with-bdeps=y --newuse @world
+    emerge --unmerge nano
+    emerge --depclean
     ```
 
 TODO
