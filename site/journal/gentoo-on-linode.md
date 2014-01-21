@@ -50,7 +50,7 @@ Instructions for installing a custom [Gentoo][] root fs on
       wget -O- https://github.com/uggedal/overlay/archive/master.tar.gz | tar xz --strip-components=1
     )
 
-    eselect profile set x-portage:uggedal/default/linux/amd64/minimal
+    eselect profile set x-portage:uggedal/default/linux/amd64/development
 
     emerge --sync
     emerge dev-vcs/git
@@ -65,11 +65,15 @@ Instructions for installing a custom [Gentoo][] root fs on
       cp arch/x86_64/boot/bzImage /boot/
     )
 
+    rm -rf /usr/local/portage
+    git clone git://github.com/uggedal/overlay.git /usr/local/portage
+
     echo '/dev/xvda / ext4 noatime 0 1' > /etc/fstab
 
     emerge dhcpcd
 
     emerge --depclean
+    rc-update del udev sysinit
 
     passwd
 
@@ -86,20 +90,27 @@ Instructions for installing a custom [Gentoo][] root fs on
     root (hd0)
     kernel /boot/bzImage root=/dev/xvda console=hvc0 quiet
     EOF
+
+    rc-update add sshd default
     ```
+
 6. Reboot.
+7. Execute the following:
+
+    ```sh
+    emerge --ask --verbose --tree --update --deep --with-bdeps=y --newuse @world
+    ```
 
 TODO
 ----
 
 ```sh
-# convert /usr/local/portage to git
+
 # provision fully with conf.sh
 
 curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
 emerge --unmerge nano
-rc-update del udev sysinit
 
 eselect bashcomp enable --global base
 eselect bashcomp enable --global coreutils
