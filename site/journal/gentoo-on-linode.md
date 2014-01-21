@@ -104,7 +104,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     # provision from remote host
 
     emerge --update --deep --with-bdeps=y --newuse @world
-    emerge --unmerge nano
     emerge --depclean
     ```
 
