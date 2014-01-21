@@ -54,6 +54,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge --sync
     emerge dev-vcs/git
 
+    emerge sys-devel/bc
     git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git -b linux-3.10.y --depth 1 /usr/src/linux
     (
       cd /usr/src/linux
