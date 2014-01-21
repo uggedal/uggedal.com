@@ -32,12 +32,13 @@ Instructions for installing a custom [Gentoo][] root fs on
       cd conf-master
       cat <<EOF > env.sh
     host=localhost
-    roles='portage'
+    roles='portage dhcp'
     _portage_makeopts=-j8
     _portage_use='bindist vim-syntax bash-completion'
     _portage_install_mask='/usr/lib/systemd'
     _portage_mirrors='http://mirror.bytemark.co.uk/gentoo http://distfiles.gentoo.org http://www.ibiblio.org/pub/Linux/distributions/gentoo'
     _portage_sync='rsync://rsync.uk.gentoo.org/gentoo-portage'
+    _dhcp_if=eth0
     EOF
       ./push env.sh
     )
@@ -67,11 +68,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     echo '/dev/xvda / ext4 noatime 0 1' > /etc/fstab
 
     emerge dhcpcd
-    echo 'hostname="potassium"' > /etc/conf.d/hostname
-    echo 'dns_domain_lo="uggedal.com"' > /etc/conf.d/net
-    echo 'config_eth0="dhcp"' > /etc/conf.d/net
-    ln -s /etc/init.d/net.lo /etc/init.d/net.eth0
-    rc-update add net.eth0 default
 
     passwd
 
