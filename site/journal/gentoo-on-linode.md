@@ -76,7 +76,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge --oneshot sys-apps/busybox
     emerge --unmerge sys-fs/udev
     rc-update del udev sysinit
-    rc-update add mdev default
+    rc-update add mdev sysinit
 
     passwd
 
