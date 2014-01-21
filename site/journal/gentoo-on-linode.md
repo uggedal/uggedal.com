@@ -69,6 +69,8 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     emerge dhcpcd
 
+    emerge --depclean
+
     passwd
 
     sed -i '/^c[0-9]/d' /etc/inittab
@@ -92,11 +94,11 @@ TODO
 
 ```sh
 # convert /usr/local/portage to git
+# provision fully with conf.sh
 
 curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
 
 emerge --unmerge nano
-emerge --depclean
 rc-update del udev sysinit
 
 eselect bashcomp enable --global base
