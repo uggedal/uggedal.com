@@ -107,12 +107,5 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge --depclean
     ```
 
-TODO
-----
-
-```sh
-curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
-```
-
 [gentoo]: http://gentoo.org/
 [Linode]: https://www.linode.com/
