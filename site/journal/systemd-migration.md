@@ -1,3 +1,7 @@
+% Systemd migration
+% Eivind Uggedal
+% 2012-09-08
+
 Arch Linux (which I use on a Macbook Air, Macbook Pro, Raspberry Pi,
 and [servers][archserver]) is [moving to systemd][systemdmove].
 I started to migrate these systems to systemd a few weeks ago and

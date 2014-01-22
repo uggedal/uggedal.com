@@ -1,3 +1,7 @@
+% Efficient and Lightweight Notices in Django
+% Eivind Uggedal
+% 2008-10-20
+
 Drawing inspiration from [Merb][mer] I wrote a lightweight messaging app for
 Django. My solution uses a normal GET query parameter
 containing the base64 and urlencoded message.

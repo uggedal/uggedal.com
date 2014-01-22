@@ -1,3 +1,7 @@
+% My ideal Linux distro
+% Eivind Uggedal
+% 2013-11-12
+
 ### Design
 
 * Less code.

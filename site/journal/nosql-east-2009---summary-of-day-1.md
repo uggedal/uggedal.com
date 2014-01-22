@@ -1,3 +1,7 @@
+% NoSQL East 2009 - Summary of Day 1
+% Eivind Uggedal
+% 2009-10-29
+
 After using a non-relational database while creating [was it up?][] I've
 learned first hand that MySQL or PostgreSQL isn't always the best
 solution. Since _was it up?_ is a web monitoring service it needs to

@@ -1,3 +1,7 @@
+% Creating a Flexible Monthly Calendar in Django
+% Eivind Uggedal
+% 2009-03-14
+
 I had a set of items which needed to be browsable by date, so naturally I
 turned to Django's [date-based generic views][dbg]. I imagined the
 [monthly archives][mag] would be more informative if I rendered them as a

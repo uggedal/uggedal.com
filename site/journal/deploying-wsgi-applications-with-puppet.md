@@ -1,3 +1,7 @@
+% Deploying WSGI applications with Puppet
+% Eivind Uggedal
+% 2011-05-15
+
 Deploying Python WSGI applications can be a bit tedious. My preferred way
 of hosting such applications on Debian GNU/Linux involves:
 

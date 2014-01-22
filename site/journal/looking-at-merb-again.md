@@ -1,3 +1,7 @@
+% Looking at Merb Again
+% Eivind Uggedal
+% 2008-07-27
+
 I'll finally have some spare time to start
 [a side project][our] now that I'm delivering my master thesis in a few days.
 The question of what web framework to use have been bugging me for some weeks.

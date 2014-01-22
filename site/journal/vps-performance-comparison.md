@@ -1,3 +1,7 @@
+% VPS Performance Comparison
+% Eivind Uggedal
+% 2009-11-29
+
 UPDATE: The scripts used for benchmarking, graphing, and all the raw data
 can be found over at my [GitHub repository][githubrepo]. Be aware that the
 graphs presented here has an Y-axis which goes from the minimum to the maximum

@@ -1,3 +1,7 @@
+% VPS Comparison between Slicehost and Prgmr
+% Eivind Uggedal
+% 2009-05-02
+
 For the last year I've been using a 256MB
 <abbr title="Virtual private server">VPS</abbr>
 from [Slicehost][sli] to host a low

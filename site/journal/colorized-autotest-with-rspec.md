@@ -1,3 +1,7 @@
+% Colorized Autotest with Rspec
+% Eivind Uggedal
+% 2008-04-17
+
 I had problems with getting the `autotest/redgreen` bundled with
 [ZenTest](http://zenspider.com/ZSS/Products/ZenTest/) to work
 when using [RSpec](http://rspec.info). Here follows my quick hack

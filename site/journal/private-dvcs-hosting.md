@@ -1,3 +1,7 @@
+% Private DVCS Hosting
+% Eivind Uggedal
+% 2010-04-18
+
 While using [Github][github-profile] and [Bitbucket][bitbucket-profile]
 for hosting and collaborating on open source projects is great--and not
 to mention free of charge--I have several repositories with personal and
