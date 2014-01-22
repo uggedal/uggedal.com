@@ -1,5 +1,4 @@
 % Working Effectively with Large LaTeX Documents
-% Eivind Uggedal
 % 2008-06-19
 
 I'm currently in the latter stages of writing my master thesis. I've been

@@ -1,5 +1,4 @@
 % JavaScript Performance on GTK Linux Browsers
-% Eivind Uggedal
 % 2008-04-26
 
 I've recently noticed that my system is sluggish on certain web pages which

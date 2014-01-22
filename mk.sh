@@ -8,7 +8,7 @@ header() {
 
 site_title='Eivind Uggedal'
 title=$(header $1 1)
-date=$(header $1 3)
+date=$(header $1 2)
 export site_title title date
 
 

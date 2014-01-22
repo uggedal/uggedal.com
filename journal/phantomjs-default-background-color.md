@@ -1,5 +1,4 @@
 % Default background color in PhantomJS screenshots
-% Eivind Uggedal
 % 2012-12-19
 
 By default PhantomJS will rasterize pages with a transparent background

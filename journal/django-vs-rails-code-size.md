@@ -1,5 +1,4 @@
 % Django vs Rails Code Size
-% Eivind Uggedal
 % 2008-05-10
 
 I've been a long user of Ruby and frameworks like [Rails][ra], [Merb][me],

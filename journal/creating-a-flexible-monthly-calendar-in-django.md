@@ -1,5 +1,4 @@
 % Creating a Flexible Monthly Calendar in Django
-% Eivind Uggedal
 % 2009-03-14
 
 I had a set of items which needed to be browsable by date, so naturally I

@@ -1,5 +1,4 @@
 % Systemd migration
-% Eivind Uggedal
 % 2012-09-08
 
 Arch Linux (which I use on a Macbook Air, Macbook Pro, Raspberry Pi,

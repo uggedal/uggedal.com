@@ -1,5 +1,4 @@
 % Alpine Linux on Linode
-% Eivind Uggedal
 % 2013-12-05
 
 Instructions for installing a custom [Alpine Linux][] root fs on

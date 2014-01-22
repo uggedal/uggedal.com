@@ -1,5 +1,4 @@
 % Gentoo on Linode
-% Eivind Uggedal
 % YYYY-MM-DD
 
 Instructions for installing a custom [Gentoo][] root fs on

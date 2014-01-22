@@ -1,5 +1,4 @@
 % NoSQL East 2009 - Summary of Day 1
-% Eivind Uggedal
 % 2009-10-29
 
 After using a non-relational database while creating [was it up?][] I've

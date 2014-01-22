@@ -1,5 +1,4 @@
 % Private DVCS Hosting
-% Eivind Uggedal
 % 2010-04-18
 
 While using [Github][github-profile] and [Bitbucket][bitbucket-profile]

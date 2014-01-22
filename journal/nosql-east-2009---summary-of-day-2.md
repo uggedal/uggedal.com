@@ -1,5 +1,4 @@
 % NoSQL East 2009 - Summary of Day 2
-% Eivind Uggedal
 % 2009-10-30
 
 Continuing from [yesterday's talks][] here are my summary of

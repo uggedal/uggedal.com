@@ -1,5 +1,4 @@
 %  Login Link in Django with Proper Redirect URL
-% Eivind Uggedal
 % 2009-04-15
 
 When using Django's `contrib.auth` I tend to use the `@login_required`

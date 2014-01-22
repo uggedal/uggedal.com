@@ -1,5 +1,4 @@
 % VPS Performance Comparison
-% Eivind Uggedal
 % 2009-11-29
 
 UPDATE: The scripts used for benchmarking, graphing, and all the raw data

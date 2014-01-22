@@ -1,5 +1,4 @@
 % Looking at Merb Again
-% Eivind Uggedal
 % 2008-07-27
 
 I'll finally have some spare time to start

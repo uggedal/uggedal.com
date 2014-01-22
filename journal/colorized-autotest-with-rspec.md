@@ -1,5 +1,4 @@
 % Colorized Autotest with Rspec
-% Eivind Uggedal
 % 2008-04-17
 
 I had problems with getting the `autotest/redgreen` bundled with

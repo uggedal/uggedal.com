@@ -1,5 +1,4 @@
 % Efficient and Lightweight Notices in Django
-% Eivind Uggedal
 % 2008-10-20
 
 Drawing inspiration from [Merb][mer] I wrote a lightweight messaging app for
