@@ -112,14 +112,6 @@ TODO
 
 ```sh
 curl https://raw.github.com/uggedal/dotfiles/master/.inputrc > /etc/inputrc
-
-eselect bashcomp enable --global base
-eselect bashcomp enable --global coreutils
-eselect bashcomp enable --global gentoo
-eselect bashcomp enable --global eselect
-eselect bashcomp enable --global ssh
-eselect bashcomp enable --global tmux
-eselect bashcomp enable --global git
 ```
 
 [gentoo]: http://gentoo.org/
