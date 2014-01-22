@@ -23,8 +23,8 @@ tmpl() {
   ' $1
 }
 
-page_template=page.tmpl
-body_line=$(sed -n '/@@BODY@@/=' $page_template)
+layout=page.tmpl
+body_line=$(sed -n '/@@BODY@@/=' $layout)
 
 site_title='Eivind Uggedal'
 title=$(header $1 1)
@@ -37,4 +37,4 @@ trap "rm $tmp" EXIT TERM INT
 
 sed '1,2d' $1 | markdown > $tmp
 
-tmpl $page_template | sed "${body_line}r $tmp" | sed "${body_line}d" > ${1%*.md}.html
+tmpl $layout | sed "${body_line}r $tmp" | sed "${body_line}d" > ${1%*.md}.html
