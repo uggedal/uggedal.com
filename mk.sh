@@ -25,9 +25,9 @@ tmpl() {
 
 inject() {
   local line
-  line=$(sed -n '/@@BODY@@/=' $layout)
+  line=$(sed -n '/@@BODY@@/=' $2)
 
-  sed "${line}r $tmp" | sed "${line}d"
+  sed "${line}r $1" | sed "${line}d"
 }
 
 layout=page.tmpl
@@ -43,4 +43,4 @@ trap "rm $tmp" EXIT TERM INT
 
 sed '1,2d' $1 | markdown > $tmp
 
-tmpl $layout | inject > ${1%*.md}.html
+tmpl $layout | inject $tmp $layout > ${1%*.md}.html
