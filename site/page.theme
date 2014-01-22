@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{site_title}} &mdash; <?theme title?></title>
+  </head>
+  <body>
+
+    <h1>
+      <a href="/">{{site_title}}</a>
+    </h1>
+
+    <article>
+      <header>
+        <h1><?theme title?></h1>
+
+        <p class="byline">
+          An entry from <strong><?theme date?></strong> in
+          the <a href="/journal">Journal</a>.
+        </p>
+      </header>
+
+      <?theme body?>
+    </article>
+
+    <footer>
+      Read <a href=https://github.com/uggedal/uggedal.com>the source</a>.
+    </footer>
+
+  </body>
+</html>
