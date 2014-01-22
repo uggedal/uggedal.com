@@ -35,6 +35,6 @@ export site_title title date
 tmp=$(mktemp)
 trap "rm $tmp" EXIT TERM INT
 
-markdown $1 > $tmp
+sed '1,2d' $1 | markdown > $tmp
 
 tmpl $page_template | sed "${body_line}r $tmp" | sed "${body_line}d" > ${1%*.md}.html
