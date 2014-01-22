@@ -23,8 +23,14 @@ tmpl() {
   ' $1
 }
 
+inject() {
+  local line
+  line=$(sed -n '/@@BODY@@/=' $layout)
+
+  sed "${line}r $tmp" | sed "${line}d"
+}
+
 layout=page.tmpl
-bodyref=$(sed -n '/@@BODY@@/=' $layout)
 
 site_title='Eivind Uggedal'
 title=$(header $1 1)
@@ -37,4 +43,4 @@ trap "rm $tmp" EXIT TERM INT
 
 sed '1,2d' $1 | markdown > $tmp
 
-tmpl $layout | sed "${bodyref}r $tmp" | sed "${bodyref}d" > ${1%*.md}.html
+tmpl $layout | inject > ${1%*.md}.html
