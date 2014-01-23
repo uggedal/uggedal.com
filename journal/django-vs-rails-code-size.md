@@ -16,7 +16,6 @@ when using [cloc][cl] is contradicting my initial assumptions.
 
 First we have the as-of-writing latest version of Rails:
 
-    :::text
     [diamond:~/dev/rails]% git log | head -n 7
     commit a7ea06b4ebe252e258f83e7de945b4baa30ec3bc
     Author: Jacek Becela <jacek.becela@gmail.com>
@@ -48,7 +47,6 @@ First we have the as-of-writing latest version of Rails:
 
 Then the latest version of Django (from the [Mercurial mirror][mm]):
 
-    :::text
     [diamond:~/dev/django-trunk]% hg tip
     changeset:   5420:3762db44f8cd
     tag:         tip

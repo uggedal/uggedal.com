@@ -35,7 +35,6 @@ is distilled to the following steps for a WSGI blog application:
 
 3. Paste the following into a puppet manifest file (`blog.pp`):
 
-        :::puppet
         Exec {
           path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
         }
@@ -71,7 +70,6 @@ database created by:
 
 1. Add the following to `blog.pp`:
 
-        :::puppet
         include postgresql::server
         include postgresql::python
 

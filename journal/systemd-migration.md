@@ -7,7 +7,6 @@ I started to migrate these systems to systemd a few weeks ago and
 today the last system (the server running this site, [mediaqueri.es][], and
 a few other sites) was migrated:
 
-    :::text
     magnesium ~ ps_mem
      Private  +   Shared  =  RAM used       Program 
 

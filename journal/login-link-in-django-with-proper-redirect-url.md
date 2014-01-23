@@ -10,7 +10,6 @@ successfully logged in it will redirect me to this URL.
 Like many people I tend to place a login link at the top of every page if
 the current user is not authenticated and a log out link otherwise:
 
-    :::html+django
     {% if user.is_authenticated %}
       <a href="{% url auth_logout %}">Log out</a>
     {% else %}
@@ -35,7 +34,6 @@ Implementing such a context processor can easily be achieved by adding the
 following code to a file called `context_processors.py` inside one of your
 Django applications:
 
-    :::python
     from django.utils.http import urlquote
     from django.conf import settings
     from django.contrib.auth import REDIRECT_FIELD_NAME
@@ -49,7 +47,6 @@ Django applications:
 Then you should add this new context processor to the list of template
 context processors in your settings file:
 
-    :::python
     TEMPLATE_CONTEXT_PROCESSORS = (
         "django.core.context_processors.auth",
         "django.core.context_processors.debug",
@@ -62,7 +59,6 @@ context processors in your settings file:
 All that is left to do is to use the new login URL in a template. This could
 look something like this:
 
-    :::html+django
     {% if user.is_authenticated %}
       <a href="{% url auth_logout %}">Log out</a>
     {% else %}

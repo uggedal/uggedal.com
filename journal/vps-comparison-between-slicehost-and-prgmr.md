@@ -18,7 +18,6 @@ compare it against my trusty old slice with the same memory configuration.
 
 Lets first take a look at the system specifications. Slicehost first:
 
-    :::text
     # uname -nrmo
     slicehost.uggedal.com 2.6.24-23-xen x86_64 GNU/Linux
 
@@ -36,7 +35,6 @@ Lets first take a look at the system specifications. Slicehost first:
 
 And the same output from Prgmr: 
 
-    :::text
     # uname -nrmo
     prgmr.uggedal.com 2.6.26-1-xen-amd64 x86_64 GNU/Linux
 
@@ -91,7 +89,6 @@ All tests were run against revision 10108 of the Django trunk, using
 the `sqlite3` database engine. The following script was used for running
 the tests:
 
-    :::bash
     for i in {1..20}
     do
       time ./runtests.py --settings=sqlite3conf

@@ -19,7 +19,6 @@ run on the [x86-64][x64] architecture.
 Therefore the browser versions used for testing were as follows
 (identified by their user User-Agent request header):
 
-    :::text
     Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.8.1.14) Gecko/20080404
     Iceweasel/2.0.0.14 (Debian-2.0.0.14-2)
 
@@ -31,7 +30,6 @@ Therefore the browser versions used for testing were as follows
 
 And here are their Debian package versions:
 
-    :::text
     # apt-cache show iceweasel
     Package: iceweasel
     Architecture: amd64
@@ -51,7 +49,6 @@ Based on those User-Agent strings it should be no surprise that I'm running a
 x86-64 based system on Debian. Here are more specific details of
 my system:
 
-    :::text
     # cat /etc/issue
     Debian GNU/Linux lenny/sid
 
@@ -94,7 +91,6 @@ I started writing a script with [Hpricot][hpr] and [ghcartrb][gch] to generate
 some nice detailed charts of the differences between the browsers. But when I
 found myself writing code like this:
 
-    :::ruby
     max = parsed.map {|res| res.values[0]}.transpose.map do |val|
       val.inject(0) { |sum,x| sum+x }
     end.max

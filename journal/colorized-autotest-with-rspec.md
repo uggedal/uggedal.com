@@ -7,7 +7,6 @@ when using [RSpec](http://rspec.info). Here follows my quick hack
 for getting colorized output when running your specs trough
 `autotest`. Put his in your `~/.autotest`:
 
-    :::ruby
     def green(text)
       "\e[32m#{text}\e[0m"
     end

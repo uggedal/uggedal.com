@@ -23,7 +23,6 @@ used it after it was split into `merb-core` (bare bones framework) and
 `merb-more` (plug in what you need of extra functionality). First off I had to
 install the darn thing:
 
-    :::sh
     gem install ParseTree ruby2ruby echoe
     git clone git://github.com/defunkt/sake.git
     cd sake
@@ -51,7 +50,6 @@ What are the immediate good parts of Merb? One nice feature seems to be the
 fact that controllers are plain old Ruby objects. This
 makes for easily testable controllers:
 
-    :::ruby
     class Exercises < Merb::Controller
       def index
         @exercises = Exercise.all(:order => [:title.asc])
@@ -74,7 +72,6 @@ makes for easily testable controllers:
 Because of the Merb controller design the `dispatch_to` method is simply
 implemented as:
 
-    :::ruby
     def dispatch_to(controller, action, params = {}, env = {}, &blk)
       dispatch_request(build_request(params, env), controller, action, &blk)
     end
@@ -96,7 +93,6 @@ interact with the controller in separation from views and models.
 The routing engine of Merb is also very powerful. It makes the simple tasks easy
 and more complex tasks possible:
 
-    :::ruby
     Merb::Router.prepare do |r|
       # REST resource with:
       #   GET: index, show, new, edit, delete
@@ -114,7 +110,6 @@ Diving into `merb-more` we find the optional `merb-actions-args` which makes
 it possible to define controller methods with arguments. This eliminates the
 need for the `params` hash and makes for cleaner code:
 
-    :::ruby
     class Exercises < Merb::Controller
 
       def update(id, article)
@@ -131,7 +126,6 @@ need for the `params` hash and makes for cleaner code:
 Another feature that feels just simple and right is the way you can provide
 alternative formats from your controllers:
 
-    :::ruby
     class Exercises < Merb::Controller
       provides :json
 
@@ -145,7 +139,6 @@ The `provides` API works by either looking at the HTTP Accepts header of the
 incoming request or an URI with a format suffix. The following request
 should thus return the same results:
 
-    :::sh
     curl -H "Accept: application/json" http://ourlifts.com/exercises/23
     curl http://ourlifts.com/exercises/23.json
 
@@ -161,7 +154,6 @@ Merb recently added a clean way to send messages to the next rendered page
 like Rails' [flash][fla]. Unlike Rails' flash Merb's messages are sent with
 the controllers `redirect` method:
 
-    :::ruby
     class Exercises < Merb::Controller
 
       def update(id, article)

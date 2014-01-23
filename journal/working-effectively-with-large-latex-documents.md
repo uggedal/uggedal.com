@@ -14,7 +14,6 @@ including several sections from multiple files as it does not automatically
 start a new page for every included file. A typical base file that includes
 all the separate chapters could look like this:
 
-    :::latex
     \documentclass[11pt,a4paper]{book}
 
     \title{A Long Master Thesis}
@@ -68,7 +67,6 @@ and should be placed before your `document` environment. I tend to have
 every potential included file listed in a commented `\includeonly{}` structure
 like this:
 
-    :::latex
     %includeonly{%
     %acknowledgements,%
     %introduction,%
@@ -85,7 +83,6 @@ like this:
 When I'm working on a single chapter I comment out the `\includeonly{}`
 command an the chapter in question:
 
-    :::latex
     includeonly{%
     %acknowledgements,%
     %introduction,%
@@ -103,7 +100,6 @@ This way compilation times decreases substantially and you can get more rapid
 feedback of how your document looks. I have in place a similar construct in
 my document preamble for easily switch on and off `draft` mode:
 
-    :::latex
     \documentclass[12pt,%
                    %draft,%
                    a4paper]{book}
@@ -111,7 +107,6 @@ my document preamble for easily switch on and off `draft` mode:
 A small deletion of the comment character (`%`) gives me a document in draft
 mode:
 
-    :::latex
     \documentclass[12pt,%
                    draft,%
                    a4paper]{book}

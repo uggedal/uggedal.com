@@ -18,7 +18,6 @@ this class one can easily extend its functionality to display objects in their
 appropriate day cell. What follows is a simple calendar class for displaying
 workouts on the days they were performed:
 
-    :::python
     from calendar import HTMLCalendar
     from datetime import date
     from itertools import groupby
@@ -74,7 +73,6 @@ It's also important to note that we've escaped potential user generated content
 The extended WorkoutCalendar can then either be used by creating a custom
 template tag or by using it in a standard Django view:
 
-    :::python
     from django.shortcuts import render_to_response
     from django.utils.safestring import mark_safe
 
@@ -88,7 +86,6 @@ template tag or by using it in a standard Django view:
 You can see that we've marked the calendar as safe and Django will therefore
 not escape it by default when rendered in a view:
 
-    :::html+django
     {{ calendar }}
 
 The result of such a calendar implementation could look like the
