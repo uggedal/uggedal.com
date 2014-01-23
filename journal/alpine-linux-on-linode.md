@@ -10,7 +10,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
 3. Boot into recovery mode.
 4. Attach to the recovery console with Lish and execute the following:
 
-    ```sh
+    ```
     #!/bin/sh
 
     set -e

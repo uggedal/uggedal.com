@@ -10,7 +10,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 3. Boot into rescue mode.
 4. Extract and chroot to a stage3:
 
-    ```sh
+    ```
     mkfs.ext4 /dev/xvda
     mount /dev/xvda /mnt
 
@@ -27,7 +27,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 
 5. Execute the following inside the chroot:
 
-    ```sh
+    ```
     . /etc/profile
 
     # bootstrap provisioning
@@ -103,7 +103,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 6. Reboot.
 7. Execute the following:
 
-    ```sh
+    ```
     # provision from remote host
 
     emerge --update --deep --with-bdeps=y --newuse @world
