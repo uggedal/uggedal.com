@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean watch
 
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,%.html,$(md))
@@ -10,3 +10,6 @@ $(html) : %.html : %.md
 
 clean:
 	@rm -f journal/*.html
+
+watch:
+	@while inotifywait -qqre create,delete,modify .; do make; done
