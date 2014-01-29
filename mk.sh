@@ -38,8 +38,9 @@ site_title='Eivind Uggedal'
 export site_title
 
 article() {
-  local layout=page.tmpl
-  local tmp
+  local layout tmp
+
+  layout=$(dirname $1)/article.tmpl
 
   title=$(header $1 1)
   date=$(header $1 2)
@@ -54,36 +55,39 @@ article() {
 }
 
 reverse_chronological() {
-  for article; do
-    printf '%s %s\n' $(header $article 2) $article
-  done | sort -r | cut -d' ' -f2
+  local limit=9999
+  local date
+
+  [ "$1" = '--limit' ] && {
+    limit=$2
+    shift 2
+  }
+
+  for f; do
+    date=$(header $f 2)
+    [ "$date" = draft ] || printf '%s %s\n' $date $f
+  done | sort -r | head -n$limit | cut -d' ' -f2
 }
 
 index() {
-  local layout=index.tmpl
-  local date
-  local path
-  local tmp
+  local target layout tmpl f f_date f_title
 
-  title=Journal
-  export title
-
-  local target=$1
+  target=$1
   shift
+  layout=$(dirname $target)/index.tmpl
 
   tmp=$(mktemp)
   trap "rm $tmp" EXIT TERM INT
 
-  for article in $(reverse_chronological "$@"); do
-    title=$(header $article 1)
-    date=$(header $article 2)
+  for f in $(reverse_chronological "$@"); do
+    f_title=$(header $f 1)
+    f_date=$(header $f 2)
 
-    [ "$date" = draft ] || markdown <<EOF >>$tmp
-1. $date  
-   [$title]($(htmlext $article))
+    markdown <<EOF >>$tmp
+1. $f_date  
+   [$f_title](/$(htmlext $f))
 EOF
   done
-
 
   tmpl $layout | inject $tmp $layout > $target
 }
