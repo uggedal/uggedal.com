@@ -55,8 +55,8 @@ article() {
 
 reverse_chronological() {
   for article; do
-    printf '%s@%s\n' $(header $article 2) $article
-  done | sort -r
+    printf '%s %s\n' $(header $article 2) $article
+  done | sort -r | cut -d' ' -f2
 }
 
 index() {
@@ -75,13 +75,13 @@ index() {
   trap "rm $tmp" EXIT TERM INT
 
   for article in $(reverse_chronological "$@"); do
-    date=${article%@*}
-    path=${article#*@}
+    title=$(header $article 1)
+    date=$(header $article 2)
 
 
     markdown <<EOF >>$tmp
 1. $date  
-   [$path]($(htmlext $path))
+   [$title]($(htmlext $article))
 EOF
   done
 
