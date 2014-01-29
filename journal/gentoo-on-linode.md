@@ -1,5 +1,5 @@
 % Gentoo on Linode
-% YYYY-MM-DD
+% draft
 
 Instructions for installing a custom [Gentoo][] root fs on
 [Linode][].

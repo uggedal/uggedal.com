@@ -78,8 +78,7 @@ index() {
     title=$(header $article 1)
     date=$(header $article 2)
 
-
-    markdown <<EOF >>$tmp
+    [ "$date" = draft ] || markdown <<EOF >>$tmp
 1. $date  
    [$title]($(htmlext $article))
 EOF
