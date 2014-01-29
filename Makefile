@@ -9,7 +9,7 @@ $(html) : %.html : %.md
 	@./mk.sh article $^
 
 journal/index.html: $(md)
-	./mk.sh index $@ $(md)
+	@./mk.sh index $@ $(md)
 
 clean:
 	@rm -f journal/*.html
