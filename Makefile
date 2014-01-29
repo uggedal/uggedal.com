@@ -8,14 +8,17 @@ all : $(html) index.html
 $(html) : %.html : %.md
 	@./mk.sh article $^
 
-journal/index.html: $(md)
+journal/index.atom: $(md)
+	@./mk.sh feed $@ --limit 10 $(md)
+
+journal/index.html: journal/index.atom
 	@./mk.sh index $@ $(md)
 
 index.html: journal/index.html
 	@./mk.sh index $@ --limit 5 $(md)
 
 clean:
-	@rm -f journal/*.html
+	@rm -f *.html journal/*.html journal/*.atom
 
 watch:
 	@while inotifywait -qqre create,delete,modify .; do make; done

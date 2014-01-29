@@ -83,13 +83,51 @@ index() {
     f_title=$(header $f 1)
     f_date=$(header $f 2)
 
-    markdown <<EOF >>$tmp
+    markdown <<EOF >> $tmp
 1. $f_date  
    [$f_title](/$(htmlext $f))
 EOF
   done
 
   tmpl $layout | inject $tmp $layout > $target
+}
+
+feed() {
+  local target
+
+  target=$1
+  shift
+
+cat <<EOF > $target
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Journal of Eivind Uggedal</title>
+  <id>http://uggedal.com/journal/index.atom</id>
+  <updated>$(date -u +"%Y-%m-%dT%H:%M:%SZ")</updated>
+  <link href="http://uggedal.com/journal" />
+  <link href="http://uggedal.com/journal/index.atom" rel="self" />
+  <author>
+    <name>Eivind Uggedal</name>
+  </author>
+  <generator>POSIX shell</generator>
+EOF
+
+  for f in $(reverse_chronological "$@"); do
+    f_title=$(header $f 1)
+    f_date=$(header $f 2)
+    f_url=http://uggedal.com/$(htmlext $f)
+
+    cat <<EOF >> $target
+  <entry xml:base="http://uggedal.com/journal/index.atom">
+    <title type="text">$f_title</title>
+    <id>$f_url</id>
+    <updated>${f_date}T00:00:00Z</updated>
+    <link href="$f_url" />
+  </entry>
+EOF
+  done
+
+  printf '</feed>\n' >> $target
 }
 
 action=$1
