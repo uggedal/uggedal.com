@@ -81,7 +81,7 @@ index() {
 
     markdown <<EOF >>$tmp
 1. $date  
-  [$path]($(htmlext $path))
+   [$path]($(htmlext $path))
 EOF
   done
 
