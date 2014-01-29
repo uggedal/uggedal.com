@@ -31,14 +31,60 @@ inject() {
 }
 
 site_title='Eivind Uggedal'
-title=$(header $1 1)
-date=$(header $1 2)
-export site_title title date
+export site_title
 
-layout=page.tmpl
-tmp=$(mktemp)
-trap "rm $tmp" EXIT TERM INT
+article() {
+  local layout=page.tmpl
+  local tmp
 
-sed '1,2d' $1 | markdown > $tmp
+  title=$(header $1 1)
+  date=$(header $1 2)
+  export title date
 
-tmpl $layout | inject $tmp $layout > ${1%*.md}.html
+  tmp=$(mktemp)
+  trap "rm $tmp" EXIT TERM INT
+
+  sed '1,2d' $1 | markdown > $tmp
+
+  tmpl $layout | inject $tmp $layout > ${1%*.md}.html
+}
+
+reverse_chronological() {
+  for article; do
+    printf '%s@%s\n' $(header $article 2) $article
+  done | sort -r
+}
+
+index() {
+  local layout=index.tmpl
+  local date
+  local path
+  local tmp
+
+  title=Journal
+  export title
+
+  local target=$1
+  shift
+
+  tmp=$(mktemp)
+  trap "rm $tmp" EXIT TERM INT
+
+  for article in $(reverse_chronological "$@"); do
+    date=${article%@*}
+    path=${article#*@}
+
+
+    markdown <<EOF >>$tmp
+1. $date  
+  [$path]($path)
+EOF
+  done
+
+
+  tmpl $layout | inject $tmp $layout > $target
+}
+
+action=$1
+shift
+$action "$@"

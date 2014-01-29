@@ -3,10 +3,13 @@
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,%.html,$(md))
 
-all : $(html)
+all : $(html) journal/index.html
 
 $(html) : %.html : %.md
-	@./mk.sh $^
+	@./mk.sh article $^
+
+journal/index.html: $(md)
+	./mk.sh index $@ $(md)
 
 clean:
 	@rm -f journal/*.html
