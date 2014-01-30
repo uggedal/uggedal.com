@@ -1,57 +1,89 @@
 #!/bin/sh
 
+site_title='Eivind Uggedal'
+
+tmpl_head() {
+  local title="$1"
+
+  cat <<EOF
+<!doctype html>
+<html>
+  <head>
+    <title>$title</title>
+  </head>
+  <body>
+
+    <h1>
+      <a href="/">$site_title</a>
+    </h1>
+EOF
+}
+
+tmpl_foot() {
+  cat <<EOF
+    <footer>
+      Read <a href=https://github.com/uggedal/uggedal.com>the source</a>.
+    </footer>
+
+  </body>
+</html>
+EOF
+}
+
+tmpl_article() {
+  local title="$1"
+  local date="$2"
+  local body="$3"
+
+  cat <<EOF
+    <article>
+      <header>
+        <h1>$title</h1>
+
+        <p class="byline">
+          An entry from <strong>$date</strong> in
+          the <a href="/journal">Journal</a>.
+        </p>
+      </header>
+
+      $body
+    </article>
+EOF
+}
+
+tmpl_index() {
+  local title="$1"
+  local body="$2"
+
+  cat <<EOF
+    <section>
+      <header>
+        <h1>$title</h1>
+      </header>
+
+      $body
+    </section>
+EOF
+}
+
 header() {
   sed $2'q;d' $1 | sed 's/^% //'
-}
-
-tmpl() {
-  awk '
-  {
-    print substitute($0)
-  }
-
-  function substitute(raw) {
-    if (match(raw, /\{\{([^}]*)\}\}/)) {
-      tag = substr(raw, RSTART, RLENGTH)
-      key = substr(raw, RSTART+2, RLENGTH-4)
-      gsub(tag, ENVIRON[key], raw)
-      return substitute(raw)
-    } else {
-      return raw
-    }
-  }
-  ' $1
-}
-
-inject() {
-  local line
-  line=$(sed -n '/@@BODY@@/=' $2)
-
-  sed "${line}r $1" | sed "${line}d"
 }
 
 htmlext() {
   printf '%s.html' ${1%*.md}
 }
 
-site_title='Eivind Uggedal'
-export site_title
-
 article() {
-  local layout tmp
+  local target title date
 
-  layout=$(dirname $1)/article.tmpl
-
+  target=$(htmlext $1)
   title=$(header $1 1)
   date=$(header $1 2)
-  export title date
 
-  tmp=$(mktemp)
-  trap "rm $tmp" EXIT TERM INT
-
-  sed '1,2d' $1 | markdown > $tmp
-
-  tmpl $layout | inject $tmp $layout > $(htmlext $1)
+  tmpl_head "$title" > $target
+  tmpl_article "$title" $date "$(sed '1,2d' $1 | markdown)" >> $target
+  tmpl_foot >> $target
 }
 
 reverse_chronological() {
@@ -70,26 +102,24 @@ reverse_chronological() {
 }
 
 index() {
-  local target layout tmpl f f_date f_title
+  local target article ar_title ar_date ar_href body
 
   target=$1
   shift
-  layout=$(dirname $target)/index.tmpl
 
-  tmp=$(mktemp)
-  trap "rm $tmp" EXIT TERM INT
+  tmpl_head "$title" > $target
 
-  for f in $(reverse_chronological "$@"); do
-    f_title=$(header $f 1)
-    f_date=$(header $f 2)
+  for ar in $(reverse_chronological "$@"); do
+    ar_title=$(header $ar 1)
+    ar_date=$(header $ar 2)
+    ar_href=/$(htmlext $ar)
 
-    markdown <<EOF >> $tmp
-1. $f_date  
-   [$f_title](/$(htmlext $f))
-EOF
+    body="$body$(printf '\n1. %s  \n   [%s](%s)\n' $ar_date "$ar_title" $ar_href)"
   done
 
-  tmpl $layout | inject $tmp $layout > $target
+  tmpl_index "$title" "$(printf '%s' "$body" | markdown)" >> $target
+
+  tmpl_foot >> $target
 }
 
 feed() {
