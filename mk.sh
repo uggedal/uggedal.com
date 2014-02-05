@@ -105,7 +105,8 @@ index() {
   local target article ar_title ar_date ar_href body
 
   target=$1
-  shift
+  title="$2"
+  shift 2
 
   tmpl_head "$title" > $target
 

@@ -12,10 +12,10 @@ journal/index.atom: $(md)
 	@./mk.sh feed $@ --limit 10 $(md)
 
 journal/index.html: journal/index.atom
-	@./mk.sh index $@ $(md)
+	@./mk.sh index $@ 'Journal' $(md)
 
 index.html: journal/index.html
-	@./mk.sh index $@ --limit 5 $(md)
+	@./mk.sh index $@ 'Latest Journal Entries' --limit 5 $(md)
 
 clean:
 	@rm -f *.html journal/*.html journal/*.atom
