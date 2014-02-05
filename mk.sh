@@ -35,20 +35,6 @@ tmpl_article() {
   local date="$2"
   local body="$3"
 
-  cat <<EOF
-    <article>
-      <header>
-        <h1>$title</h1>
-
-        <p class="byline">
-          An entry from <strong>$date</strong> in
-          the <a href="/journal">Journal</a>.
-        </p>
-      </header>
-
-      $body
-    </article>
-EOF
 }
 
 tmpl_index() {
@@ -82,7 +68,20 @@ article() {
   date=$(header $1 2)
 
   tmpl_head "$title" > $target
-  tmpl_article "$title" $date "$(sed '1,2d' $1 | markdown)" >> $target
+  cat <<EOF >>$target
+    <article>
+      <header>
+        <h1>$title</h1>
+
+        <p class="byline">
+          An entry from <strong>$date</strong> in
+          the <a href="/journal">Journal</a>.
+        </p>
+      </header>
+
+      $(sed '1,2d' $1 | markdown)
+    </article>
+EOF
   tmpl_foot >> $target
 }
 
