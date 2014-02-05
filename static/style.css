@@ -1,3 +1,13 @@
+a {
+  color: #cb4b16;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+}
+
+
 section ol {
   list-style: none;
   padding: 0;
