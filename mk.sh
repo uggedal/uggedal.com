@@ -154,6 +154,9 @@ EOF
     <id>$f_url</id>
     <updated>${f_date}T00:00:00Z</updated>
     <link href="$f_url" />
+    <content type="html">
+      <![CDATA[$(sed '1,2d' $f | markdown)]]>
+    </content>
   </entry>
 EOF
   done
