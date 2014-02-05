@@ -10,6 +10,11 @@ tmpl_head() {
 <html>
   <head>
     <title>$title</title>
+
+    <link rel="alternate"
+          type="application/atom+xml"
+          href="/journal/index.atom"
+          title="Feed of the latest journal entries">
   </head>
   <body>
 
