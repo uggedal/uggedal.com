@@ -15,6 +15,7 @@ tmpl_head() {
           type="application/atom+xml"
           href="/journal/index.atom"
           title="Feed of the latest journal entries">
+    <link href=/static/style.css rel="stylesheet">
   </head>
   <body>
 

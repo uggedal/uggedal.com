@@ -1,0 +1,8 @@
+section ol {
+  list-style: none;
+  padding: 0;
+}
+
+section ol li {
+  margin-bottom: 1em;
+}
