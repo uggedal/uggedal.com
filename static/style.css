@@ -68,7 +68,10 @@ a:hover {
 
 code {
   font-family: 'Source Code Pro';
-  font-size: 1.25em;
+}
+
+pre {
+  font-size: 1.35em;
 }
 
 section ol {
