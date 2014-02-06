@@ -50,6 +50,7 @@
 body {
   font-family: 'Clear Sans';
   max-width: 40em;
+  padding-left: 2em;
 }
 
 body > h1 {
@@ -91,6 +92,11 @@ section ol {
 
 section ol li {
   margin-bottom: 1em;
+}
+
+article ul,
+article ol {
+  padding: 0;
 }
 
 .byline {
