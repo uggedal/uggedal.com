@@ -120,10 +120,20 @@ EOF
         </li>
 EOF
   done
-  cat <<EOF >> $target
-      </ol>
-    </section>
+
+  printf '      </ol>\n' >> $target
+
+  [ "$1" = '--limit' ] && {
+    cat <<EOF >> $target
+      <p>
+        <a href="/journal">
+          <em>All journal entries</em>
+        </a>
+      <p>
 EOF
+  }
+
+  printf '    </section>\n' >> $target
 
 
   tmpl_foot >> $target
