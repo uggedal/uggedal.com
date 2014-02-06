@@ -21,6 +21,13 @@
 
 @font-face {
   font-family: 'Clear Sans';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Clear Sans'), url(clearsans-bolditalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Clear Sans';
   font-style: normal;
   font-weight: 100;
   src: local('Clear Sans'), url(clearsans-thin.woff) format('woff');
