@@ -100,6 +100,22 @@ index() {
 
   tmpl_head "$title" > $target
 
+  [ "$1" = '--limit' ] && {
+    cat <<EOF >> $target
+    <section class=about>
+      I'm a programmer at <a href=http://bekk.no>BEKK</a>.
+      I share <a href=https://github.com/uggedal>open source code</a>
+      written in my pastime.
+      I created <a href=http://mediaqueri.es>mediaqueri.es</a>, <em>the</em>
+      collection of responsively designed web sites.
+      Previously I ran <a href=http://wasitup.com>wasitup.com</a>,
+      a free HTTP monitor doing 4.5 million outgoing requests each
+      day.
+      You can contact me at
+      <a href=mailto:eivind@uggedal.com>eivind@uggedal.com</a>.
+    </section>
+EOF
+  }
   cat <<EOF >> $target
     <section class=entries>
       <header>
