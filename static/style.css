@@ -79,3 +79,7 @@ section ol {
 section ol li {
   margin-bottom: 1em;
 }
+
+.byline {
+  font-style: italic;
+}
