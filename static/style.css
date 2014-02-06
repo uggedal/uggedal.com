@@ -1,4 +1,12 @@
+@font-face {
+  font-family: 'Clear Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Clear Sans'), url(clearsans-light.woff) format('woff');
+}
+
 body {
+  font-family: 'Clear Sans';
   max-width: 40em;
 }
 
