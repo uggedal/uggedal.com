@@ -5,9 +5,24 @@
   src: local('Clear Sans'), url(clearsans-light.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Clear Sans';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Clear Sans'), url(clearsans-thin.woff) format('woff');
+}
+
 body {
   font-family: 'Clear Sans';
   max-width: 40em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 100;
 }
 
 a {
