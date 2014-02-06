@@ -101,7 +101,7 @@ index() {
   tmpl_head "$title" > $target
 
   cat <<EOF >> $target
-    <section>
+    <section class=entries>
       <header>
         <h1>$title</h1>
       </header>
