@@ -43,21 +43,6 @@ tmpl_article() {
 
 }
 
-tmpl_index() {
-  local title="$1"
-  local body="$2"
-
-  cat <<EOF
-    <section>
-      <header>
-        <h1>$title</h1>
-      </header>
-
-      $body
-    </section>
-EOF
-}
-
 header() {
   sed $2'q;d' $1 | sed 's/^% //'
 }
@@ -107,7 +92,7 @@ reverse_chronological() {
 }
 
 index() {
-  local target article ar_title ar_date ar_href body
+  local target article ar_title ar_date ar_href
 
   target=$1
   title="$2"
@@ -115,15 +100,31 @@ index() {
 
   tmpl_head "$title" > $target
 
+  cat <<EOF >> $target
+    <section>
+      <header>
+        <h1>$title</h1>
+      </header>
+      <ol>
+EOF
+
   for ar in $(reverse_chronological "$@"); do
     ar_title=$(header $ar 1)
     ar_date=$(header $ar 2)
     ar_href=/$(htmlext $ar)
 
-    body="$body$(printf '\n1. %s  \n   [%s](%s)\n' $ar_date "$ar_title" $ar_href)"
+    cat <<EOF >> $target
+        <li>
+          $ar_date<br>
+          <a href="$ar_href">$ar_title</a>
+        </li>
+EOF
   done
+  cat <<EOF >> $target
+      </ol>
+    </section>
+EOF
 
-  tmpl_index "$title" "$(printf '%s' "$body" | markdown)" >> $target
 
   tmpl_foot >> $target
 }
