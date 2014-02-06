@@ -26,6 +26,13 @@
   src: local('Clear Sans'), url(clearsans-thin.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Source Code Pro'), url(sourcecodepro-regular.woff) format('woff');
+}
+
 body {
   font-family: 'Clear Sans';
   max-width: 40em;
@@ -45,6 +52,10 @@ a:hover {
   color: inherit;
 }
 
+code {
+  font-family: 'Source Code Pro';
+  font-size: 1.25em;
+}
 
 section ol {
   list-style: none;
