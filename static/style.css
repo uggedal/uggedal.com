@@ -76,6 +76,14 @@ pre {
   padding-left: 1em;
 }
 
+table {
+  border-spacing: 1em .25em;
+}
+
+th {
+  font-weight: 100;
+}
+
 section ol {
   list-style: none;
   padding: 0;
@@ -87,14 +95,6 @@ section ol li {
 
 .byline {
   font-style: italic;
-}
-
-table {
-  border-spacing: 1em .25em;
-}
-
-th {
-  font-weight: 100;
 }
 
 footer {
