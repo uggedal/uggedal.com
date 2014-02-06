@@ -11,16 +11,16 @@ tmpl_head() {
   <head>
     <title>$title</title>
 
-    <link rel="alternate"
-          type="application/atom+xml"
-          href="/journal/index.atom"
+    <link rel=alternate
+          type=application/atom+xml
+          href=/journal/index.atom
           title="Feed of the latest journal entries">
     <link href=/static/style.css rel="stylesheet">
   </head>
   <body>
 
     <h1>
-      <a href="/">$site_title</a>
+      <a href=/>$site_title</a>
     </h1>
 EOF
 }
@@ -66,7 +66,7 @@ article() {
 
         <p class="byline">
           An entry from <strong>$date</strong> in
-          the <a href="/journal">Journal</a>.
+          the <a href=/journal>Journal</a>.
         </p>
       </header>
 
@@ -116,7 +116,7 @@ EOF
     cat <<EOF >> $target
         <li>
           $ar_date<br>
-          <a href="$ar_href">$ar_title</a>
+          <a href=$ar_href>$ar_title</a>
         </li>
 EOF
   done
@@ -126,7 +126,7 @@ EOF
   [ "$1" = '--limit' ] && {
     cat <<EOF >> $target
       <p>
-        <a href="/journal">
+        <a href=/journal>
           <em>All journal entries</em>
         </a>
       <p>
