@@ -7,6 +7,13 @@
 
 @font-face {
   font-family: 'Clear Sans';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Clear Sans'), url(clearsans-italic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Clear Sans';
   font-style: normal;
   font-weight: bold;
   src: local('Clear Sans'), url(clearsans-bold.woff) format('woff');
