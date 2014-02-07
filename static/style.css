@@ -77,7 +77,7 @@ pre {
 
 pre {
   border-left: .5em solid #ececec;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding-left: .5em;
 }
 
