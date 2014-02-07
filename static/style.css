@@ -48,6 +48,7 @@
 }
 
 body {
+  color: #333;
   font-family: 'Clear Sans';
   max-width: 40em;
   padding-left: 2em;
