@@ -77,11 +77,16 @@ pre {
 
 pre {
   border-left: .5em solid #ececec;
-  overflow-x: auto;
   padding-left: .5em;
 }
 
+pre,
 table {
+  overflow-x: auto;
+}
+
+table {
+  display: block;
   border-spacing: 1em .25em;
 }
 
