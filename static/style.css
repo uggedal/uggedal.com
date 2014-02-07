@@ -98,6 +98,10 @@ th {
   font-weight: 100;
 }
 
+figure {
+  margin: 0;
+}
+
 section ol {
   list-style: none;
   padding: 0;
