@@ -69,13 +69,14 @@ a:hover {
   color: inherit;
 }
 
-code {
+code,
+pre {
   font-family: 'Source Code Pro';
+  font-size: 1em;
 }
 
 pre {
   border-left: .5em solid #ececec;
-  font-size: 1.35em;
   padding-left: 1em;
   overflow-x: scroll;
 }
