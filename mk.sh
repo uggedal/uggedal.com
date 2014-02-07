@@ -11,6 +11,7 @@ tmpl_head() {
   <head>
     <title>$title</title>
 
+    <meta name="viewport" content="width=device-width">
     <link rel=alternate
           type=application/atom+xml
           href=/journal/index.atom
