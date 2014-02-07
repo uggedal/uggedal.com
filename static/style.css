@@ -102,6 +102,11 @@ figure {
   margin: 0;
 }
 
+table caption,
+figure figcaption {
+  font-weight: 100;
+}
+
 section ol {
   list-style: none;
   padding: 0;
