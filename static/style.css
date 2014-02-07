@@ -77,7 +77,7 @@ pre {
   border-left: .5em solid #ececec;
   font-size: 1.35em;
   padding-left: 1em;
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 table {
