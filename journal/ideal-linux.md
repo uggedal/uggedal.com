@@ -25,6 +25,7 @@ Each distro is rated from 1 to 5 in various categories.
 | CRUX         |         2 |          4 |       5 |         2 |     13 |
 | Alpine Linux |         3 |          5 |       2 |         5 |     15 |
 | Slackware    |         5 |          3 |       5 |         3 |     16 |
+| Gentoo       |         5 |          4 |       4 |         4 |     17 |
 
 #### Arch Linux
 
@@ -98,3 +99,13 @@ The bad parts:
 * SlackBuilds are not DRY
 * Installer is inflexible (should just be a receipe)
 * Some unneeded distro specific helpers
+
+#### Gentoo
+
+The good parts:
+
+* Extreme customizability
+
+The bad parts:
+
+* Binary package support in portage could be better
