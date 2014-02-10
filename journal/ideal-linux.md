@@ -104,8 +104,14 @@ The bad parts:
 
 The good parts:
 
-* Extreme customizability
+* Mostly vanilla packages
+* Very stable
+* Advanced packaging language
+* Ability to create a very minimal base
+* Choice of init (sysvinit and openrc, systemd or custom)
 
 The bad parts:
 
 * Binary package support in portage could be better
+* Package manager depends on Python
+* Some unneeded distro specific helpers
