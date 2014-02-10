@@ -28,14 +28,14 @@ Each distro is rated from 1 to 5 in various categories.
 
 #### Arch Linux
 
-##### +
+The good parts:
 
 * Mostly vanilla packages
 * Somewhat minimal base
 * Good package manager (but awful cli interface)
 * `PKGBUILD` and `makepkg` makes it really easy to create packages
 
-##### -
+The bad parts:
 
 * Far from stable.
 * Packages carry too many dependencies
@@ -43,7 +43,7 @@ Each distro is rated from 1 to 5 in various categories.
 
 #### CRUX
 
-##### +
+The good parts:
 
 * Vanilla packages.
 * Somewhat minimal base
@@ -52,7 +52,7 @@ Each distro is rated from 1 to 5 in various categories.
 * Minimal set of dependencies for packages
 * Sysvinit
 
-##### -
+The bad parts:
 
 * Recompiling ports could lead to unstable core
 * Fragmented set of package management tools
@@ -62,7 +62,7 @@ Each distro is rated from 1 to 5 in various categories.
 
 #### Alpine Linux
 
-##### +
+The good parts:
 
 * Very minimal base
 * Good package manager
@@ -72,7 +72,7 @@ Each distro is rated from 1 to 5 in various categories.
 * Busybox
 * mdev for servers, udev for desktops
 
-##### -
+The bad parts:
 
 * Heavily patched packages due to non glibc
 * No chromium package
@@ -82,7 +82,7 @@ Each distro is rated from 1 to 5 in various categories.
 
 #### Slackware
 
-##### +
+The good parts:
 
 * Vanilla packages
 * Extremely stable
@@ -91,7 +91,7 @@ Each distro is rated from 1 to 5 in various categories.
 * `slackpkg+` handles third party repositories well
 * Sysvinit
 
-##### -
+The bad parts:
 
 * Full install is Recommended to satisfy all dependencies
 * More work to make a minimal system due to manual dependency handling
