@@ -1,15 +1,13 @@
 .PHONY: clean watch
 
 md := $(wildcard journal/*.md)
-html := $(patsubst %.md,output/%.html,$(md))
+html := $(patsubst %.md,output/%/index.html,$(md))
 out := output
 
-all: $(out)/journal $(html) $(out)/index.html
+all: $(html) $(out)/index.html
 
-$(out)/journal:
-	@mkdir -p $@
-
-$(html): $(out)/%.html: %.md
+$(html): $(out)/%/index.html: %.md
+	@mkdir -p $(dir $@)
 	@./mk.sh article $< $@
 
 $(out)/journal/index.atom: $(md)
