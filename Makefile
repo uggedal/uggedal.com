@@ -6,7 +6,7 @@ html := $(patsubst %.md,%.html,$(md))
 all: $(html) index.html
 
 $(html): %.html: %.md
-	@./mk.sh article $^
+	@./mk.sh article $<
 
 journal/index.atom: $(md)
 	@./mk.sh feed $@ --limit 10 $(md)
