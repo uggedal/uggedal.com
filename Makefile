@@ -5,7 +5,10 @@ out := output
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,$(out)/%/index.html,$(md))
 
-all: $(html) $(out)/index.html
+static_src := $(shell find static/ -type f)
+static_out := $(patsubst %,$(out)/%,$(static_src))
+
+all: $(html) $(out)/index.html $(static_out)
 
 $(html): $(out)/%/index.html: %.md
 	@mkdir -p $(dir $@)
@@ -19,6 +22,10 @@ $(out)/journal/index.html: $(out)/journal/index.atom
 
 $(out)/index.html: $(out)/journal/index.html
 	@./mk.sh index $@ 'Latest Journal Entries' --limit 5 $(md)
+
+$(static_out): $(out)/%: %
+	@mkdir -p $(dir $@)
+	@cp $< $@
 
 clean:
 	@rm -rf $(out)
