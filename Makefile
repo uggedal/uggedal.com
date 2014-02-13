@@ -2,26 +2,27 @@
 
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,output/%.html,$(md))
+out := output
 
-all: output/journal $(html) output/index.html
+all: $(out)/journal $(html) $(out)/index.html
 
-output/journal:
+$(out)/journal:
 	@mkdir -p $@
 
-$(html): output/%.html: %.md
+$(html): $(out)/%.html: %.md
 	@./mk.sh article $< $@
 
-output/journal/index.atom: $(md)
+$(out)/journal/index.atom: $(md)
 	@./mk.sh feed $@ --limit 10 $(md)
 
-output/journal/index.html: output/journal/index.atom
+$(out)/journal/index.html: $(out)/journal/index.atom
 	@./mk.sh index $@ 'Journal' $(md)
 
-output/index.html: output/journal/index.html
+$(out)/index.html: $(out)/journal/index.html
 	@./mk.sh index $@ 'Latest Journal Entries' --limit 5 $(md)
 
 clean:
-	@rm -rf output
+	@rm -rf $(out)
 
 watch:
 	@while inotifywait -qqre create,delete,modify .; do make; done
