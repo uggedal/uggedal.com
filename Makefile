@@ -1,8 +1,9 @@
 .PHONY: clean watch
 
-md := $(wildcard journal/*.md)
-html := $(patsubst %.md,output/%/index.html,$(md))
 out := output
+
+md := $(wildcard journal/*.md)
+html := $(patsubst %.md,$(out)/%/index.html,$(md))
 
 all: $(html) $(out)/index.html
 
