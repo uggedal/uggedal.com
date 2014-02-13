@@ -55,7 +55,8 @@ htmlext() {
 article() {
   local target title date
 
-  target=$(htmlext $1)
+  input=$1
+  target=$2
   title=$(header $1 1)
   date=$(header $1 2)
 
@@ -71,7 +72,7 @@ article() {
         </p>
       </header>
 
-      $(sed '1,2d' $1 | markdown)
+      $(sed '1,2d' $input | markdown)
     </article>
 EOF
   tmpl_foot >> $target
