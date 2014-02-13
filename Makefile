@@ -3,9 +3,9 @@
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,%.html,$(md))
 
-all : $(html) index.html
+all: $(html) index.html
 
-$(html) : %.html : %.md
+$(html): %.html: %.md
 	@./mk.sh article $^
 
 journal/index.atom: $(md)
