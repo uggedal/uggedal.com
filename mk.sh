@@ -49,7 +49,7 @@ header() {
 }
 
 htmlext() {
-  printf '%s.html' ${1%*.md}
+  printf '%s' ${1%*.md}
 }
 
 article() {
