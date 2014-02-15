@@ -56,9 +56,12 @@ body {
   padding: 1em 10%;
 }
 
-body > h1 {
-  font-size: 3em;
+h1 {
   font-weight: 100;
+}
+
+body > h1 {
+  font-size: 2.5em;
 }
 
 a {
