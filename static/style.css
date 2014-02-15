@@ -48,6 +48,7 @@
 }
 
 body {
+  border-top: .5em solid #ececec;
   color: #333;
   font-family: 'Clear Sans';
   margin: 0;
