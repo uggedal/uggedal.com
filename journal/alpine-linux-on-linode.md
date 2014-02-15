@@ -40,7 +40,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
         mount $DEV $ROOT
 
         curl -s $MIRROR/v$REL/main/$ARCH/apk-tools-static-${APKV}.apk | tar xz
-        ./sbin/apk.static -X $REPO -U --allow-untrusted --root $ROOT --initdb add alpine-base
+        ./sbin/apk.static --repository $REPO --update-cache --allow-untrusted --root $ROOT --initdb add alpine-base
 
         echo "$DEV / $FS defaults,noatime 0 1" > $ROOT/etc/fstab
         echo $REPO > $ROOT/etc/apk/repositories
