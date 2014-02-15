@@ -1,5 +1,5 @@
 % My ideal Linux distro
-% 2014-02-10
+% draft
 
 ### Design
 
