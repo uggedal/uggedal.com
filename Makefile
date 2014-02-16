@@ -28,7 +28,7 @@ $(static_out): $(out)/%: %
 	@cp $< $@
 
 clean:
-	@rm -rf $(out)
+	@rm -rf $(out)/*
 
 watch:
 	@while inotifywait -qqre create,delete,modify .; do make; done
