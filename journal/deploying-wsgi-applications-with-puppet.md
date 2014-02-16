@@ -79,7 +79,7 @@ database created by:
 
 1. Clone my [PostgreSQL Puppet module][postgresql]:
 
-        git clone git://github.com/uggedal/puppet-module-postgresql.git modules/webapp
+        git clone git://github.com/uggedal/puppet-module-postgresql.git modules/postgresql
 
 3. Run Puppet again:
 
