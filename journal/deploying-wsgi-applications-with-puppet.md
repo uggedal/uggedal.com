@@ -50,10 +50,10 @@ is distilled to the following steps for a WSGI blog application:
 4. Clone the following Puppet modules into a modules directory:
 
         mkdir modules
-        git clone git://github.com/uggedal/puppet-module-webapp.git modules/webapp
-        git clone git://github.com/uggedal/puppet-module-python.git modules/python
-        git clone git://github.com/uggedal/puppet-module-monit.git modules/monit
-        git clone git://github.com/uggedal/puppet-module-nginx.git modules/nginx
+        git clone git://github.com/puppetmodules/puppet-module-webapp.git modules/webapp
+        git clone git://github.com/puppetmodules/puppet-module-python.git modules/python
+        git clone git://github.com/puppetmodules/puppet-module-monit.git modules/monit
+        git clone git://github.com/puppetmodules/puppet-module-nginx.git modules/nginx
 
 4. Run the file with Puppet (as root or with sudo):
         
@@ -79,7 +79,7 @@ database created by:
 
 1. Clone my [PostgreSQL Puppet module][postgresql]:
 
-        git clone git://github.com/uggedal/puppet-module-postgresql.git modules/postgresql
+        git clone git://github.com/puppetmodules/puppet-module-postgresql.git modules/postgresql
 
 3. Run Puppet again:
 
@@ -90,8 +90,8 @@ detailed instructions including how to use it with Django applications.
 You should also check out the modules used by the webapp module:
 [Nginx module][nginx], [Monit module][monit], and [Python module][python].
 
-[postgresql]: https://github.com/uggedal/puppet-module-postgresql
-[webapp]: https://github.com/uggedal/puppet-module-webapp
-[nginx]: https://github.com/uggedal/puppet-module-nginx
-[monit]: https://github.com/uggedal/puppet-module-monit
-[python]: https://github.com/uggedal/puppet-module-python
+[postgresql]: https://github.com/puppetmodules/puppet-module-postgresql
+[webapp]: https://github.com/puppetmodules/puppet-module-webapp
+[nginx]: https://github.com/puppetmodules/puppet-module-nginx
+[monit]: https://github.com/puppetmodules/puppet-module-monit
+[python]: https://github.com/puppetmodules/puppet-module-python
