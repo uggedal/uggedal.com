@@ -1,5 +1,6 @@
 .PHONY: clean watch
 
+author := Eivind Uggedal
 out := output
 
 md := $(wildcard journal/*.md)
@@ -18,10 +19,10 @@ $(out)/journal/index.atom: $(md)
 	@./mk.sh feed $@ --limit 10 $(md)
 
 $(out)/journal/index.html: $(out)/journal/index.atom
-	@./mk.sh index $@ 'Journal' $(md)
+	@./mk.sh index $@ "Journal of $(author)" 'Journal' $(md)
 
 $(out)/index.html: $(out)/journal/index.html
-	@./mk.sh index $@ 'Latest Journal Entries' --limit 5 $(md)
+	@./mk.sh index $@ "$(author)" 'Latest Journal Entries' --limit 5 $(md)
 
 $(static_out): $(out)/%: %
 	@mkdir -p $(dir $@)

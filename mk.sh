@@ -94,13 +94,14 @@ reverse_chronological() {
 }
 
 index() {
-  local target article ar_title ar_date ar_href
+  local article ar_title ar_date ar_href
 
-  target=$1
-  title="$2"
-  shift 2
+  local target=$1
+  local head_title="$2"
+  local index_title="$3"
+  shift 3
 
-  tmpl_head "$title" > $target
+  tmpl_head "$head_title" > $target
 
   [ "$1" = '--limit' ] && {
     cat <<EOF >> $target
@@ -121,7 +122,7 @@ EOF
   cat <<EOF >> $target
     <section class=entries>
       <header>
-        <h1>$title</h1>
+        <h1>$index_title</h1>
       </header>
       <ol>
 EOF
