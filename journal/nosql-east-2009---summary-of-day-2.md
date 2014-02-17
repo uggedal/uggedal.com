@@ -18,11 +18,13 @@ even harder to compute a PB. Yahoo is the largest user of Hadoop.
 
 Map/reduce at twitter: how many tweets per user, given tweets table?
 
-    Input: key=row, value=tweet_info.
-    Map: output key=user_id, value=1.
-    Shuffle: sort by user_id (so that one can use more than one reducer).
-    Reduce: for each user_id, sum.
-    Output: user_id, tweet count.
+```
+Input: key=row, value=tweet_info.
+Map: output key=user_id, value=1.
+Shuffle: sort by user_id (so that one can use more than one reducer).
+Reduce: for each user_id, sum.
+Output: user_id, tweet count.
+```
 
 With 2x machines this job runs just about 2x faster.
 
