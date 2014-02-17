@@ -13,16 +13,16 @@ all: $(html) $(out)/index.html $(static_out)
 
 $(html): $(out)/%/index.html: %.md
 	@mkdir -p $(dir $@)
-	@./mk.sh article $< $@
+	@./mk article $< $@
 
 $(out)/journal/index.atom: $(md)
-	@./mk.sh feed $@ --limit 10 $(md)
+	@./mk feed $@ --limit 10 $(md)
 
 $(out)/journal/index.html: $(out)/journal/index.atom
-	@./mk.sh index $@ "Journal of $(author)" 'Journal' $(md)
+	@./mk index $@ "Journal of $(author)" 'Journal' $(md)
 
 $(out)/index.html: $(out)/journal/index.html
-	@./mk.sh index $@ "$(author)" 'Latest Journal Entries' --limit 5 $(md)
+	@./mk index $@ "$(author)" 'Latest Journal Entries' --limit 5 $(md)
 
 $(static_out): $(out)/%: %
 	@mkdir -p $(dir $@)
