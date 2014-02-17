@@ -19,59 +19,65 @@ run on the [x86-64][x64] architecture.
 Therefore the browser versions used for testing were as follows
 (identified by their user User-Agent request header):
 
-    Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.8.1.14) Gecko/20080404
-    Iceweasel/2.0.0.14 (Debian-2.0.0.14-2)
+```
+Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.8.1.14) Gecko/20080404
+Iceweasel/2.0.0.14 (Debian-2.0.0.14-2)
 
-    Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9b5) Gecko/2008032602
-    Iceweasel/3.0b5 (Debian-3.0~b5-2)
+Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9b5) Gecko/2008032602
+Iceweasel/3.0b5 (Debian-3.0~b5-2)
 
-    Mozilla/5.0 (X11; U; Linux x86_64; en-us) AppleWebKit/525.1+ (KHTML, like
-    Gecko, Safari/525.1+) epiphany-browser
+Mozilla/5.0 (X11; U; Linux x86_64; en-us) AppleWebKit/525.1+ (KHTML, like
+Gecko, Safari/525.1+) epiphany-browser
+```
 
 And here are their Debian package versions:
 
-    # apt-cache show iceweasel
-    Package: iceweasel
-    Architecture: amd64
-    Version: 2.0.0.14-2
+```
+# apt-cache show iceweasel
+Package: iceweasel
+Architecture: amd64
+Version: 2.0.0.14-2
 
-    # apt-cache show iceweasel
-    Package: iceweasel
-    Architecture: amd64
-    Version: 3.0~b5-2
+# apt-cache show iceweasel
+Package: iceweasel
+Architecture: amd64
+Version: 3.0~b5-2
 
-    # apt-cache show epiphany-webkit 
-    Package: epiphany-webkit
-    Architecture: amd64
-    Version: 2.22.1.1-2
+# apt-cache show epiphany-webkit 
+Package: epiphany-webkit
+Architecture: amd64
+Version: 2.22.1.1-2
+```
 
 Based on those User-Agent strings it should be no surprise that I'm running a
 x86-64 based system on Debian. Here are more specific details of
 my system:
 
-    # cat /etc/issue
-    Debian GNU/Linux lenny/sid
+```
+# cat /etc/issue
+Debian GNU/Linux lenny/sid
 
-    # uname -a
-    Linux diamond 2.6.24-1-amd64 #1 SMP Mon Feb 11 13:47:43 UTC 2008
-    x86_64 GNU/Linux
+# uname -a
+Linux diamond 2.6.24-1-amd64 #1 SMP Mon Feb 11 13:47:43 UTC 2008
+x86_64 GNU/Linux
 
-    # cat /proc/cpuinfo 
-    processor       : 0
-    model name      : AMD Athlon(tm) X2 Dual Core Processor BE-2300
-    cpu MHz         : 1903.970
-    cache size      : 512 KB
-    bogomips        : 3811.20
+# cat /proc/cpuinfo 
+processor       : 0
+model name      : AMD Athlon(tm) X2 Dual Core Processor BE-2300
+cpu MHz         : 1903.970
+cache size      : 512 KB
+bogomips        : 3811.20
 
-    processor       : 1
-    model name      : AMD Athlon(tm) X2 Dual Core Processor BE-2300
-    cpu MHz         : 1903.970
-    cache size      : 512 KB
-    bogomips        : 3807.96
+processor       : 1
+model name      : AMD Athlon(tm) X2 Dual Core Processor BE-2300
+cpu MHz         : 1903.970
+cache size      : 512 KB
+bogomips        : 3807.96
 
-    # cat /proc/meminfo 
-    MemTotal:       963952 kB
-    SwapTotal:      498004 kB
+# cat /proc/meminfo 
+MemTotal:       963952 kB
+SwapTotal:      498004 kB
+```
 
 I decided to use [John Resig][joh]'s [Dromaeo][dro] and WebKit's
 [SunSpider][sun] JavaScript performance test suites to benchmark the
@@ -91,9 +97,11 @@ I started writing a script with [Hpricot][hpr] and [ghcartrb][gch] to generate
 some nice detailed charts of the differences between the browsers. But when I
 found myself writing code like this:
 
-    max = parsed.map {|res| res.values[0]}.transpose.map do |val|
-      val.inject(0) { |sum,x| sum+x }
-    end.max
+```rb
+max = parsed.map {|res| res.values[0]}.transpose.map do |val|
+  val.inject(0) { |sum,x| sum+x }
+end.max
+```
 
 I threw in the towel and decided to make some manual summarization charts.
 Without further ado, here are the results for the respective browsers:
