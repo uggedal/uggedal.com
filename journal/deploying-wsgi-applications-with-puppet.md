@@ -31,33 +31,38 @@ is distilled to the following steps for a WSGI blog application:
    under `/usr/local/src/blog`.
 2. Install Puppet:
 
-        apt-get install puppet
-
+  ```sh
+  apt-get install puppet
+  ```
 3. Paste the following into a puppet manifest file (`blog.pp`):
 
-        Exec {
-          path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-        }
+    ```puppet
+    Exec {
+      path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    }
 
-        include webapp::python
+    include webapp::python
 
-        webapp::python::instance { "blog":
-          domain => "blog.uggedal.com",
-          wsgi_module => "blog:app",
-          requirements => true,
-        }
-
+    webapp::python::instance { "blog":
+      domain => "blog.uggedal.com",
+      wsgi_module => "blog:app",
+      requirements => true,
+    }
+    ```
 4. Clone the following Puppet modules into a modules directory:
 
-        mkdir modules
-        git clone git://github.com/puppetmodules/puppet-module-webapp.git modules/webapp
-        git clone git://github.com/puppetmodules/puppet-module-python.git modules/python
-        git clone git://github.com/puppetmodules/puppet-module-monit.git modules/monit
-        git clone git://github.com/puppetmodules/puppet-module-nginx.git modules/nginx
-
+    ```sh
+    mkdir modules
+    git clone git://github.com/puppetmodules/puppet-module-webapp.git modules/webapp
+    git clone git://github.com/puppetmodules/puppet-module-python.git modules/python
+    git clone git://github.com/puppetmodules/puppet-module-monit.git modules/monit
+    git clone git://github.com/puppetmodules/puppet-module-nginx.git modules/nginx
+    ```
 4. Run the file with Puppet (as root or with sudo):
         
-        puppet apply --modulepath=modules blog.pp
+    ```sh
+    puppet apply --modulepath=modules blog.pp
+    ```
 
 Note that running this Puppet manifest as root will potentially overwrite
 files you already have configured on your machine like:
@@ -70,20 +75,24 @@ database created by:
 
 1. Add the following to `blog.pp`:
 
-        include postgresql::server
-        include postgresql::python
+    ```puppet
+    include postgresql::server
+    include postgresql::python
 
-        postgresql::database { "blog":
-          owner => "bloguser",
-        }
-
+    postgresql::database { "blog":
+      owner => "bloguser",
+    }
+    ```
 1. Clone my [PostgreSQL Puppet module][postgresql]:
 
-        git clone git://github.com/puppetmodules/puppet-module-postgresql.git modules/postgresql
-
+    ```sh
+    git clone git://github.com/puppetmodules/puppet-module-postgresql.git modules/postgresql
+    ```
 3. Run Puppet again:
 
-        puppet apply --modulepath=modules blog.pp
+    ```sh
+    puppet apply --modulepath=modules blog.pp
+    ```
 
 Take a look at the README of my [Puppet webapp module][webapp] for more
 detailed instructions including how to use it with Django applications.
