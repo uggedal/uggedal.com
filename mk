@@ -72,7 +72,7 @@ article() {
         </p>
       </header>
 
-      $(sed '1,2d' $input | markdown)
+      $(sed '1,2d' $input | ./md)
     </article>
 EOF
   tmpl_foot >> $target
@@ -190,7 +190,7 @@ EOF
     <updated>${f_date}T00:00:00Z</updated>
     <link href="$f_url" />
     <content type="html">
-      <![CDATA[$(sed '1,2d' $f | markdown)]]>
+      <![CDATA[$(sed '1,2d' $f | ./md)]]>
     </content>
   </entry>
 EOF
