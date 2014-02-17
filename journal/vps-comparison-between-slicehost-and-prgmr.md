@@ -18,37 +18,41 @@ compare it against my trusty old slice with the same memory configuration.
 
 Lets first take a look at the system specifications. Slicehost first:
 
-    # uname -nrmo
-    slicehost.uggedal.com 2.6.24-23-xen x86_64 GNU/Linux
+```
+# uname -nrmo
+slicehost.uggedal.com 2.6.24-23-xen x86_64 GNU/Linux
 
-    # grep "MemTotal" /proc/meminfo 
-    MemTotal:       262316 kB
+# grep "MemTotal" /proc/meminfo 
+MemTotal:       262316 kB
 
-    # grep -m 4 -e "model name" -e "MHz" -e "cache size" -e "bogomips" /proc/cpuinfo
-    model name      : Dual-Core AMD Opteron(tm) Processor 2212
-    cpu MHz         : 2010.300
-    cache size      : 1024 KB
-    bogomips        : 4026.86
+# grep -m 4 -e "model name" -e "MHz" -e "cache size" -e "bogomips" /proc/cpuinfo
+model name      : Dual-Core AMD Opteron(tm) Processor 2212
+cpu MHz         : 2010.300
+cache size      : 1024 KB
+bogomips        : 4026.86
 
-    # grep "processor" /proc/cpuinfo | wc -l
-    4
+# grep "processor" /proc/cpuinfo | wc -l
+4
+```
 
 And the same output from Prgmr: 
 
-    # uname -nrmo
-    prgmr.uggedal.com 2.6.26-1-xen-amd64 x86_64 GNU/Linux
+```
+# uname -nrmo
+prgmr.uggedal.com 2.6.26-1-xen-amd64 x86_64 GNU/Linux
 
-    # grep "MemTotal" /proc/meminfo 
-    MemTotal:       262360 kB
+# grep "MemTotal" /proc/meminfo 
+MemTotal:       262360 kB
 
-    # grep -e "model name" -e "MHz" -e "cache size" -e "bogomips" /proc/cpuinfo
-    model name      : Quad-Core AMD Opteron(tm) Processor 2347 HE
-    cpu MHz         : 1909.787
-    cache size      : 512 KB
-    bogomips        : 3826.33
+# grep -e "model name" -e "MHz" -e "cache size" -e "bogomips" /proc/cpuinfo
+model name      : Quad-Core AMD Opteron(tm) Processor 2347 HE
+cpu MHz         : 1909.787
+cache size      : 512 KB
+bogomips        : 3826.33
 
-    # grep "processor" /proc/cpuinfo | wc -l
-    1
+# grep "processor" /proc/cpuinfo | wc -l
+1
+```
 
 As we can see they are both Running Debian GNU/Linux 5.0. As of this writing
 Slicehost gives you a 2.6.24 kernel while Prgmr provides a more recent
@@ -89,15 +93,17 @@ All tests were run against revision 10108 of the Django trunk, using
 the `sqlite3` database engine. The following script was used for running
 the tests:
 
-    for i in {1..20}
-    do
-      time ./runtests.py --settings=sqlite3conf
-      sleep $((60*5))
-      if [ $i -eq 10 ]
-      then
-        sleep $((60*60*12))
-      fi
-    done
+```sh
+for i in {1..20}
+do
+  time ./runtests.py --settings=sqlite3conf
+  sleep $((60*5))
+  if [ $i -eq 10 ]
+  then
+    sleep $((60*60*12))
+  fi
+done
+```
 
 The test suite is executed 10 times with pauses of 5 minutes in between,
 then we wait 12 hours before running the tests 10 more times.
