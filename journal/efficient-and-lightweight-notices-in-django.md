@@ -7,34 +7,40 @@ containing the base64 and urlencoded message.
 [django-notices][not] supports sending messages to the next page when
 a HTTP redirect is used. The developer API thus looks like this:
 
-    from notices import HttpResponseRedirectWithNotice
-    from django.shortcuts import render_to_response
+```py
+from notices import HttpResponseRedirectWithNotice
+from django.shortcuts import render_to_response
 
-    def add_counter(req, number):
-        if number > 0:
-            Counter.objects.create(number=number)
-            notice = "Created counter with %s" % number
-            return HttpResponseRedirectWithNotice("/", success=notice)
-        else:
-            return render_to_response('form.html', {
-                'error_message': "Counters have to be positive"
-            })
+def add_counter(req, number):
+    if number > 0:
+        Counter.objects.create(number=number)
+        notice = "Created counter with %s" % number
+        return HttpResponseRedirectWithNotice("/", success=notice)
+    else:
+        return render_to_response('form.html', {
+            'error_message': "Counters have to be positive"
+        })
+```
 
 To handle these messages in a template one could do something like this:
 
 
-    {% if notices %}
-      <ul class="notices">
-        {% for type, notice in notices.items %}
-          <li class="{{ type }}">{{ notice }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
+```django
+{% if notices %}
+  <ul class="notices">
+    {% for type, notice in notices.items %}
+      <li class="{{ type }}">{{ notice }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+```
 
 By default HttpResponseRedirectWithNotice supports notices with the type
 of success, error, and notice. This can be changed in settings.py:
 
-    NOTICE_TYPES = ("success", "failure")
+```py
+NOTICE_TYPES = ("success", "failure")
+```
 
 An alternative to django-notices are the [bundled messages system][aut]
 in django.contrib.auth. My main grief with this solution is
