@@ -14,38 +14,40 @@ including several sections from multiple files as it does not automatically
 start a new page for every included file. A typical base file that includes
 all the separate chapters could look like this:
 
-    \documentclass[11pt,a4paper]{book}
+```latex
+\documentclass[11pt,a4paper]{book}
 
-    \title{A Long Master Thesis}
+\title{A Long Master Thesis}
 
-    \author{Eivind Uggedal}
+\author{Eivind Uggedal}
 
-    \begin{document}
+\begin{document}
 
-      \frontmatter
-        \maketitle
-        \tableofcontents
-        \listoffigures
-        \listoftables
-        \include{acknowledgements}
+  \frontmatter
+    \maketitle
+    \tableofcontents
+    \listoffigures
+    \listoftables
+    \include{acknowledgements}
 
-      \mainmatter
-        \include{introduction}
-        \include{background}
-        \include{methodology}
-        \include{implementation}
-        \include{analysis}
-        \include{discussion}
-        \include{conclusion}
+  \mainmatter
+    \include{introduction}
+    \include{background}
+    \include{methodology}
+    \include{implementation}
+    \include{analysis}
+    \include{discussion}
+    \include{conclusion}
 
-      \appendix
-        \include{questionnaire}
-        \include{source.code}
+  \appendix
+    \include{questionnaire}
+    \include{source.code}
 
-      \backmatter
-        \bibliography{bib.items}
+  \backmatter
+    \bibliography{bib.items}
 
-    \end{document}
+\end{document}
+```
 
 Note that we have a separate file for our acknowledgements, every chapter,
 the appendices, and use BibTeX to separate out our bibliographic information
@@ -67,48 +69,56 @@ and should be placed before your `document` environment. I tend to have
 every potential included file listed in a commented `\includeonly{}` structure
 like this:
 
-    %includeonly{%
-    %acknowledgements,%
-    %introduction,%
-    %background,%
-    %methodology,%
-    %implementation,%
-    %analysis,%
-    %discussion,%
-    %conclusion,%
-    %questionnaire,%
-    %source.code,%
-    %}
+```latex
+%includeonly{%
+%acknowledgements,%
+%introduction,%
+%background,%
+%methodology,%
+%implementation,%
+%analysis,%
+%discussion,%
+%conclusion,%
+%questionnaire,%
+%source.code,%
+%}
+```
 
 When I'm working on a single chapter I comment out the `\includeonly{}`
 command an the chapter in question:
 
-    includeonly{%
-    %acknowledgements,%
-    %introduction,%
-    background,%
-    %methodology,%
-    %implementation,%
-    %analysis,%
-    %discussion,%
-    %conclusion,%
-    %questionnaire,%
-    %source.code,%
-    }
+```latex
+includeonly{%
+%acknowledgements,%
+%introduction,%
+background,%
+%methodology,%
+%implementation,%
+%analysis,%
+%discussion,%
+%conclusion,%
+%questionnaire,%
+%source.code,%
+}
+```
 
 This way compilation times decreases substantially and you can get more rapid
 feedback of how your document looks. I have in place a similar construct in
 my document preamble for easily switch on and off `draft` mode:
 
-    \documentclass[12pt,%
-                   %draft,%
-                   a4paper]{book}
+```latex
+\documentclass[12pt,%
+                %draft,%
+                a4paper]{book}
+```
 
 A small deletion of the comment character (`%`) gives me a document in draft
 mode:
 
-    \documentclass[12pt,%
-                   draft,%
-                   a4paper]{book}
+```latex
+\documentclass[12pt,%
+                draft,%
+                a4paper]{book}
+```
 
 [rub]: http://rubbr.rubyforge.org/
