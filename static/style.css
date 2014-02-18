@@ -122,6 +122,18 @@ section ol li {
   margin-bottom: 1em;
 }
 
+section dt a {
+  color: #333;
+}
+
+section dd {
+  margin: 0;
+}
+
+section dt:not(:first-child) {
+  margin-top: 1em;
+}
+
 article ul,
 article ol {
   padding: 0;
