@@ -9,6 +9,10 @@ function gh (path, txt) {
   return '<a href=https://github.com/' + path + '>' + txt + '</a></dt>'
 }
 
+function day (iso) {
+  return iso.split('T')[0];
+}
+
 function init () {
   if (document.location.pathname !== '/') return;
 
@@ -31,22 +35,26 @@ var MAX = 10;
 
 function handler (res) {
   var i = 0;
-  var repo;
+  var date;
   var html = [];
 
   res.data.forEach(function (item) {
     if (item.type !== 'PushEvent') return;
     if (i+1 >= MAX) return;
 
-    if (repo !== item.repo.name) {
-      repo = item.repo.name;
-      html.push('<dt>' + gh(repo, repo) + '</dt>');
+    if (date !== day(item.created_at)) {
+      date = day(item.created_at);
+      html.push('<dt>' + date + '</dt>');
     }
 
     item.payload.commits.forEach(function (c) {
       if (i++ >= MAX) return;
 
-      html.push('<dd>' + gh(repo + '/commit/' + c.sha, c.message) + '</dd>');
+      html.push('<dd>');
+      html.push(gh(item.repo.name, item.repo.name.replace(/^uggedal\//, '')))
+      html.push(': ');
+      html.push(gh(item.repo.name + '/commit/' + c.sha, c.message))
+      html.push('</dd>');
     });
 
   });
