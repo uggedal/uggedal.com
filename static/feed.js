@@ -51,6 +51,4 @@ function handler (res) {
 };
 
 
-if (section) {
-  req('/users/uggedal/events/public', 'handler');
-}
+if (section) req('/users/uggedal/events/public', 'handler');
