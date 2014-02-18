@@ -20,7 +20,7 @@ function init () {
     '<header><h1>Latest Commits</h1></header>',
     '<dl>',
     '</dl>',
-    '<p><a href=https://github.com/uggedal>All commits</a></p>',
+    '<p><a href=https://github.com/uggedal><em>All commits</em></a></p>',
   ].join('');
 
   return document.body.insertBefore(section, footer);
