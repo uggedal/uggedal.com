@@ -5,6 +5,10 @@ function req (path, cb) {
   document.head.appendChild(script);
 }
 
+function gh (path, txt) {
+  return '<a href=https://github.com/' + path + '>' + txt + '</a></dt>'
+}
+
 function init () {
   if (document.location.pathname !== '/') return;
 
@@ -27,22 +31,22 @@ var MAX = 10;
 
 function handler (res) {
   var i = 0;
-  var lastRepo;
+  var repo;
   var html = [];
 
   res.data.forEach(function (item) {
     if (item.type !== 'PushEvent') return;
     if (i+1 >= MAX) return;
 
-    if (lastRepo !== item.repo.name) {
-      lastRepo = item.repo.name;
-      html.push('<dt>' + lastRepo + '</dt>');
+    if (repo !== item.repo.name) {
+      repo = item.repo.name;
+      html.push('<dt>' + gh(repo, repo) + '</dt>');
     }
 
-    item.payload.commits.forEach(function (commit) {
+    item.payload.commits.forEach(function (c) {
       if (i++ >= MAX) return;
 
-      html.push('<dd>' + commit.message + '</dd>');
+      html.push('<dd>' + gh(repo + '/commit/' + c.sha, c.message) + '</dd>');
     });
 
   });
