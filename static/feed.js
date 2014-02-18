@@ -14,8 +14,8 @@ function init () {
   section.className = 'commit-feed';
   section.innerHTML = [
     '<header><h1>Latest Commits</h1></header>',
-    '<ol>',
-    '</ol>',
+    '<dl>',
+    '</dl>',
     '<p><a href=https://github.com/uggedal>All commits</a></p>',
   ].join('');
 
@@ -27,15 +27,27 @@ var MAX = 10;
 
 function handler (res) {
   var i = 0;
+  var lastRepo;
+  var html = [];
 
-  section.querySelector('ol').innerHTML = res.data.map(function (item) {
-    if (item.type !== 'PushEvent') return '';
+  res.data.forEach(function (item) {
+    if (item.type !== 'PushEvent') return;
+    if (i+1 >= MAX) return;
 
-    return item.payload.commits.map(function (commit) {
+    if (lastRepo !== item.repo.name) {
+      lastRepo = item.repo.name;
+      html.push('<dt>' + lastRepo + '</dt>');
+    }
+
+    item.payload.commits.forEach(function (commit) {
       if (i++ >= MAX) return;
-      return '<li>' + commit.message + '</li>';
-    }).join('');
-  }).join('');
+
+      html.push('<dd>' + commit.message + '</dd>');
+    });
+
+  });
+
+  section.querySelector('dl').innerHTML = html.join('');
 };
 
 
