@@ -32,6 +32,7 @@ tmpl_foot() {
       Generated with <a href=https://github.com/uggedal/uggedal.com>POSIX shell</a>.
     </footer>
 
+    <script src=/static/feed.js></script>
   </body>
 </html>
 EOF
