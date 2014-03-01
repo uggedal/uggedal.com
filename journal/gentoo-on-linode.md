@@ -48,7 +48,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     EOF
       ./push env.sh
     )
-    rm -r conf-master
 
     mkdir /usr/local/portage
     (
@@ -82,6 +81,12 @@ Instructions for installing a custom [Gentoo][] root fs on
     emerge --unmerge sys-fs/udev
     rc-update del udev sysinit
     rc-update add mdev sysinit
+
+    (
+      cd conf-master
+      ./push env.sh
+    )
+    rm -r conf-master
 
     passwd
 
