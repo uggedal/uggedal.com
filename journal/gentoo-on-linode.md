@@ -32,6 +32,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     ```sh
     . /etc/profile
+    cd
 
     # bootstrap provisioning
     wget -O- https://github.com/uggedal/conf/archive/master.tar.gz | tar xz
