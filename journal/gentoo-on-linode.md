@@ -55,7 +55,7 @@ Instructions for installing a custom [Gentoo][] root fs on
       wget -O- https://github.com/uggedal/overlay/archive/master.tar.gz | tar xz --strip-components=1
     )
 
-    eselect profile set x-portage:uggedal/default/linux/amd64/development
+    eselect profile set x-portage:uggedal/default/linux/amd64/minimal
 
     emerge-webrsync
     emerge --sync >/dev/null
