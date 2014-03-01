@@ -16,7 +16,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     mirror=http://212.110.161.69
     flavor=stage3-amd64-nomultilib
-    v=20140116
+    v=20140227
 
     curl $mirror/gentoo/releases/amd64/autobuilds/current-$flavor/$flavor-$v.tar.bz2 | tar xjp -C /mnt
 
