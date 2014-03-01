@@ -57,7 +57,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     eselect profile set x-portage:uggedal/default/linux/amd64/development
 
-    emerge --sync
+    emerge --sync >/dev/null
     emerge dev-vcs/git sys-devel/bc
     git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git -b linux-3.13.y --depth 1 /usr/src/linux
     (
