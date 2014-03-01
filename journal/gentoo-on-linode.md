@@ -41,6 +41,7 @@ Instructions for installing a custom [Gentoo][] root fs on
       cat <<EOF > env.sh
     host=localhost
     roles='portage dhcp'
+    _cpus=8
     _portage_mirrors='http://mirror.bytemark.co.uk/gentoo http://distfiles.gentoo.org http://www.ibiblio.org/pub/Linux/distributions/gentoo'
     _portage_sync='rsync://rsync.uk.gentoo.org/gentoo-portage'
     _dhcp_if=eth0
