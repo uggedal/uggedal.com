@@ -4,15 +4,19 @@
 Instructions for installing a custom [Gentoo][] root fs on
 [Linode][].
 
-1. Create a new disk raw disk image using all available space.
-2. Create a new configuration profile using the new disk image,
+1. Create a new disk raw disk image 32MB in size.
+2. Create a new disk raw disk image using all remaining space.
+3. Create a new configuration profile using the new disk images,
    pv-grub-x86_64 kernel and no Filesystem/Boot helpers.
-3. Boot into rescue mode.
-4. Extract and chroot to a stage3:
+4. Boot into rescue mode.
+5. Extract and chroot to a stage3:
 
     ```sh
+    mkfs.ext2 /dev/xvda
     mkfs.btrfs /dev/xvda
-    mount /dev/xvda /mnt
+    mount /dev/xvdb /mnt
+    mkdir /mnt/boot
+    mount /dev/xvda /mnt/boot
 
     mirror=http://212.110.161.69
     flavor=stage3-amd64-nomultilib
@@ -72,7 +76,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     rm -rf /usr/local/portage
     git clone git://github.com/uggedal/overlay.git /usr/local/portage
 
-    echo '/dev/xvda / btrfs noatime 0 0' > /etc/fstab
+    echo '/dev/xvdb / btrfs noatime 0 0' > /etc/fstab
 
     emerge dhcpcd
 
@@ -100,7 +104,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     title Gentoo
     root (hd0)
-    kernel /boot/bzImage root=/dev/xvda console=hvc0 quiet
+    kernel /boot/bzImage root=/dev/xvdb console=hvc0 quiet
     EOF
 
     rc-update add sshd default
