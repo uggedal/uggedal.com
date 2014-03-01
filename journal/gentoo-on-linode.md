@@ -71,7 +71,7 @@ Instructions for installing a custom [Gentoo][] root fs on
     rm -rf /usr/local/portage
     git clone git://github.com/uggedal/overlay.git /usr/local/portage
 
-    echo '/dev/xvda / ext4 noatime 0 1' > /etc/fstab
+    echo '/dev/xvda / btrfs noatime 0 0' > /etc/fstab
 
     emerge dhcpcd
 
