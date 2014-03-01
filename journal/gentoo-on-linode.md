@@ -11,7 +11,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 4. Extract and chroot to a stage3:
 
     ```sh
-    mkfs.ext4 /dev/xvda
+    mkfs.btrfs /dev/xvda
     mount /dev/xvda /mnt
 
     mirror=http://212.110.161.69
