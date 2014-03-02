@@ -68,7 +68,6 @@ Instructions for installing a custom [Gentoo][] root fs on
     (
       cd /usr/src/linux
       curl -L https://github.com/uggedal/kernels/raw/master/xen.config > .config
-      make oldconfig
       make -j8
       cp arch/x86_64/boot/bzImage /boot/
     )
