@@ -95,15 +95,15 @@ Instructions for installing a custom [Gentoo][] root fs on
     sed -i '/^c[0-9]/d' /etc/inittab
     echo 'hvc0::respawn:/sbin/agetty 38400 hvc0' >> /etc/inittab
 
-    mkdir -p /boot/grub
-    cat << EOF > /boot/grub/menu.lst
+    mkdir -p /boot/boot/grub
+    cat << EOF > /boot/boot/grub/menu.lst
     timeout 0
     default 0
     hiddenmenu
 
     title Gentoo
     root (hd0)
-    kernel /boot/bzImage root=/dev/xvdb console=hvc0 quiet
+    kernel /bzImage root=/dev/xvdb console=hvc0 quiet
     EOF
 
     rc-update add sshd default
