@@ -13,7 +13,7 @@ Instructions for installing a custom [Gentoo][] root fs on
 
     ```sh
     mkfs.ext2 /dev/xvda
-    mkfs.btrfs /dev/xvda
+    mkfs.btrfs -L root -l 16k /dev/xvda
     mount -t btrfs /dev/xvdb /mnt
     mkdir /mnt/boot
     mount /dev/xvda /mnt/boot
