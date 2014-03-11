@@ -4,8 +4,8 @@
 Instructions for installing a custom [Gentoo][] root fs on
 [Linode][].
 
-1. Create a new disk raw disk image 32MB in size.
-2. Create a new disk raw disk image using all remaining space.
+1. Create a new raw disk image 32MB in size.
+2. Create a new raw disk image using all remaining space.
 3. Create a new configuration profile using the new disk images,
    pv-grub-x86_64 kernel and no Filesystem/Boot helpers.
 4. Boot into rescue mode.
