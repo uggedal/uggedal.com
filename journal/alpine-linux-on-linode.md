@@ -55,6 +55,9 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     EOF
     echo $REPO > $ROOT/etc/apk/repositories
 
+    sed -i '/^c[0-9]/d' $ROOT/etc/inittab
+    echo 'hvc0::respawn:/sbin/agetty 38400 hvc0' >> $ROOT/etc/inittab
+
     mkdir -p $ROOT/boot/grub
     cat << EOF > $ROOT/boot/grub/menu.lst
     timeout 0
