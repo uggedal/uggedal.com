@@ -99,6 +99,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     CHROOT
 
     umount $ROOT/proc
+    umount $ROOT/boot
     umount $ROOT
     ```
 5. Reboot.
