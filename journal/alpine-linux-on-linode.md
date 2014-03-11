@@ -4,7 +4,7 @@
 Instructions for installing a custom [Alpine Linux][] root fs on
 [Linode][].
 
-1. Create a new raw disk image 32MB in size.
+1. Create a new raw disk image 128MB in size.
 2. Create a new raw disk image using all remaining space.
 3. Create a new configuration profile using the new disk images,
    pv-grub-x86_64 kernel and no Filesystem/Boot helpers.
