@@ -4,11 +4,11 @@
 Instructions for installing a custom [Alpine Linux][] root fs on
 [Linode][].
 
-1. Delete all disk images and create a new raw root image.
-2. Rename config profile, select pv-grub-x86_64 kernel and
-   attach new root disk.
-3. Boot into recovery mode.
-4. Attach to the recovery console with Lish and execute the following:
+1. Create a new raw disk image 32MB in size.
+2. Create a new raw disk image using all remaining space.
+3. Create a new configuration profile using the new disk images,
+   pv-grub-x86_64 kernel and no Filesystem/Boot helpers.
+4. Boot into rescue mode.
 
     ```sh
     #!/bin/sh
