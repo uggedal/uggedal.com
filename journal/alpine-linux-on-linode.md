@@ -24,27 +24,35 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     iface eth0 inet dhcp
       hostname $HOST
     "
-    FS=${FS:-ext3}
-    FEATURES="ata base ide scsi usb virtio $FS"
-    MODULES="sd-mod,usb-storage,$FS"
+    BOOT_FS=${ROOT_FS:-ext2}
+    ROOT_FS=${ROOT_FS:-btrfs}
+    FEATURES="ata base ide scsi usb virtio $ROOT_FS"
+    MODULES="sd-mod,usb-storage,$ROOT_FS"
 
     REL=${REL:-2.7}
     MIRROR=${MIRROR:-http://nl.alpinelinux.org/alpine}
     REPO=$MIRROR/v$REL/main
     APKV=${APKV:-2.4.0-r4}
-    DEV=${DEV:-/dev/xvda}
+    BOOT_DEV=${ROOT_DEV:-/dev/xvda}
+    ROOT_DEV=${ROOT_DEV:-/dev/xvdb}
     ROOT=${ROOT:-/mnt}
     ARCH=$(uname -m)
 
 
-    mkfs.$FS -q $DEV
-    mount $DEV $ROOT
+    mkfs.$BOOT_FS -q -L boot $BOOT_DEV
+    mkfs.$ROOT_FS -q -L root -l 16k $ROOT_DEV
+    mount $ROOT_DEV $ROOT
+    mkdir $ROOT/boot
+    mount $BOOT_DEV $ROOT/boot
 
     curl -s $MIRROR/v$REL/main/$ARCH/apk-tools-static-${APKV}.apk | tar xz
     ./sbin/apk.static --repository $REPO --update-cache --allow-untrusted \
       --root $ROOT --initdb add alpine-base
 
-    echo "$DEV / $FS defaults,noatime 0 1" > $ROOT/etc/fstab
+    cat <<EOF > $ROOT/etc/fstab
+    $ROOT_DEV / $ROOT_FS defaults,noatime,compress=lzo 0 0
+    $ROOT_DEV / $ROOT_FS defaults,noatime 0 1
+    EOF
     echo $REPO > $ROOT/etc/apk/repositories
 
     mkdir -p $ROOT/boot/grub
@@ -55,7 +63,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
 
     title Alpine Linux
     root (hd0)
-    kernel /boot/grsec root=$DEV modules=$MODULES console=hvc0 pax_nouderef quiet
+    kernel /boot/grsec root=$ROOT_DEV modules=$MODULES console=hvc0 pax_nouderef quiet
     initrd /boot/grsec.gz
     EOF
 
