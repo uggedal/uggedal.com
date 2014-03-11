@@ -25,7 +25,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
       hostname $HOST
     "
     FS=${FS:-ext3}
-    INITFS="ata base ide scsi usb virtio $FS"
+    FEATURES="ata base ide scsi usb virtio $FS"
     MODULES="sd-mod,usb-storage,$FS"
 
     REL=${REL:-2.7}
@@ -82,7 +82,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     rc-update -q add ntpd default
 
     mkdir /etc/mkinitfs
-    echo features=\""$INITFS"\" > /etc/mkinitfs/mkinitfs.conf
+    echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
 
     apk add --quiet linux-virt-grsec
     CHROOT
