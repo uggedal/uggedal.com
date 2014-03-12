@@ -95,7 +95,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     mkdir /etc/mkinitfs
     echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
 
-    apk add --quiet linux-virt-grsec
+    apk add --quiet linux-grsec
     CHROOT
 
     umount $ROOT/proc
