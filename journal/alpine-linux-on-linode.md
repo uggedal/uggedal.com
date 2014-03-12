@@ -77,7 +77,6 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     chroot $ROOT /bin/sh<<CHROOT
     apk update --quiet 
 
-    setup-keymap $KEYMAP
     setup-hostname -n $HOST
     printf "$INTERFACES" | setup-interfaces -i
 
