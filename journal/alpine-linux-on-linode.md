@@ -40,7 +40,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
 
 
     mkfs.$BOOT_FS -q -L boot $BOOT_DEV
-    mkfs.$ROOT_FS -L root -l 16k $ROOT_DEV >/dev/null
+    mkfs.$ROOT_FS -f -L root -l 16k $ROOT_DEV >/dev/null
     mount $ROOT_DEV $ROOT
     mkdir $ROOT/boot
     mount $BOOT_DEV $ROOT/boot
