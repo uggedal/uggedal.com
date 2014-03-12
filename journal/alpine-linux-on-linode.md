@@ -32,7 +32,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     REL=${REL:-2.7}
     MIRROR=${MIRROR:-http://nl.alpinelinux.org/alpine}
     REPO=$MIRROR/v$REL/main
-    APKV=${APKV:-2.4.0-r6}
+    APKV=${APKV:-2.4.1-r0}
     BOOT_DEV=${ROOT_DEV:-/dev/xvda}
     ROOT_DEV=${ROOT_DEV:-/dev/xvdb}
     ROOT=${ROOT:-/mnt}
