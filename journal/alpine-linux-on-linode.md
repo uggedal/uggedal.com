@@ -51,7 +51,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
 
     cat <<EOF > $ROOT/etc/fstab
     $ROOT_DEV / $ROOT_FS defaults,noatime,compress=lzo 0 0
-    $ROOT_DEV / $ROOT_FS defaults,noatime 0 1
+    $BOOT_DEV /boot $BOOT_FS defaults,noatime 0 1
     EOF
     echo $REPO > $ROOT/etc/apk/repositories
 
