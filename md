@@ -19,4 +19,4 @@ class Renderer(h.HtmlRenderer, h.SmartyPants):
             lexer = pygments.lexers.TextLexer()
         return pygments.highlight(text, lexer, self.formatter)
 
-print(h.Markdown(Renderer(0), exts).render(sys.stdin.read()))
+sys.stdout.write(h.Markdown(Renderer(0), exts).render(sys.stdin.read()))
