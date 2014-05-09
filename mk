@@ -38,13 +38,6 @@ tmpl_foot() {
 EOF
 }
 
-tmpl_article() {
-  local title="$1"
-  local date="$2"
-  local body="$3"
-
-}
-
 header() {
   sed $2'q;d' $1 | sed 's/^% //'
 }
