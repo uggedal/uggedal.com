@@ -66,7 +66,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
 
     title Alpine Linux
     root (hd0)
-    kernel /boot/grsec root=$ROOT_DEV modules=$MODULES console=hvc0 pax_nouderef quiet
+    kernel /boot/grsec root=$ROOT_DEV modules=$MODULES console=hvc0 quiet
     initrd /boot/grsec.gz
     EOF
 
