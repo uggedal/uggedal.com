@@ -1,0 +1,20 @@
+#!/bin/sh
+
+repo=$1
+dest=$2
+
+[ -d $dest ] || git clone --quiet $repo $dest
+
+cd $dest
+
+make
+
+while true; do
+  prev=$(git rev-parse master)
+  git pull --quiet
+  cur=$(git rev-parse master)
+
+  [ "$prev" = "$cur" ] || make
+
+  sleep $((60*5))
+done
