@@ -1,7 +1,8 @@
-.PHONY: clean watch
+.PHONY: clean deploy watch
 
 author := Eivind Uggedal
 out := output
+www := /var/www/uggedal.com
 
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,$(out)/%/index.html,$(md))
@@ -30,6 +31,9 @@ $(static_out): $(out)/%: %
 
 clean:
 	@rm -rf $(out)/*
+
+deploy:
+	@sudo rsync -a --info=NAME --force --delete $(out)/ $(www)
 
 watch:
 	@while inotifywait -qqre create,delete,modify .; do make; done
