@@ -48,6 +48,7 @@ function handler (res) {
     }
 
     item.payload.commits.forEach(function (c) {
+      if (c.author.email !== 'eivind@uggedal.com') return
       if (i++ >= MAX) return;
 
       html.push('<dd>');
