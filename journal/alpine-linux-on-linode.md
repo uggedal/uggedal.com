@@ -88,9 +88,6 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     apk add --quiet openssh
     rc-update -q add sshd default
 
-    apk add --quiet openntpd
-    rc-update -q add ntpd default
-
     mkdir /etc/mkinitfs
     echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
 
