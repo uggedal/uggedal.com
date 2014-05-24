@@ -32,6 +32,7 @@ function init () {
 
 var section = init();
 var MAX = 10;
+var AUTHOR = 'eivind@uggedal.com';
 
 function handler (res) {
   var i = 0;
@@ -48,7 +49,7 @@ function handler (res) {
     }
 
     item.payload.commits.forEach(function (c) {
-      if (c.author.email !== 'eivind@uggedal.com') return
+      if (c.author.email !== AUTHOR) return
       if (i++ >= MAX) return;
 
       html.push('<dd>');
