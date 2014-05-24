@@ -32,7 +32,7 @@ $(static_out): $(out)/%: %
 clean:
 	@rm -rf $(out)/*
 
-deploy:
+deploy: all
 	@sudo rsync -a --info=NAME --force --delete $(out)/ $(www)
 
 watch:
