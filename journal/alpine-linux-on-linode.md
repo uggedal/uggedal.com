@@ -8,7 +8,7 @@ Instructions for installing a custom [Alpine Linux][] root fs on
 2. Create a new raw disk image using all remaining space.
 3. Create a new configuration profile using the new disk images,
    pv-grub-x86_64 kernel and no Filesystem/Boot helpers.
-4. Boot into rescue mode.
+4. Boot into rescue mode and run the following script:
 
     ```sh
     #!/bin/sh
