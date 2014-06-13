@@ -28,7 +28,8 @@
 
     REL=${REL:-edge}
     MIRROR=${MIRROR:-http://nl.alpinelinux.org/alpine}
-    REPO=$MIRROR/$REL/main
+    REPO="$MIRROR/$REL/main
+    $MIRROR/$REL/testing"
     APKV=${APKV:-2.4.4-r0}
     ARCH=$(uname -m)
 
