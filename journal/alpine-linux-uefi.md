@@ -87,7 +87,18 @@
     mkdir /etc/mkinitfs
     echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
 
-    apk add --quiet linux-grsec
+    echo 'feautes="ata base scsi usb btrfs cryptsetup"' > /etc/mkinitfs/mkinitfs.conf
+    apk add --quiet cryptsetup linux-grsec
+
+    apk add --quiet gummiboot
+    gummitboot install
+    cat > /boot/loader/entries/grsec.conf <<EOF
+    title grsec
+    linux /vmlinuz-grsec
+    initrd /initramfs-grsec
+    options cryptdevice=$ROOTDEV:$CRYPT root=$CRYPTDEV ro quiet elevator=noop
+    EOF
+    echo 'default grsec' > /boot/loader/loader.conf
     CHROOT
 
     umount /mnt/proc
