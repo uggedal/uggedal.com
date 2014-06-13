@@ -45,19 +45,19 @@
 
     curl -s $MIRROR/$REL/main/$ARCH/apk-tools-static-${APKV}.apk | tar xz
     ./sbin/apk.static --repository $REPO --update-cache --allow-untrusted \
-      --root $ROOT --initdb add alpine-base
+      --root /mnt --initdb add alpine-base
 
     cat <<EOF > /mnt/etc/fstab
     $CRYPTDEV / btrfs defaults,noatime,compress=lzo 0 0
     $BOOT_DEV /boot vfat defaults,noatime 0 1
     EOF
-    echo $REPO > $ROOT/etc/apk/repositories
+    echo $REPO > /mnt/etc/apk/repositories
 
-    cp /etc/resolv.conf $ROOT/etc
+    cp /etc/resolv.conf /mnt/etc
 
-    mount --bind /proc $ROOT/proc
+    mount --bind /proc /mnt/proc
 
-    chroot $ROOT /bin/sh<<CHROOT
+    chroot /mnt /bin/sh<<CHROOT
     apk update --quiet 
 
     setup-hostname -n $HOST
@@ -77,7 +77,7 @@
     apk add --quiet linux-grsec
     CHROOT
 
-    umount $ROOT/proc
-    umount $ROOT/boot
-    umount $ROOT
+    umount /mnt/proc
+    umount /mnt/boot
+    umount /mnt
     ```
