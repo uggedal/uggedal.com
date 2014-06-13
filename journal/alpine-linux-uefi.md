@@ -28,8 +28,8 @@
 
     REL=${REL:-edge}
     MIRROR=${MIRROR:-http://nl.alpinelinux.org/alpine}
-    REPO="$MIRROR/$REL/main
-    $MIRROR/$REL/testing"
+    MAIN_REPO="$MIRROR/$REL/main"
+    TEST_REPO="$MIRROR/$REL/testing"
     APKV=${APKV:-2.4.4-r0}
     ARCH=$(uname -m)
 
@@ -54,14 +54,14 @@
     mount $BOOTDEV /mnt/boot
 
     curl -s $MIRROR/$REL/main/$ARCH/apk-tools-static-${APKV}.apk | tar xz
-    ./sbin/apk.static --repository $REPO --update-cache --allow-untrusted \
+    ./sbin/apk.static --repository $MAIN_REPO --update-cache --allow-untrusted \
       --root /mnt --initdb add alpine-base
 
     cat <<EOF > /mnt/etc/fstab
     $CRYPTDEV / btrfs defaults,noatime,compress=lzo 0 0
     $BOOTDEV /boot vfat defaults,noatime 0 1
     EOF
-    echo $REPO > /mnt/etc/apk/repositories
+    printf '%s\n%s\n' $MAIN_REPO $TEST_REPO > /mnt/etc/apk/repositories
 
     cp /etc/resolv.conf /mnt/etc
 
