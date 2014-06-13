@@ -7,7 +7,6 @@
     #!/bin/sh
 
     # TODO: cryptsetup benchmark
-    # TODO: gummiboot
 
     set -e
 
