@@ -84,9 +84,6 @@
     apk add --quiet openssh
     rc-update -q add sshd default
 
-    mkdir /etc/mkinitfs
-    echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
-
     echo 'feautes="ata base scsi usb btrfs cryptsetup"' > /etc/mkinitfs/mkinitfs.conf
     apk add --quiet cryptsetup linux-grsec
 
