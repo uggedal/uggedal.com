@@ -49,7 +49,7 @@
 
     cat <<EOF > /mnt/etc/fstab
     $CRYPTDEV / btrfs defaults,noatime,compress=lzo 0 0
-    $BOOT_DEV /boot vfat defaults,noatime 0 1
+    $BOOTDEV /boot vfat defaults,noatime 0 1
     EOF
     echo $REPO > /mnt/etc/apk/repositories
 
