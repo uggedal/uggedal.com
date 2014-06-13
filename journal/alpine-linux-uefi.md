@@ -11,6 +11,16 @@
 
     set -e
 
+    KEYMAP="${KEYMAP:-'us us'}"
+    HOST=${HOST:-alpine-linux}
+    INTERFACES="auto lo
+    iface lo inet loopback
+
+    auto eth0
+    iface eth0 inet dhcp
+      hostname $HOST
+    "
+
     HD=${HD:-/dev/sda}
     BOOTDEV=${HD}1
     ROOTDEV=${HD}2
@@ -58,9 +68,10 @@
     mount --bind /proc /mnt/proc
 
     chroot /mnt /bin/sh<<CHROOT
+    . /etc/profile
     apk update --quiet 
 
-    setup-hostname -n $HOST
+    setup-hostname $HOST
     printf "$INTERFACES" | setup-interfaces -i
 
     rc-update -q add networking boot
