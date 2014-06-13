@@ -66,6 +66,8 @@
     cp /etc/resolv.conf /mnt/etc
 
     mount --bind /proc /mnt/proc
+    mount --rbind /sys /mnt/sys/
+    mount --rbind /dev /mnt/dev/
 
     chroot /mnt /bin/sh<<CHROOT
     . /etc/profile
@@ -89,6 +91,8 @@
     CHROOT
 
     umount /mnt/proc
+    umount /mnt/sys
+    umount /mnt/dev
     umount /mnt/boot
     umount /mnt
     ```
