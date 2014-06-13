@@ -89,7 +89,7 @@
     apk add cryptsetup linux-grsec
 
     apk add gummiboot
-    gummitboot install
+    gummiboot install
     cat > /boot/loader/entries/grsec.conf <<EOF
     title grsec
     linux /vmlinuz-grsec
