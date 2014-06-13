@@ -71,7 +71,7 @@
 
     chroot /mnt /bin/sh<<CHROOT
     . /etc/profile
-    apk update --quiet 
+    apk update
 
     setup-hostname $HOST
     printf "$INTERFACES" | setup-interfaces -i
@@ -81,13 +81,14 @@
     rc-update -q add acpid
     rc-update -q add cron
 
-    apk add --quiet openssh
+    apk add openssh
     rc-update -q add sshd default
 
+    mkdir -p /etc/mkinitfs
     echo 'feautes="ata base scsi usb btrfs cryptsetup"' > /etc/mkinitfs/mkinitfs.conf
-    apk add --quiet cryptsetup linux-grsec
+    apk add cryptsetup linux-grsec
 
-    apk add --quiet gummiboot
+    apk add gummiboot
     gummitboot install
     cat > /boot/loader/entries/grsec.conf <<EOF
     title grsec
