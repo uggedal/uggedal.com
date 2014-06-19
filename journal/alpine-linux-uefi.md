@@ -1,5 +1,5 @@
 % Alpine Linux UEFI installation
-% 2014-06-11
+% draft
 
 1. Boot the Arch Linux install iso and run the following script:
 
