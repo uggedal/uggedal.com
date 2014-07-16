@@ -6,7 +6,7 @@ function req (path, cb) {
 }
 
 function gh (path, txt) {
-  return '<a href=https://github.com/' + path + '>' + txt + '</a></dt>'
+  return '<a href=https://github.com/' + path + '>' + txt + '</a>'
 }
 
 function day (iso) {
