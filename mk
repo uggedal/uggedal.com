@@ -29,7 +29,7 @@ EOF
 tmpl_foot() {
   cat <<EOF
     <footer>
-      Generated with <a href=https://github.com/uggedal/uggedal.com>POSIX shell</a>.
+      Generated with <a href=http://git.uggedal.com/uggedal.com>POSIX shell</a>.
     </footer>
 
     <script src=/static/feed.js></script>
