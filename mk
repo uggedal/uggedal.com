@@ -101,7 +101,7 @@ index() {
     cat <<EOF >> $target
     <section class=about>
       I'm a programmer at <a href=http://bekk.no>BEKK</a>.
-      I share <a href=https://github.com/uggedal>open source code</a>
+      I share <a href=http://git.uggedal.com>open source code</a>
       written in my pastime.
       I created <a href=http://mediaqueri.es>mediaqueri.es</a>, <em>the</em>
       collection of responsively designed web sites.
