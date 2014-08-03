@@ -39,7 +39,7 @@ I had to:
   [redis package][redis],
 * build my own PostgreSQL package since a version with
   [systemd support][postgresql] had not been released, and
-* add a systemd template service unit to my [uWSGI package][uwsgi]
+* add a systemd template service unit to my uWSGI package
   instead of using emperor mode.
 
 So far I'm happy with systemd. Faster boot times I couldn't care less about,
@@ -52,4 +52,3 @@ and templated service units are awesome.
 [salt]: https://github.com/saltstack/salt/commits/develop/salt/modules/systemd.py
 [redis]: https://projects.archlinux.org/svntogit/community.git/commit/trunk?h=packages/redis&id=c5bb95976c16278f184b25863e65b80f5b9b8e50
 [postgresql]: https://projects.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/postgresql&id=4b2cb4108126707fede9ddad17c0100c8e960b24
-[uwsgi]: https://github.com/uggedal/pkg/tree/master/uwsgi

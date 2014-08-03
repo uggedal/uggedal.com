@@ -352,13 +352,13 @@ comparison as this article has taken a lot of time and been over
 > If you're going to buy a VPS I'd appreciate it if you used
 > [my referral page for Linode][linoderef].
 
-[githubrepo]: http://github.com/uggedal/vpsbench
+[githubrepo]: http://git.uggedal.com/vpsbench
 [was it up?]: http://wasitup.com
 [previous]: /vps-comparison-between-slicehost-and-prgmr
 [domu]: http://wiki.xensource.com/xenwiki/DomU
 [summarytable]: #summary
-[unixbenchpatch]: http://github.com/uggedal/vpsbench/blob/master/unixbench-5.1.2.patch
+[unixbenchpatch]: http://git.uggedal.com/vpsbench/blob/master/unixbench-5.1.2.patch
 [mysqlbench]: http://dev.mysql.com/doc/refman/5.0/en/mysql-benchmarks.html
-[mysqlpatch]: http://github.com/uggedal/vpsbench/blob/master/mysql-5.1.34.patch
+[mysqlpatch]: http://git.uggedal.com/vpsbench/blob/master/mysql-5.1.34.patch
 [linoderef]: http://www.linode.com/?r=e1dc01d2b95e720dee6d810afe51104c0a4f76ac
-[initialcommit]: http://github.com/uggedal/vpsbench/commit/4488990a100ba16dc6da6966b53ddb8a5b98ab9c
+[initialcommit]: http://git.uggedal.com/vpsbench/commit/4488990a100ba16dc6da6966b53ddb8a5b98ab9c

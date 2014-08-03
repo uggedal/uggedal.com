@@ -52,5 +52,5 @@ There are cookie based solutions inspired by Rails available for
 Django, but I don't like using cookies to handle such state.
 
 [mer]: http://github.com/wycats/merb-core/tree/d4003c983169052551eb884f456600fc826bfa55/lib/merb-core/controller/mixins/controller.rb#L117
-[not]: http://github.com/uggedal/django-notices
+[not]: http://git.uggedal.com/django-notices
 [aut]: http://docs.djangoproject.com/en/dev/topics/auth/#messages
