@@ -2,7 +2,7 @@
 % 2009-11-29
 
 UPDATE: The scripts used for benchmarking, graphing, and all the raw data
-can be found over at my [GitHub repository][githubrepo]. Be aware that the
+can be found over at my [git repository][gitrepo]. Be aware that the
 graphs presented here has an Y-axis which goes from the minimum to the maximum
 value and not from 0 to maximum.
 
@@ -352,7 +352,7 @@ comparison as this article has taken a lot of time and been over
 > If you're going to buy a VPS I'd appreciate it if you used
 > [my referral page for Linode][linoderef].
 
-[githubrepo]: http://git.uggedal.com/vpsbench
+[gitrepo]: http://git.uggedal.com/historic/vpsbench
 [was it up?]: http://wasitup.com
 [previous]: /vps-comparison-between-slicehost-and-prgmr
 [domu]: http://wiki.xensource.com/xenwiki/DomU
