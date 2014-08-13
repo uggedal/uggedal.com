@@ -37,7 +37,6 @@ Instructions for installing a custom [Void Linux][] root fs on
 
     curl http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
 
-    # TODO: repo
     ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy $BASE_PACKAGES
 
     cp /etc/resolv.conf $ROOT/mnt/etc/
