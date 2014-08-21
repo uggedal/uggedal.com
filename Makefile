@@ -2,7 +2,7 @@
 
 author := Eivind Uggedal
 out := output
-www := /var/www/uggedal.com
+www := /srv/http/uggedal.com
 
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,$(out)/%/index.html,$(md))
