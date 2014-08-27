@@ -45,7 +45,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     passwd
     /usr/sbin/grub-install /dev/sda
     printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
-    xbps-reconfigure -f linux3.14
+    /usr/sbin/xbps-reconfigure -f linux3.14
     printf '$CRYPT $ROOT_DEV\n' > /etc/crypttab
     EOF
 
