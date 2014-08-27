@@ -11,12 +11,12 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     DEV=/dev/sda
 
     sgdisk -Z $DEV
-    sgdisk -n 1:0:+512M $HD
-    sgdisk -n 2:0:0 $HD
-    sgdisk -t 1:ef00 $HD
-    sgdisk -t 2:8300 $HD
-    sgdisk -c 1:bootefi $HD
-    sgdisk -c 2:root $HD
+    sgdisk -n 1:0:+512M $DEV
+    sgdisk -n 2:0:0 $DEV
+    sgdisk -t 1:ef00 $DEV
+    sgdisk -t 2:8300 $DEV
+    sgdisk -c 1:bootefi $DEV
+    sgdisk -c 2:root $DEV
     ```
 5. Reboot.
 
