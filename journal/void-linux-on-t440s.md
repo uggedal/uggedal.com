@@ -9,6 +9,11 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
     ```sh
     DEV=/dev/sda
+    BOOT_DEV=/dev/sda1
+    ROOT_DEV=/dev/sda2
+    CRYPT=cryptroot
+    CRYPT_DEV=/dev/mapper/$CRYPT
+    REPO=http://repo.voidlinux.eu
 
     sgdisk -Z $DEV
     sgdisk -n 1:0:+512M $DEV
@@ -17,6 +22,36 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     sgdisk -t 2:8300 $DEV
     sgdisk -c 1:bootefi $DEV
     sgdisk -c 2:root $DEV
+
+    mkfs.vfat -F32 $BOOT_DEV
+
+    cryptsetup luksFormat $ROOT_DEV
+    cryptsetup open $ROOT_DEV $CRYPT
+
+    mkfs.ext4 $CRYPT_DEV
+
+    mount $CRYPT_DEV /mnt
+    mkdir /mnt/boot
+    mount $BOOT_DEV /mnt/boot
+
+    curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
+    ./sbin/xbps-install -S -R $REPO/current -r /mnt base-system cryptsetup
+
+    mount --rbind /dev /mnt/dev
+    mount --rbind /proc /mnt/proc
+    mount --rbind /sys /mnt/sys
+
+    chroot /mnt /bin/bash <<EOF
+    passwd
+    /usr/sbin/grub-install /dev/sda
+    printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
+    xbps-reconfigure -f linux3.14
+    printf '$CRYPT $ROOT_DEV\n' > /etc/crypttab
+    EOF
+
+    umount -R /mnt
+
+    # TODO: /etc/hostname /etc/rc.conf
     ```
 5. Reboot.
 
