@@ -19,8 +19,16 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     CRYPT_DEV=/dev/mapper/$CRYPT
     REPO=http://repo.voidlinux.eu
 
+    BASE_PACKAGES='
+      base-files ncurses coreutils findutils glibc-locales diffutils
+      dash bash grep gzip file sed gawk less util-linux which tar man-pages
+      man-db shadow
+      procps-ng tzdata iana-etc eudev runit-void dhcpcd
+      iproute2 iputils xbps nvi sudo kmod
+      cryptsetup'
+
     sgdisk -Z $DEV
-    sgdisk -n 1:0:+128M $DEV
+    sgdisk -n 1:0:+256M $DEV
     sgdisk -n 2:0:0 $DEV
     sgdisk -t 1:ef00 $DEV
     sgdisk -t 2:8300 $DEV
@@ -35,30 +43,42 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mkfs.ext4 $CRYPT_DEV
 
     mount $CRYPT_DEV /mnt
-    mkdir -p /mnt/boot/efi
-    mount $BOOT_DEV /mnt/boot/efi
+    mkdir -p /mnt/boot
+    mount $BOOT_DEV /mnt/boot
 
     curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
-    ./usr/sbin/xbps-install -S -R $REPO/current -r /mnt base-system cryptsetup
+    ./usr/sbin/xbps-install -Sy -R $REPO/current -r /mnt $BASE_PACKAGES
 
     mount --rbind /dev /mnt/dev
     mount --rbind /proc /mnt/proc
     mount --rbind /sys /mnt/sys
 
+    gummiboot install --path /mnt/boot
+
+    eval $(blkid -o export $ROOT_DEV)
+
+    cat <<EOF > /mnt/boot/loader/entries/void.conf
+    title void (efi_stub)
+    linux /vmlinuz-3.14.17_1
+    initrd /initramfs-3.14.17_1.img
+    options cryptdevice=$ROOT_DEV:$CRYPT root=/dev/mapper/luks-$UUID init=/usr/bin/runit-init ro quiet elevator=noop
+    EOF
+
+    printf 'default void\n' > /mnt/boot/loader/loader.conf
+
+    cp /etc/resolv.conf /mnt/etc
+
     chroot /mnt /bin/bash <<EOF
-    /usr/sbin/grub-install --target=x86_64-efi --efi-directory=/boot/efi \
-      --bootloader-id=grub --recheck --debug
+    . /etc/profile
+    mkdir -p /etc/dracut.conf.d
     printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
-    /usr/sbin/xbps-reconfigure -f linux3.14
-    printf '$CRYPT $ROOT_DEV\n' > /etc/crypttab
+    xbps-install -y linux
     EOF
     ```
 4. Set root password and clean up:
 
     ```sh
-    chroot /mnt /bin/bash
-    passwd
-    ^D
+    chroot /mnt passwd
     umount -R /mnt
     ```
 5. Reboot.
