@@ -46,16 +46,19 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mount --rbind /sys /mnt/sys
 
     chroot /mnt /bin/bash <<EOF
-    passwd
     /usr/sbin/grub-install $DEV
     printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
     /usr/sbin/xbps-reconfigure -f linux3.14
     printf '$CRYPT $ROOT_DEV\n' > /etc/crypttab
     EOF
+    ```
+4. Set root password and clean up:
 
+    ```sh
+    chroot /mnt /bin/bash
+    passwd
+    ^D
     umount -R /mnt
-
-    # TODO: /etc/hostname /etc/rc.conf
     ```
 5. Reboot.
 
