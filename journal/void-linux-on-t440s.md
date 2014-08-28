@@ -12,7 +12,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
     set -e
 
-    DEV=/dev/sdb
+    DEV=/dev/sda
     BOOT_DEV=${DEV}1
     ROOT_DEV=${DEV}2
     CRYPT=cryptroot
