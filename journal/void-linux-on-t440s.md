@@ -35,7 +35,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mkfs.ext4 $CRYPT_DEV
 
     mount $CRYPT_DEV /mnt
-    mkdir /mnt/boot/efi
+    mkdir -p /mnt/boot/efi
     mount $BOOT_DEV /mnt/boot/efi
 
     curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
