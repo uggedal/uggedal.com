@@ -20,7 +20,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     REPO=http://repo.voidlinux.eu
 
     sgdisk -Z $DEV
-    sgdisk -n 1:0:+512M $DEV
+    sgdisk -n 1:0:+128M $DEV
     sgdisk -n 2:0:0 $DEV
     sgdisk -t 1:ef00 $DEV
     sgdisk -t 2:8300 $DEV
@@ -35,8 +35,8 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mkfs.ext4 $CRYPT_DEV
 
     mount $CRYPT_DEV /mnt
-    mkdir /mnt/boot
-    mount $BOOT_DEV /mnt/boot
+    mkdir /mnt/boot/efi
+    mount $BOOT_DEV /mnt/boot/efi
 
     curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
     ./usr/sbin/xbps-install -S -R $REPO/current -r /mnt base-system cryptsetup
@@ -46,7 +46,8 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mount --rbind /sys /mnt/sys
 
     chroot /mnt /bin/bash <<EOF
-    /usr/sbin/grub-install $DEV
+    /usr/sbin/grub-install --target=x86_64-efi --efi-directory=/boot/efi \
+      --bootloader-id=grub --recheck --debug
     printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
     /usr/sbin/xbps-reconfigure -f linux3.14
     printf '$CRYPT $ROOT_DEV\n' > /etc/crypttab
