@@ -13,8 +13,8 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     set -e
 
     DEV=/dev/sdb
-    BOOT_DEV=/dev/sdb1
-    ROOT_DEV=/dev/sdb2
+    BOOT_DEV=${DEV}1
+    ROOT_DEV=${DEV}2
     CRYPT=cryptroot
     CRYPT_DEV=/dev/mapper/$CRYPT
     REPO=http://repo.voidlinux.eu
@@ -47,7 +47,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
     chroot /mnt /bin/bash <<EOF
     passwd
-    /usr/sbin/grub-install /dev/sdb
+    /usr/sbin/grub-install $DEV
     printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
     /usr/sbin/xbps-reconfigure -f linux3.14
     printf '$CRYPT $ROOT_DEV\n' > /etc/crypttab
