@@ -8,6 +8,10 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 3. Run the following:
 
     ```sh
+    #!/bin/sh
+
+    set -e
+
     DEV=/dev/sda
     BOOT_DEV=/dev/sda1
     ROOT_DEV=/dev/sda2
@@ -35,7 +39,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mount $BOOT_DEV /mnt/boot
 
     curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
-    ./sbin/xbps-install -S -R $REPO/current -r /mnt base-system cryptsetup
+    ./usr/sbin/xbps-install -S -R $REPO/current -r /mnt base-system cryptsetup
 
     mount --rbind /dev /mnt/dev
     mount --rbind /proc /mnt/proc
