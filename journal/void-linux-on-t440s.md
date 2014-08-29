@@ -1,5 +1,5 @@
 % Void Linux on ThinkPad T440s
-% draft
+% 2014-08-29
 
 Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
