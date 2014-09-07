@@ -25,7 +25,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
       man-db shadow
       procps-ng tzdata iana-etc eudev runit-void dhcpcd
       iproute2 iputils xbps nvi sudo kmod
-      cryptsetup openssh openssh-server'
+      e2fsprogs dosfstools cryptsetup openssh openssh-server'
 
     sgdisk -Z $DEV
     sgdisk -n 1:0:+256M $DEV
