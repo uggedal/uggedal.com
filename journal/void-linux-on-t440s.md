@@ -61,7 +61,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     title void (efi_stub)
     linux /vmlinuz-3.14.17_1
     initrd /initramfs-3.14.17_1.img
-    options cryptdevice=$ROOT_DEV:$CRYPT root=/dev/mapper/luks-$UUID init=/usr/bin/runit-init ro quiet elevator=noop
+    options cryptdevice=$ROOT_DEV:$CRYPT root=/dev/mapper/luks-$UUID init=/usr/bin/runit-init rd.luks.allow-discards elevator=noop ro quiet
     EOF
 
     printf 'default void\n' > /mnt/boot/loader/loader.conf
