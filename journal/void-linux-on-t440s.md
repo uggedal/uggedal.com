@@ -66,7 +66,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
     printf 'default void\n' > /mnt/boot/loader/loader.conf
 
-    printf '/dev/sda1 /boot vfat defaults 0 0\n' >> /mnt/etc/fstab
+    printf '/dev/sda1 /boot vfat defaults,noatime 0 0\n' >> /mnt/etc/fstab
 
     cp /etc/resolv.conf /mnt/etc
 
