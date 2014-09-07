@@ -25,7 +25,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
       man-db shadow
       procps-ng tzdata iana-etc eudev runit-void dhcpcd
       iproute2 iputils xbps nvi sudo kmod
-      e2fsprogs dosfstools cryptsetup openssh openssh-server'
+      e2fsprogs dosfstools cryptsetup gummiboot openssh openssh-server'
 
     sgdisk -Z $DEV
     sgdisk -n 1:0:+256M $DEV
@@ -53,18 +53,10 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mount --rbind /proc /mnt/proc
     mount --rbind /sys /mnt/sys
 
-    gummiboot install --path /mnt/boot
-
     eval $(blkid -o export $ROOT_DEV)
 
-    cat <<EOF > /mnt/boot/loader/entries/void.conf
-    title void (efi_stub)
-    linux /vmlinuz-3.14.17_1
-    initrd /initramfs-3.14.17_1.img
-    options root=/dev/mapper/luks-$UUID rootflags=noatime,discard ro rd.luks.uuid=$UUID rd.luks.allow-discards init=/usr/bin/runit-init elevator=noop quiet
-    EOF
-
-    printf 'default void\n' > /mnt/boot/loader/loader.conf
+    printf 'root=/dev/mapper/luks-%s rootflags=noatime,discard ro rd.luks.uuid=%s rd.luks.allow-discards init=/usr/bin/runit-init elevator=noop quiet' $UUID $UUID >
+      /mnt/boot/loader/void-options.conf
 
     printf '/dev/sda1 /boot vfat defaults,noatime 0 0\n' >> /mnt/etc/fstab
 
@@ -75,6 +67,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mkdir -p /etc/dracut.conf.d
     printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
     xbps-install -y linux
+    gummiboot install
     EOF
     ```
 4. Set root password and clean up:
