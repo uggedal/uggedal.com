@@ -22,7 +22,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     BASE_PACKAGES='
       base-files ncurses coreutils findutils glibc-locales diffutils
       dash bash grep gzip file sed gawk less util-linux which tar man-pages
-      man-db shadow
+      openbsd-man shadow
       procps-ng tzdata iana-etc eudev runit-void dhcpcd
       iproute2 iputils xbps nvi sudo kmod
       e2fsprogs dosfstools cryptsetup gummiboot openssh openssh-server'

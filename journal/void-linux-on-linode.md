@@ -23,7 +23,7 @@ Instructions for installing a custom [Void Linux][] root fs on
     BASE_PACKAGES='
       base-files ncurses coreutils findutils glibc-locales diffutils
       dash bash grep gzip file sed gawk less util-linux which tar man-pages
-      man-db shadow
+      openbsd-man shadow
       procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
       iproute2 iputils xbps nvi sudo kmod
       openssh-server'
