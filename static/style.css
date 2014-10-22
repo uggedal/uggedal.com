@@ -1,56 +1,71 @@
-@font-face {
-  font-family: 'Clear Sans';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Clear Sans'), url(clearsans-regular.woff) format('woff');
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Hair'),
+         url('firasans-hair.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
 }
 
-@font-face {
-  font-family: 'Clear Sans';
-  font-style: italic;
-  font-weight: normal;
-  src: local('Clear Sans'), url(clearsans-italic.woff) format('woff');
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Hair Italic'),
+         url('firasans-hairitalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
 }
 
-@font-face {
-  font-family: 'Clear Sans';
-  font-style: normal;
-  font-weight: bold;
-  src: local('Clear Sans'), url(clearsans-bold.woff) format('woff');
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Regular'),
+         url('firasans-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
 
-@font-face {
-  font-family: 'Clear Sans';
-  font-style: italic;
-  font-weight: bold;
-  src: local('Clear Sans'), url(clearsans-bolditalic.woff) format('woff');
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Regular Italic'),
+         url('firasans-regularitalic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
 }
 
-@font-face {
-  font-family: 'Clear Sans';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Clear Sans'), url(clearsans-thin.woff) format('woff');
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Bold'),
+         url('firasans-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
 }
 
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Source Code Pro'), url(sourcecodepro-regular.woff) format('woff');
+@font-face{
+    font-family: 'Fira Sans';
+    src: local('Fira Sans Bold Italic'),
+         url('firasans-bolditalic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
 }
 
-@font-face {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: bold;
-  src: local('Source Code Pro'), url(sourcecodepro-bold.woff) format('woff');
+@font-face{
+    font-family: 'Fira Mono';
+    src: local('Fira Mono'),
+         url('firamono-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Fira Mono';
+    src: local('Fira Mono Bold'),
+         url('firamono-bold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
 }
 
 body {
   border-top: .5em solid #ececec;
   color: #333;
-  font-family: 'Clear Sans';
+  font-family: 'Fira Sans';
   margin: 0;
   max-width: 40em;
   padding: 1em 10%;
@@ -79,7 +94,7 @@ img {
 
 code,
 pre {
-  font-family: 'Source Code Pro';
+  font-family: 'Fira Mono';
   font-size: 1em;
 }
 
