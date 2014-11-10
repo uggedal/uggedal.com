@@ -66,17 +66,25 @@ Instructions for installing a custom [Void Linux][] root fs on
 
     printf $HOSTNAME > $ROOT/etc/hostname
 
-    mkdir -p $ROOT/boot/grub
-    cat << EOF > $ROOT/boot/grub/menu.lst
+    cat << _EOF_ > $ROOT/etc/kernel.d/post-install/20-xen-grub
+    #!/bin/sh
+
+    PKGNAME="$1"
+    VERSION="$2"
+
+    cat <<EOF > /boot/grub/menu.lst
     timeout 0
     default 0
     hiddenmenu
 
     title Void Linux
     root (hd0)
-    kernel /boot/vmlinuz-3.14.16_1 root=$ROOT_DEV console=hvc0 ipv6.disable=1 quiet
-    initrd /boot/initramfs-3.14.16_1.img
+    kernel /boot/vmlinuz-$VERSION root=/dev/xvda console=hvc0 ipv6.disable=1 quiet
+    initrd /boot/initramfs-$VERSION.img
     EOF
+    _EOF_
+
+    xbps-reconfigure -f linux3.14
 
     umount $ROOT/sys
     umount $ROOT/proc
