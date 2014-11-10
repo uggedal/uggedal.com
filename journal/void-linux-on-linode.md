@@ -74,7 +74,7 @@ Instructions for installing a custom [Void Linux][] root fs on
 
     title Void Linux
     root (hd0)
-    kernel /boot/vmlinuz-3.14.16_1 root=$ROOT_DEV console=hvc0 quiet
+    kernel /boot/vmlinuz-3.14.16_1 root=$ROOT_DEV console=hvc0 ipv6.disable=1 quiet
     initrd /boot/initramfs-3.14.16_1.img
     EOF
 

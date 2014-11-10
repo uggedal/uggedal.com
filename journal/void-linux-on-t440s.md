@@ -55,7 +55,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
     eval $(blkid -o export $ROOT_DEV)
 
-    printf 'root=/dev/mapper/luks-%s rootflags=noatime,discard ro rd.luks.uuid=%s rd.luks.allow-discards init=/usr/bin/runit-init elevator=noop quiet' $UUID $UUID >
+    printf 'root=/dev/mapper/luks-%s rootflags=noatime,discard ro rd.luks.uuid=%s rd.luks.allow-discards init=/usr/bin/runit-init elevator=noop ipv6.disable=1 quiet' $UUID $UUID >
       /mnt/boot/loader/void-options.conf
 
     printf '/dev/sda1 /boot vfat defaults,noatime 0 0\n' >> /mnt/etc/fstab
