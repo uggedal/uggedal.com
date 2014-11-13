@@ -61,6 +61,7 @@ a [Hetzner][] dedicated server.
 
     ln -s /etc/sv/dhcpcd /var/service/
     ln -s /etc/sv/sshd /var/service/
+    ln -s /etc/sv/mdadm /var/service/
 
     passwd
     EOCHROOT
