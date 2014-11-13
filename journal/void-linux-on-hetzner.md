@@ -67,6 +67,8 @@ a [Hetzner][] dedicated server.
 
     printf $HOSTNAME > $ROOT/etc/hostname
 
+    mdadm --detail --scan > $ROOT/etc/mdadm.conf
+
     umount $ROOT/sys
     umount $ROOT/proc
     umount $ROOT/dev
