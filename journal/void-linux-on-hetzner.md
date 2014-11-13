@@ -29,9 +29,12 @@ a [Hetzner][] dedicated server.
 
     for d in $DEVS; do
       sgdisk -Z $d
-      sgdisk -n 1:0:0 $d
-      sgdisk -t 1:fd00 $DEV
-      sgdisk -c 1:raid $DEV
+      sgdisk -n 1:0:+1M $d
+      sgdisk -n 2:0:0 $d
+      sgdisk -t 1:ef02 $d
+      sgdisk -t 2:fd00 $d
+      sgdisk -c 1:grub $d
+      sgdisk -c 2:raid $d
     done
 
     mdadm --create --verbose --level=1 --raid-devices=2 $ROOT_DEV /dev/sda1 /dev/sdb1
