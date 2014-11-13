@@ -78,6 +78,8 @@ a [Hetzner][] dedicated server.
 
     mdadm --detail --scan > /etc/mdadm.conf
 
+    xbps-reconfigure -f linux3.14
+
     passwd
     EOCHROOT
 
