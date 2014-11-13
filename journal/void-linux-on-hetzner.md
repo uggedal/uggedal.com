@@ -76,12 +76,13 @@ a [Hetzner][] dedicated server.
       grub-install $d
     done
 
+    mdadm --detail --scan > /etc/mdadm.conf
+
     passwd
     EOCHROOT
 
     printf $HOSTNAME > $ROOT/etc/hostname
 
-    mdadm --detail --scan > $ROOT/etc/mdadm.conf
 
     umount $ROOT/sys
     umount $ROOT/proc
