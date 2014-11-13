@@ -23,9 +23,9 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
       base-files ncurses coreutils findutils glibc-locales diffutils
       dash bash grep gzip file sed gawk less util-linux which tar man-pages
       openbsd-man shadow
-      procps-ng tzdata iana-etc eudev runit-void dhcpcd
+      procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
       iproute2 iputils xbps nvi sudo kmod
-      e2fsprogs dosfstools cryptsetup gummiboot openssh'
+      e2fsprogs dosfstools cryptsetup gummiboot'
 
     sgdisk -Z $DEV
     sgdisk -n 1:0:+256M $DEV
