@@ -44,7 +44,7 @@ Instructions for installing a custom [Void Linux][] root fs on
     chroot $ROOT /bin/sh <<EOCHROOT
     . /etc/profile
 
-    xbps-install -y linux
+    xbps-install -y linux-lts
     
     ln -s /usr/bin/runit-init /usr/sbin/init
 
