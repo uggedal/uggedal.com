@@ -33,7 +33,7 @@ a [Hetzner][] dedicated server.
       sgdisk -c 1:raid $DEV
     done
 
-    mdadm --create --verbose --level=1 --raid-devices=2 $ROOT_DEV $DEVS
+    mdadm --create --verbose --level=1 --raid-devices=2 $ROOT_DEV /dev/sda1 /dev/sdb1
 
     mkfs.ext4 -q -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT
