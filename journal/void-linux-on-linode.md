@@ -25,7 +25,7 @@ Instructions for installing a custom [Void Linux][] root fs on
       dash bash grep gzip file sed gawk less util-linux which tar man-pages
       openbsd-man shadow
       procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
-      iproute2 iputils xbps nvi sudo kmod"
+      iproute2 iputils xbps nvi sudo kmod'
 
     mkfs.ext4 -q -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT

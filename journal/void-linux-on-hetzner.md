@@ -24,7 +24,7 @@ a [Hetzner][] dedicated server.
       dash bash grep gzip file sed gawk less util-linux which tar man-pages
       openbsd-man shadow
       procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
-      iproute2 iputils xbps nvi sudo kmod"
+      iproute2 iputils xbps nvi sudo kmod'
 
     for d in $DEVS; do
       sgdisk -Z $d
