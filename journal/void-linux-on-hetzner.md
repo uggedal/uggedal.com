@@ -13,6 +13,7 @@ a [Hetzner][] dedicated server.
     set -e
 
     DEVS='/dev/sda /dev/sdb'
+    RAID_PARTS='/dev/sda1 /dev/sdb1'
     ROOT=${ROOT:-/mnt}
     ROOT_DEV=${ROOT_DEV:-/dev/md0}
 
@@ -37,7 +38,11 @@ a [Hetzner][] dedicated server.
       sgdisk -c 2:raid $d
     done
 
-    mdadm --create --verbose --level=1 --raid-devices=2 $ROOT_DEV /dev/sda1 /dev/sdb1
+    for r in $RAID_PARTS; do
+      mdadm --zero-superbloc $r
+    done
+
+    mdadm --create --verbose --level=1 --raid-devices=2 $ROOT_DEV $RAID_PARTS
 
     mkfs.ext4 -q -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT
