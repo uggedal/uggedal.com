@@ -30,7 +30,7 @@ a [Hetzner][] dedicated server.
 
     for d in $DEVS; do
       sgdisk -Z $d
-      sgdisk -n 1:0:+1M $d
+      sgdisk -n 1:0:+8M $d
       sgdisk -n 2:0:0 $d
       sgdisk -t 1:ef02 $d
       sgdisk -t 2:fd00 $d
