@@ -61,12 +61,7 @@ Instructions for installing a custom [Void Linux][] root fs on
     done
     ln -s /etc/sv/agetty-hvc0 /var/service/
 
-    passwd
-    EOCHROOT
-
-    printf $HOSTNAME > $ROOT/etc/hostname
-
-    cat << _EOF_ > $ROOT/etc/kernel.d/post-install/20-xen-grub
+    cat << "_EOF_" > /etc/kernel.d/post-install/20-xen-grub
     #!/bin/sh
 
     PKGNAME="$1"
@@ -85,6 +80,11 @@ Instructions for installing a custom [Void Linux][] root fs on
     _EOF_
 
     xbps-reconfigure -f linux3.14
+
+    passwd
+    EOCHROOT
+
+    printf $HOSTNAME > $ROOT/etc/hostname
 
     umount $ROOT/sys
     umount $ROOT/proc
