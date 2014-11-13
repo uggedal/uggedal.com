@@ -13,7 +13,7 @@ a [Hetzner][] dedicated server.
     set -e
 
     DEVS='/dev/sda /dev/sdb'
-    RAID_PARTS='/dev/sda1 /dev/sdb1'
+    RAID_PARTS='/dev/sda2 /dev/sdb2'
     ROOT=${ROOT:-/mnt}
     ROOT_DEV=${ROOT_DEV:-/dev/md0}
 
