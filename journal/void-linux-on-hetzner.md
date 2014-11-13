@@ -64,6 +64,10 @@ a [Hetzner][] dedicated server.
     ln -s /etc/sv/sshd /var/service/
     ln -s /etc/sv/mdadm /var/service/
 
+    for d in $DEVS; do
+      grub-install $d
+    done
+
     passwd
     EOCHROOT
 
