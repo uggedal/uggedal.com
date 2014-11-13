@@ -47,7 +47,7 @@ a [Hetzner][] dedicated server.
 
     ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy $BASE_PACKAGES
 
-    cp /etc/resolv.conf $ROOT/mnt/etc/
+    cp /etc/resolv.conf $ROOT/etc/
 
     chroot $ROOT /bin/sh <<EOCHROOT
     . /etc/profile
