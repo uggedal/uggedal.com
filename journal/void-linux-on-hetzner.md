@@ -44,7 +44,7 @@ a [Hetzner][] [PX90][] dedicated server.
 
     mdadm --create --verbose --level=1 --raid-devices=2 $ROOT_DEV $RAID_PARTS
 
-    mkfs.ext4 -q -E lazy_itable_init=0 -L root $ROOT_DEV
+    mkfs.ext4 -q -m1 -E lazy_itable_init=0 -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT
 
     mkdir $ROOT/dev $ROOT/proc $ROOT/sys
