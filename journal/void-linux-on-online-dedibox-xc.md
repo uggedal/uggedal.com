@@ -37,7 +37,7 @@ a [Online.net][] [Dedibox XC][] dedicated server.
     sgdisk -c 1:grub $DEV
     sgdisk -c 2:root $DEV
 
-    mkfs.ext4 -q -m1 -L root $ROOT_DEV
+    mkfs.ext4 -q -m1 -E lazy_itable_init=0 -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT
 
     mkdir $ROOT/dev $ROOT/proc $ROOT/sys
