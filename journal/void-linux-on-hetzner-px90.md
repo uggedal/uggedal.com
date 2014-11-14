@@ -1,4 +1,4 @@
-% Void Linux on Hetzner
+% Void Linux on Hetzner PX90
 % 2014-11-13
 
 Instructions for installing a custom [Void Linux][] root fs on
