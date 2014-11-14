@@ -2,7 +2,7 @@
 % 2014-11-13
 
 Instructions for installing a custom [Void Linux][] root fs on
-a [Hetzner][] dedicated server.
+a [Hetzner][] [PX90][] dedicated server.
 
 1. Order a server with the rescure system as OS.
 2. SSH into the rescue system and run the following script:
@@ -95,3 +95,4 @@ a [Hetzner][] dedicated server.
 
 [Void Linux]: http://voidlinux.eu/
 [Hetzner]: http://www.hetzner.de/en
+[PX90]: http://www.hetzner.de/en/hosting/produkte_rootserver/px90
