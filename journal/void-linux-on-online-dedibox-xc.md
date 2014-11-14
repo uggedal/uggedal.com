@@ -1,5 +1,5 @@
 % Void Linux on Online.net Dedibox XC
-% 2014-11-13
+% 2014-11-14
 
 Instructions for installing a custom [Void Linux][] root fs on
 a [Online.net][] [Dedibox XC][] dedicated server.
