@@ -23,7 +23,7 @@ a [Hetzner][] [PX90][] dedicated server.
     BASE_PACKAGES='
       base-files ncurses coreutils findutils glibc-locales diffutils
       dash bash grep gzip file sed gawk less util-linux which tar man-pages
-      openbsd-man shadow
+      mdocml shadow
       procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
       iproute2 iputils xbps nvi sudo kmod
       mdadm grub'
