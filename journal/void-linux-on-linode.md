@@ -39,6 +39,9 @@ Instructions for installing a custom [Void Linux][] root fs on
 
     xbps-install -y linux-lts
     
+    mkdir -p /run/runit/runsvdir
+    ln -s /etc/runit/runsvdir/default /run/runit/runsvdir/current
+
     ln -s /etc/sv/dhcpcd /var/service/
     ln -s /etc/sv/sshd /var/service/
 
@@ -47,12 +50,6 @@ Instructions for installing a custom [Void Linux][] root fs on
       ln -s /etc/sv/agetty-generic/$f /etc/sv/agetty-hvc0/
     done
     ln -s /etc/sv/agetty-hvc0 /var/service/
-
-
-    xbps-reconfigure -f linux3.14
-
-    passwd
-    EOCHROOT
 
     cat <<"_EOF_" >$ROOT/etc/kernel.d/post-install/20-xen-grub
     #!/bin/sh
@@ -72,6 +69,11 @@ Instructions for installing a custom [Void Linux][] root fs on
     initrd /boot/initramfs-$VERSION.img
     EOF
     _EOF_
+
+    xbps-reconfigure -f linux3.14
+
+    passwd
+    EOCHROOT
 
     printf $HOST > $ROOT/etc/hostname
 
