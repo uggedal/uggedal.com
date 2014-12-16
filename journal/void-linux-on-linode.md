@@ -20,13 +20,6 @@ Instructions for installing a custom [Void Linux][] root fs on
     HOST=${HOST:-void-linux}
     REPO=${REPO:-http://repo.voidlinux.eu/current}
 
-    BASE_PACKAGES='
-      base-files ncurses coreutils findutils glibc-locales diffutils
-      dash bash grep gzip file sed gawk less util-linux which tar man-pages
-      openbsd-man shadow
-      procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
-      iproute2 iputils xbps nvi sudo kmod'
-
     mkfs.ext4 -q -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT
 
@@ -37,7 +30,7 @@ Instructions for installing a custom [Void Linux][] root fs on
 
     curl http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
 
-    ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy $BASE_PACKAGES
+    ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy base-system
 
     cp /etc/resolv.conf $ROOT/etc/
 
@@ -46,15 +39,9 @@ Instructions for installing a custom [Void Linux][] root fs on
 
     xbps-install -y linux-lts
     
-    ln -s /usr/bin/runit-init /usr/sbin/init
-
-    mkdir -p /run/runit/runsvdir
-    ln -s /etc/runit/runsvdir/default /run/runit/runsvdir/current
-
     ln -s /etc/sv/dhcpcd /var/service/
     ln -s /etc/sv/sshd /var/service/
 
-    rm /var/service/agetty-tty*
     mkdir /etc/sv/agetty-hvc0
     for f in finish run supervise; do
       ln -s /etc/sv/agetty-generic/$f /etc/sv/agetty-hvc0/
@@ -84,7 +71,7 @@ Instructions for installing a custom [Void Linux][] root fs on
     passwd
     EOCHROOT
 
-    printf $HOSTNAME > $ROOT/etc/hostname
+    printf $HOST > $ROOT/etc/hostname
 
     umount $ROOT/sys
     umount $ROOT/proc
