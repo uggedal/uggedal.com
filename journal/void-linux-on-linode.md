@@ -48,12 +48,19 @@ Instructions for installing a custom [Void Linux][] root fs on
     done
     ln -s /etc/sv/agetty-hvc0 /var/service/
 
-    cat << "_EOF_" > /etc/kernel.d/post-install/20-xen-grub
+
+    xbps-reconfigure -f linux3.14
+
+    passwd
+    EOCHROOT
+
+    cat <<"_EOF_" >$ROOT/etc/kernel.d/post-install/20-xen-grub
     #!/bin/sh
 
     PKGNAME="$1"
     VERSION="$2"
 
+    mkdir -p /boot/grub
     cat <<EOF > /boot/grub/menu.lst
     timeout 0
     default 0
@@ -65,11 +72,6 @@ Instructions for installing a custom [Void Linux][] root fs on
     initrd /boot/initramfs-$VERSION.img
     EOF
     _EOF_
-
-    xbps-reconfigure -f linux3.14
-
-    passwd
-    EOCHROOT
 
     printf $HOST > $ROOT/etc/hostname
 
