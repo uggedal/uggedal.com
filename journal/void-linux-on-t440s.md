@@ -19,13 +19,6 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     CRYPT_DEV=/dev/mapper/$CRYPT
     REPO=http://repo.voidlinux.eu
 
-    BASE_PACKAGES='
-      base-files ncurses coreutils findutils glibc-locales diffutils
-      dash bash grep gzip file sed gawk less util-linux which tar man-pages
-      mdocml shadow
-      procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
-      iproute2 iputils xbps nvi sudo kmod
-      e2fsprogs dosfstools cryptsetup gummiboot'
 
     sgdisk -Z $DEV
     sgdisk -n 1:0:+256M $DEV
@@ -47,7 +40,8 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     mount $BOOT_DEV /mnt/boot
 
     curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
-    ./usr/sbin/xbps-install -Sy -R $REPO/current -r /mnt $BASE_PACKAGES
+    ./usr/sbin/xbps-install -Sy -R $REPO/current -r /mnt \
+      base-system dosfstools cryptsetup gummiboot
 
     mount --rbind /dev /mnt/dev
     mount --rbind /proc /mnt/proc

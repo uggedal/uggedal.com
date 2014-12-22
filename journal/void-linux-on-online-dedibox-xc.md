@@ -21,14 +21,6 @@ a [Online.net][] [Dedibox XC][] dedicated server.
     HOST=${HOST:-void-linux}
     REPO=${REPO:-http://repo.voidlinux.eu/current}
 
-    BASE_PACKAGES='
-      base-files ncurses coreutils findutils glibc-locales diffutils
-      dash bash grep gzip file sed gawk less util-linux which tar man-pages
-      mdocml shadow
-      procps-ng tzdata iana-etc eudev runit-void openssh dhcpcd
-      iproute2 iputils xbps nvi sudo kmod
-      grub'
-
     sgdisk -Z $DEV
     sgdisk -n 1:0:+8M $DEV
     sgdisk -n 2:0:0 $DEV
@@ -47,7 +39,7 @@ a [Online.net][] [Dedibox XC][] dedicated server.
 
     curl http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
 
-    ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy $BASE_PACKAGES
+    ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy base-system grub
 
     cp /etc/resolv.conf $ROOT/etc/
 
