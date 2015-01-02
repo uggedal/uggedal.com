@@ -39,7 +39,7 @@ a [Online.net][] [Dedibox XC][] dedicated server.
 
     curl http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
 
-    ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy base-system grub
+    ./usr/sbin/xbps-install -r $ROOT -R $REPO -Sy base-voidstrap grub
 
     cp /etc/resolv.conf $ROOT/etc/
 

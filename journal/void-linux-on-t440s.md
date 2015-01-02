@@ -41,7 +41,7 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
 
     curl $REPO/static/xbps-static-latest.x86_64-musl.tar.xz | tar xJ
     ./usr/sbin/xbps-install -Sy -R $REPO/current -r /mnt \
-      base-system dosfstools cryptsetup gummiboot
+      base-voidstrap dosfstools cryptsetup gummiboot
 
     mount --rbind /dev /mnt/dev
     mount --rbind /proc /mnt/proc
