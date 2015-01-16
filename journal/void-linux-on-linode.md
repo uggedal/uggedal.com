@@ -52,6 +52,10 @@ Instructions for installing a custom [Void Linux][] root fs on
     done
     ln -s /etc/sv/agetty-hvc0 /var/service/
 
+    for d in /etc/sv/agetty-tty[1-9]; do
+      touch $d/down
+    done
+
     cat <<"_EOF_" >$ROOT/etc/kernel.d/post-install/20-xen-grub
     #!/bin/sh
 
