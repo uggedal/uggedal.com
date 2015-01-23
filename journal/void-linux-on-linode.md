@@ -1,5 +1,4 @@
 % Void Linux on Linode
-
 % 2014-08-13
 
 Instructions for installing a custom [Void Linux][] root fs on
