@@ -1,0 +1,71 @@
+==================================================================
+https://keybase.io/uggedal
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://uggedal.com
+  * I am uggedal (https://keybase.io/uggedal) on keybase.
+  * I have a public key with fingerprint 0426 5DDB 12D0 5F16 5DCA  54C7 3F53 D5E3 2C87 DEAA
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "04265ddb12d05f165dca54c73f53d5e32c87deaa",
+            "host": "keybase.io",
+            "key_id": "3f53d5e32c87deaa",
+            "kid": "0101cbaa41dd5b503d09118be79329d62d3998c121c110a8006346061ee43da9fb860a",
+            "uid": "3665fa1ac8084217c5dc94db4b14bd19",
+            "username": "uggedal"
+        },
+        "service": {
+            "hostname": "uggedal.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1424897632,
+    "expire_in": 157680000,
+    "prev": "c1cd9f851ae9585acec2c2734e5efe2477bcfeb191ded701601793d9058dae25",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+owFtkntQVFUcxxdYaaEEtdKYeF6MBobBe+5r790sTK2scInH1Fjkcu89Z5fLY++6
+u8BuDoMSjYMrkxvpxpgYTSzyjEjERwNJA+RYM0SUk8MKJoYlFAz8QVLQvVZ/NNNf
+55zf7/P9/h5zjq4N0eiC0nO+u5l66Hpr0JVL6YIm91dG3o8JMnRjhv1YEbp3mCWr
+BdltdsnqxAwYThEMDaEACIjTZqDcRZ6mRD1ppklII5IQWT1EPI+lYgWyQ1UoNgLv
+QGmSrMSUh0mCSvR/+KJ7CRzgQBR4ngIQ0gKNkxDnAGAFpOdIgoMMAUmOY0VAABEA
+nGdxnCEpBmcAQhQJec4ssAyu2pX+XYdhaDMPeJHFWYoAelFpmKOgQAmAEiDgVNCB
+7Fa+BCl0qcWCIF+MVaRiSrBMEpG6AXWQ/wJpolyiKG122SmLcrGSKHA6bQZV53Tb
+VLAcCaZ/LEyCZIXKEhVBGbI7JNmKGYBCik5J9QQUQbGcniGJVAy5bJIdmSSVoPWM
+MhyOq2VQmWIpAhFyZpYGPOJoluZFJBIioScpRCMzIii9XhDNSAAcgAjqccDgQNkZ
+5HCahTwiaEwdap9Vxgyk0iZvUSwdksXKO0vtCKsIrwmO1mqCdJrQNcHqP9CEh637
+93fAByJXXUvJW0e8A127T5ce79BWM7f4ouQrkQbH5Vd7PTXzPYt9n5o/DgxV5138
+aOuOJCY5+pnA4M9zhm21F/fs/nb773F5/tuJWyq1P/gThau/9D62+eTgHZ044cUy
+6YbMsH5vUvYZ+3PD9vrMHYttA6dySmy6cu215tlnp5eHu6NTfOOdrp2eweD3N/S4
+YpnyE2ejTPf3egqv5s95Go1u9xPFD493HI5sG18/Yll7SFsT25LvDXkqzNf0lS9G
+On2iqf/CyYbOEHSpeV/SxPmajZ+/55X32pfzuw5Uh965EDXlqXsprKVS09jV5vfH
+b14uHLg55Z8arVoTHxe4lft9JNsjNx3XbXqhTxcRvueRqGt04Nzd9jFfLX5mYRR7
+pULX270z8+3UqTdy95LHbLaXNw1x1hhdvc9AzT/e+aVz6em0r8Pvq2reMGbctaD1
+NWcYf3ptdePwn7qOyrzFgtnb7rj8Y0mzk+7uL65P586XH+k7f7mVCgy9U7tl7o+V
+mUmv4SH/QaIlZlvXKSr79ZDVsdqM1smI2Oy32mdMOVWG2B9XRrNm4hMiEgN9LY0T
+HxwdKPssKzIDZOxaMOV1Fc4cCaXNDs+HRvlwwnaqjm5IaM8feTSrpO7G+uDBoMEn
+z909cLbf9dtS3/LEJ2+62lNSwiuKjKEvrptK+qb+4AC9kt78YNO7qze456c7jH8B
+=fqPw
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/uggedal
+
+==================================================================
