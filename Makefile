@@ -7,10 +7,10 @@ www := /srv/http/uggedal.com
 md := $(wildcard journal/*.md)
 html := $(patsubst %.md,$(out)/%/index.html,$(md))
 
-static_src := $(shell find static/ -type f)
-static_out := $(patsubst %,$(out)/%,$(static_src))
+files_src := $(shell find files/ -type f)
+files_out := $(patsubst files/%,$(out)/%,$(files_src))
 
-all: $(html) $(out)/index.html $(static_out)
+all: $(html) $(out)/index.html $(files_out)
 
 $(html): $(out)/%/index.html: %.md
 	@mkdir -p $(dir $@)
@@ -25,7 +25,7 @@ $(out)/journal/index.html: $(out)/journal/index.atom
 $(out)/index.html: $(out)/journal/index.html
 	@./mk index $@ "$(author)" 'Latest Journal Entries' --limit 5 $(md)
 
-$(static_out): $(out)/%: %
+$(files_out): $(out)/%: files/%
 	@mkdir -p $(dir $@)
 	@cp $< $@
 
