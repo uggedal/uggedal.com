@@ -33,7 +33,7 @@ clean:
 	@rm -rf $(out)/*
 
 deploy: all
-	@sudo rsync -a --info=NAME --force --delete $(out)/ $(www)
+	@rsync -a --info=NAME --force --delete -e ssh $(out)/ $(HOST):$(www)
 
 watch:
 	@while inotifywait -qqre create,delete,modify .; do make; done
