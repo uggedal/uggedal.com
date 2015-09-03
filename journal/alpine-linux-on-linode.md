@@ -81,7 +81,7 @@ a KVM [Linode][].
     cat <<EOF > $ROOT/etc/fstab
     $ROOT_DEV / $ROOT_FS defaults,noatime 0 0
     $BOOT_DEV /boot $BOOT_FS defaults,noatime 0 0
-		$SWAP_DEV swap swap defaults 0 0
+    $SWAP_DEV swap swap defaults 0 0
     EOF
     echo $REPO > $ROOT/etc/apk/repositories
 
