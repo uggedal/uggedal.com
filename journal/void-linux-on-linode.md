@@ -15,7 +15,7 @@ a KVM [Linode][].
     set -e
 
     ROOT=${ROOT:-/mnt}
-    HOST=${HOST:-/dev/sda}
+    DEV=${DEV:-/dev/sda}
     ROOT_DEV=${DEV}1
 
     HOST=${HOST:-void-linux}
