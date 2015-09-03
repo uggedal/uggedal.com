@@ -2,13 +2,12 @@
 % 2013-12-05
 
 Instructions for installing a custom [Alpine Linux][] root fs on
-[Linode][].
+a KVM [Linode][].
 
-1. Create a new raw disk image 128MB in size.
-2. Create a new raw disk image using all remaining space.
-3. Create a new configuration profile using the new disk images,
-   pv-grub-x86_64 kernel and no Filesystem/Boot helpers.
-4. Boot into rescue mode and run the following script:
+1. Create a new raw disk image using all space.
+2. Create a new configuration profile using the new disk image,
+   *Direct Disk* kernel and no Filesystem/Boot helpers.
+3. Boot into rescue mode and run the following script:
 
     ```sh
     #!/bin/sh
@@ -24,55 +23,47 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     iface eth0 inet dhcp
       hostname $HOST
     "
-    BOOT_FS=${ROOT_FS:-ext2}
-    ROOT_FS=${ROOT_FS:-btrfs}
+    ROOT_FS=${ROOT_FS:-ext4}
     FEATURES="ata base ide scsi usb virtio $ROOT_FS"
     MODULES="sd-mod,usb-storage,$ROOT_FS"
 
-    REL=${REL:-2.7}
+    REL=${REL:-3.2}
     MIRROR=${MIRROR:-http://nl.alpinelinux.org/alpine}
     REPO=$MIRROR/v$REL/main
     APKV=${APKV:-2.4.1-r0}
-    BOOT_DEV=${ROOT_DEV:-/dev/xvda}
-    ROOT_DEV=${ROOT_DEV:-/dev/xvdb}
+    ROOT_DEV=${ROOT_DEV:-/dev/sda}
     ROOT=${ROOT:-/mnt}
     ARCH=$(uname -m)
 
+    fdisk $DEV <<EOF
+    n
+     
+     
+     
+     
+    w
+    q
+    EOF
 
-    mkfs.$BOOT_FS -q -L boot $BOOT_DEV
-    mkfs.$ROOT_FS -f -L root -l 16k $ROOT_DEV >/dev/null
+    mkfs.$ROOT_FS root $ROOT_DEV >/dev/null
     mount $ROOT_DEV $ROOT
-    mkdir $ROOT/boot
-    mount $BOOT_DEV $ROOT/boot
 
     curl -s $MIRROR/v$REL/main/$ARCH/apk-tools-static-${APKV}.apk | tar xz
     ./sbin/apk.static --repository $REPO --update-cache --allow-untrusted \
       --root $ROOT --initdb add alpine-base
 
     cat <<EOF > $ROOT/etc/fstab
-    $ROOT_DEV / $ROOT_FS defaults,noatime,compress=lzo 0 0
-    $BOOT_DEV /boot $BOOT_FS defaults,noatime 0 1
+    $ROOT_DEV / $ROOT_FS defaults,noatime 0 0
     EOF
     echo $REPO > $ROOT/etc/apk/repositories
 
-    sed -i '/^tty[0-9]:/d' $ROOT/etc/inittab
-    echo 'hvc0::respawn:/sbin/getty 38400 hvc0' >> $ROOT/etc/inittab
-
-    mkdir -p $ROOT/boot/grub
-    cat << EOF > $ROOT/boot/grub/menu.lst
-    timeout 0
-    default 0
-    hiddenmenu
-
-    title Alpine Linux
-    root (hd0)
-    kernel /boot/grsec root=$ROOT_DEV modules=$MODULES console=hvc0 quiet
-    initrd /boot/grsec.gz
-    EOF
+    sed -i '/^tty[1-9]:/d' $ROOT/etc/inittab
 
     cp /etc/resolv.conf $ROOT/etc
 
-    mount --bind /proc $ROOT/proc
+    mount --rbind /dev $ROOT/dev
+    mount --rbind /proc $ROOT/proc
+    mount --rbind /sys $ROOT/sys
 
     chroot $ROOT /bin/sh<<CHROOT
     apk update --quiet 
@@ -80,22 +71,29 @@ Instructions for installing a custom [Alpine Linux][] root fs on
     setup-hostname -n $HOST
     printf "$INTERFACES" | setup-interfaces -i
 
-    rc-update -q add networking boot
-    rc-update -q add urandom boot
-    rc-update -q add acpid
-    rc-update -q add cron
+    rc-update --quiet add networking boot
+    rc-update --quiet add urandom boot
 
     apk add --quiet openssh
-    rc-update -q add sshd default
+    rc-update --quiet add sshd default
 
-    mkdir /etc/mkinitfs
+    apk add --quiet linux-grsec syslinux e2fsprogs
+
+    mkdir -p /etc/mkinitfs
     echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
 
-    apk add --quiet linux-grsec
+    dd bs=440 count=1 if=/usr/share/syslinux/mbr.bin of=/dev/sda
+
+    sed -e "s:^root=.*:root=$ROOT_DEV:" \
+      -e "s:^default_kernel_opts=.*:default_kernel_opts=\"$kernel_opts\":" \
+      -e "s:^modules=.*:modules=$MODULES:" \
+      -i /etc/update-extlinux.conf
+    extlinux --install /boot
     CHROOT
 
+    umount $ROOT/sys
     umount $ROOT/proc
-    umount $ROOT/boot
+    umount $ROOT/dev
     umount $ROOT
     ```
 5. Reboot.
