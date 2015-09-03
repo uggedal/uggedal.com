@@ -30,8 +30,9 @@ a KVM [Linode][].
     REL=${REL:-3.2}
     MIRROR=${MIRROR:-http://nl.alpinelinux.org/alpine}
     REPO=$MIRROR/v$REL/main
-    APKV=${APKV:-2.4.1-r0}
-    ROOT_DEV=${ROOT_DEV:-/dev/sda}
+    APKV=${APKV:-2.6.3-r0}
+    DEV=${DEV:-/dev/sda}
+    ROOT_DEV=${DEV}1
     ROOT=${ROOT:-/mnt}
     ARCH=$(uname -m)
 
@@ -41,11 +42,11 @@ a KVM [Linode][].
      
      
      
+    a
     w
-    q
     EOF
 
-    mkfs.$ROOT_FS root $ROOT_DEV >/dev/null
+    mkfs.$ROOT_FS -L root $ROOT_DEV >/dev/null
     mount $ROOT_DEV $ROOT
 
     curl -s $MIRROR/v$REL/main/$ARCH/apk-tools-static-${APKV}.apk | tar xz
@@ -91,9 +92,10 @@ a KVM [Linode][].
     extlinux --install /boot
     CHROOT
 
+    umount $ROOT/dev/pts
+    umount $ROOT/dev
     umount $ROOT/sys
     umount $ROOT/proc
-    umount $ROOT/dev
     umount $ROOT
     ```
 5. Reboot.
