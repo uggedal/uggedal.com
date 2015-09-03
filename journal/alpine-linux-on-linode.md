@@ -78,7 +78,7 @@ a KVM [Linode][].
     apk add --quiet openssh
     rc-update --quiet add sshd default
 
-    apk add --quiet linux-grsec syslinux e2fsprogs
+    apk add --quiet syslinux linux-grsec e2fsprogs
 
     mkdir -p /etc/mkinitfs
     echo features=\""$FEATURES"\" > /etc/mkinitfs/mkinitfs.conf
