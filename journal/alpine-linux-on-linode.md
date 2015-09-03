@@ -101,6 +101,10 @@ a KVM [Linode][].
     setup-hostname -n $HOST
     printf "$INTERFACES" | setup-interfaces -i
 
+    echo virtio_net >> /etc/modules
+    rc-update -q add modules sysinit
+    rc-update -q add mdev sysinit
+
     rc-update --quiet add swap boot
     rc-update --quiet add networking boot
     rc-update --quiet add urandom boot
