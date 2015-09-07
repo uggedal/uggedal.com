@@ -109,8 +109,8 @@ a KVM [Linode][].
     rc-update --quiet add networking boot
     rc-update --quiet add urandom boot
 
-    apk add --quiet openssh
-    rc-update --quiet add sshd default
+    apk add --quiet dropbear
+    rc-update --quiet add dropbear default
 
     apk add --quiet syslinux linux-grsec e2fsprogs
 
