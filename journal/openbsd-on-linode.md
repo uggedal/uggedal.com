@@ -23,6 +23,7 @@ Instructions for installing a [OpenBSD][] on a KVM [Linode][].
     - Timezone: *UCT*
     - Root disk: *wd1*
     - Parition layout (for 4096M RAM):
+
         ```
         a   1024M  /
         b   4352M  swap
