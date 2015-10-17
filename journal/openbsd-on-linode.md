@@ -1,4 +1,4 @@
-% Alpine Linux on Linode
+% OpenBSD on Linode
 % 2015-10-13
 
 Instructions for installing a [OpenBSD][] on a KVM [Linode][].
