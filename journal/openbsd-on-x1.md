@@ -7,7 +7,7 @@ Instructions for installing [OpenBSD][] on a
 0. Prepare USB stick (example from Linux):
 
 	```sh
-	wget http://ftp.eu.openbsd.org/pub/OpenBSD/snapshots/amd64/miniroot58.fs
+	wget http://ftp.eu.openbsd.org/pub/OpenBSD/5.8/amd64/miniroot58.fs
 	dd if=miniroot58.fs of=/dev/sdb bs=1M
 	```
 1. Enable legacy boot in BIOS.
