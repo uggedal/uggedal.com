@@ -24,7 +24,6 @@ Instructions for installing [OpenBSD][] on a
 4. Install OpenBSD. The following were my changes to the defaults:
     - System hostname: *hostname*
     - Setup user: *username*
-    - X started by xdm: *yes*
     - Timezone: *Europe/Oslo*
     - Root disk: *sd2*
     - Parition layout (~470GB):
