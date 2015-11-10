@@ -25,11 +25,11 @@ all: ${DOC} journal/index.atom
 
 index.html: ${SRC}
 	@echo Creating $@
-	@./mk index $@ "$(AUTHOR)" 'Latest Journal Entries' --limit 5 ${SRC}
+	@./mk index $@ "${AUTHOR}" 'Latest Journal Entries' --limit 5 ${SRC}
 
 journal/index.html: index.html
 	@echo Creating $@
-	@./mk index $@ "Journal of $(AUTHOR)" 'Journal' ${SRC}
+	@./mk index $@ "Journal of ${AUTHOR}" 'Journal' ${SRC}
 
 journal/index.atom: journal/index.html
 	@echo Creating $@
@@ -39,4 +39,4 @@ clean:
 	@rm -rf output *.html journal/*.html journal/*.atom
 
 deploy: all
-	@rsync -a --info=NAME --force --delete -e ssh output/ $(HOST):$(www)
+	@rsync -a --info=NAME --force --delete -e ssh output/ ${HOST}:${WWW}
