@@ -1,39 +1,42 @@
-.PHONY: clean deploy watch
+.PHONY: clean deploy
+.SUFFIXES: .md .html
 
-author := Eivind Uggedal
-out := output
-www := /srv/http/uggedal.com
+AUTHOR = Eivind Uggedal
+WWW = /srv/http/uggedal.com
 
-md := $(wildcard journal/*.md)
-html := $(patsubst %.md,$(out)/%/index.html,$(md))
+SRC != find journal/ -type f -name '*.md'
+DOC = ${SRC:.md=.html}
 
-files_src := $(shell find files/ -type f)
-files_out := $(patsubst files/%,$(out)/%,$(files_src))
+all: ${DOC} journal/index.atom
+	@rm -rf output
+	@for s in $$(find . -name '*.html' -o -name '*.atom'); do \
+		case $$s in \
+			*index.*) t=output/$$s;; \
+			*) t=output/$${s%.html}/index.html;; \
+		esac; \
+		mkdir -p $$(dirname $$t); \
+		cp $$s $$t; \
+	done
+	@cp -r files/* output
 
-all: $(html) $(out)/index.html $(files_out)
-
-$(html): $(out)/%/index.html: %.md
-	@mkdir -p $(dir $@)
+.md.html:
+	@echo Compiling $@
 	@./mk article $< $@
 
-$(out)/journal/index.atom: $(md)
-	@./mk feed $@ --limit 10 $(md)
+index.html: ${SRC}
+	@echo Creating $@
+	@./mk index $@ "$(AUTHOR)" 'Latest Journal Entries' --limit 5 ${SRC}
 
-$(out)/journal/index.html: $(out)/journal/index.atom
-	@./mk index $@ "Journal of $(author)" 'Journal' $(md)
+journal/index.html: index.html
+	@echo Creating $@
+	@./mk index $@ "Journal of $(AUTHOR)" 'Journal' ${SRC}
 
-$(out)/index.html: $(out)/journal/index.html
-	@./mk index $@ "$(author)" 'Latest Journal Entries' --limit 5 $(md)
-
-$(files_out): $(out)/%: files/%
-	@mkdir -p $(dir $@)
-	@cp $< $@
+journal/index.atom: journal/index.html
+	@echo Creating $@
+	@./mk feed $@ --limit 10 ${SRC}
 
 clean:
-	@rm -rf $(out)/*
+	@rm -rf output *.html journal/*.html journal/*.atom
 
 deploy: all
-	@rsync -a --info=NAME --force --delete -e ssh $(out)/ $(HOST):$(www)
-
-watch:
-	@while inotifywait -qqre create,delete,modify .; do make; done
+	@rsync -a --info=NAME --force --delete -e ssh output/ $(HOST):$(www)
