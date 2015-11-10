@@ -77,7 +77,6 @@ a [Hetzner][] [PX90][] dedicated server.
 
     printf $HOSTNAME > $ROOT/etc/hostname
 
-
     umount $ROOT/sys
     umount $ROOT/proc
     umount $ROOT/dev

@@ -65,7 +65,6 @@ a [Online.net][] [Dedibox XC][] dedicated server.
 
     printf $HOSTNAME > $ROOT/etc/hostname
 
-
     umount $ROOT/sys
     umount $ROOT/proc
     umount $ROOT/dev

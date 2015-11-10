@@ -19,7 +19,6 @@ Instructions for installing a [Void Linux][] on a [ThinkPad T440s][t440s].
     CRYPT_DEV=/dev/mapper/$CRYPT
     REPO=http://repo.voidlinux.eu
 
-
     sgdisk -Z $DEV
     sgdisk -n 1:0:+256M $DEV
     sgdisk -n 2:0:0 $DEV

@@ -21,15 +21,7 @@ a KVM [Linode][].
     HOST=${HOST:-void-linux}
     REPO=${REPO:-http://muslrepo.voidlinux.eu}
 
-    fdisk $DEV <<EOF
-    n
-     
-     
-     
-     
-    w
-    q
-    EOF
+	printf 'n\n\n\n\n\nw\nq\n' | fdisk $DEV
 
     mkfs.ext4 -q -L root $ROOT_DEV
     mount $ROOT_DEV $ROOT

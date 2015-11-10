@@ -34,20 +34,7 @@ Instructions for installing a [Void Linux][] on a
       openssh runit-void xbps nvi sudo kmod cryptsetup gummiboot
     "
 
-    fdisk $DEV <<EOF
-    g
-    n
-
-
-    +512
-    t
-    1
-    n
-
-
-
-    w
-    EOF
+    printf 'g\nn\n\n\n+512\nt\n1\nn\n\n\n\nw\nq\n' | fdisk $DEV
 
     mkfs.vfat -F32 $BOOT_DEV
 
