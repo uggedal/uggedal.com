@@ -1,15 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 
 import sys
 
 import pygments
 import pygments.formatters
 import pygments.lexers
-import hoedown as h
+import mistune
 
-exts = h.EXT_NO_INTRA_EMPHASIS | h.EXT_TABLES | h.EXT_FENCED_CODE
-
-class Renderer(h.HtmlRenderer, h.SmartyPants):
+class Renderer(mistune.Renderer):
     formatter = pygments.formatters.HtmlFormatter()
 
     def block_code(self, text, lang):
@@ -19,4 +17,4 @@ class Renderer(h.HtmlRenderer, h.SmartyPants):
             lexer = pygments.lexers.TextLexer()
         return pygments.highlight(text, lexer, self.formatter)
 
-sys.stdout.write(h.Markdown(Renderer(0), exts).render(sys.stdin.read()))
+sys.stdout.write(mistune.Markdown(Renderer())(sys.stdin.read()))
