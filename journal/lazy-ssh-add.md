@@ -22,7 +22,7 @@ ssh() {
 
 scp() {
 	_ssh_add
-	command ssh "$@"
+	command scp "$@"
 }
 
 git() {
