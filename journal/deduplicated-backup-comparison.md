@@ -59,6 +59,8 @@ $ time bup save -n local-media ~/media
 ```
 
 TODO: peak memory usage (maybe GNU time)
+TODO: measure restore also
+TODO: measure network where applicable
 TODO: clear caches before each run
 TODO: compare stable and master versions
 TODO: compare obnam experimental format
