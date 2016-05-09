@@ -1,5 +1,5 @@
 % Deduplicated Backup Comparison
-% 2016-00-00
+% draft
 
 I've been on lookup for a fully open source alternative since Tarsnap
 popularized deduplicateted backups. I've compared the efficiency
