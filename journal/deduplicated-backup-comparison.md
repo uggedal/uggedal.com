@@ -18,3 +18,6 @@ $ du -s media
 $ find media -type f | wc -l
 10349
 ```
+
+TODO: compare stable and master versions
+TODO: compare obnam experimental format
