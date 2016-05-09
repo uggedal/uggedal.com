@@ -89,6 +89,7 @@ sys     0m35.008s
 
 ```
 
+TODO: peak memory usage (maybe GNU time)
 TODO: clear caches before each run
 TODO: compare stable and master versions
 TODO: compare obnam experimental format
