@@ -19,5 +19,6 @@ $ find media -type f | wc -l
 10349
 ```
 
+TODO: clear caches before each run
 TODO: compare stable and master versions
 TODO: compare obnam experimental format
