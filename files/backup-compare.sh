@@ -110,25 +110,26 @@ sudo apt-get -yqq install time exiftool \
 	golang-go \
 	bup bup-doc borgbackup obnam zbackup
 
-TOOL=$1
+for tool; do
 
-if type ${TOOL}_0 >/dev/null 2>&1; then
-	${TOOL}_0
-fi
+	if type ${tool}_0 >/dev/null 2>&1; then
+		${tool}_0
+	fi
 
-prepare
+	prepare
 
-{
-	stats src 1
+	{
+		stats src 1
 
-	rm -rf $DEST
-	flushcache
-	${TOOL}_1
-	stats dest 1
+		rm -rf $DEST
+		flushcache
+		${tool}_1
+		stats dest 1
 
-	modify
-	stats src 2
+		modify
+		stats src 2
 
-	${TOOL}_2
-	stats dest 2
-} 2>&1 | tee $ROOT/$TOOL.txt
+		${tool}_2
+		stats dest 2
+	} 2>&1 | tee $ROOT/$tool.txt
+done
