@@ -12,7 +12,7 @@ sudo apt-get -yqq install time exiftool bup bup-doc borgbackup obnam
 
 t() {
 	printf '%s\n' "$*"
-	$TIME "$@"
+	$TIME -f 'real\t%e\nuser\t%U\nsys\t%S\nmem\t%MKB\n' "$@"
 }
 
 flushcache() {
