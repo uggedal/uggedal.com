@@ -12,5 +12,6 @@ TODO: measure restore also
 TODO: measure without and with network where applicable
 TODO: measure without and with crupto where applicable
 TODO: clear caches before each run
+TODO: compare backup without changes
 TODO: compare stable and master versions
 TODO: compare obnam experimental format

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 ROOT=$HOME/backup-compare
 
@@ -8,11 +8,13 @@ DEST=$ROOT/dest
 
 TIME=$(which time)
 
-sudo apt-get -yqq install time exiftool bup bup-doc borgbackup obnam zbackup
+sudo apt-get -yqq install time exiftool \
+	golang-go \
+	bup bup-doc borgbackup obnam zbackup
 
 t() {
 	printf '%s\n' "$*"
-	eval \$TIME -f 'real\t%e\nuser\t%U\nsys\t%S\nmem\t%MKB\n' "$@"
+	$TIME -f 'real\t%e\nuser\t%U\nsys\t%S\nmem\t%MKB\n' "$@"
 }
 
 flushcache() {
@@ -74,11 +76,11 @@ obnam_2() {
 
 zbackup_1() {
 	t zbackup init --non-encrypted $DEST
-	t "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test1"
+	t sh -c "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test1"
 }
 
 zbackup_2() {
-	t "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test2"
+	t sh -c "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test2"
 }
 
 TOOL=$1
