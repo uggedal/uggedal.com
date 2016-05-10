@@ -8,7 +8,7 @@ DEST=$ROOT/dest
 
 TIME=$(which time)
 
-sudo apt-get -yqq install time exiftool bup bup-doc borgbackup
+sudo apt-get -yqq install time exiftool bup bup-doc borgbackup obnam
 
 t() {
 	printf '%s\n' "$*"
@@ -23,7 +23,7 @@ flushcache() {
 prepare() {
 	echo '> preparing src'
 	rm -rf $SRC
-	$TIME cp -r $RAW $SRC
+	cp -r $RAW $SRC
 }
 
 modify() {
@@ -42,42 +42,48 @@ stats() {
 	find $ROOT/$1 -type f | wc -l
 }
 
-bup() {
+bup_1() {
 	export BUP_DIR=$DEST
-
-	prepare
-	stats src 1
-
-	rm -rf $DEST
-	flushcache
 	t bup init
 	t bup index $SRC
 	t bup save -n test $SRC
-	stats dest 1
+}
 
-	modify
-	stats src 2
-
+bup_2() {
 	t bup index $SRC
 	t bup save -n test $SRC
-	stats dest 2
 }
 
-borg() {
-	prepare
-	stats src 1
-
-	rm -rf $DEST
-	flushcache
+borg_1() {
 	t borg init -e none $DEST
 	t borg create $DEST::test1 $SRC
-	stats dest 1
+}
 
-	modify
-	stats src 2
-
-	t borg create $DEST::test1 $SRC
+borg_2() {
+	t borg create $DEST::test2 $SRC
 	stats dest 2
 }
 
-$1
+obnam_1() {
+	t obnam backup -r $DEST $SRC
+}
+
+obnam_2() {
+	t obnam backup -r $DEST $SRC
+}
+
+TOOL=$1
+
+prepare
+stats src 1
+
+rm -rf $DEST
+flushcache
+${TOOL}_1
+stats dest 1
+
+modify
+stats src 2
+
+${TOOL}_2
+stats dest 2
