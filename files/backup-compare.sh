@@ -5,12 +5,11 @@ ROOT=$HOME/backup-compare
 RAW=$ROOT/raw
 SRC=$ROOT/src
 DEST=$ROOT/dest
+WRK=$ROOT/wrk
 
 TIME=$(which time)
 
-sudo apt-get -yqq install time exiftool \
-	golang-go \
-	bup bup-doc borgbackup obnam zbackup
+RESTIC_V=6bc7a7
 
 t() {
 	printf '%s\n' "$*"
@@ -83,7 +82,39 @@ zbackup_2() {
 	t sh -c "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test2"
 }
 
+restic_0() {
+	if [ -x $WRK/restic/restic ]; then
+		return 0
+	fi
+
+	mkdir -p $WRK/restic
+	(
+		cd $WRK/restic
+		curl -L https://github.com/restic/restic/archive/$RESTIC_V.tar.gz |
+			tar --strip-components=1 -xz
+		go run build.go
+	)
+}
+
+restic_1() {
+	export RESTIC_PASSWORD=foo
+	t $WRK/restic/restic -r $DEST init
+	t $WRK/restic/restic -r $DEST backup $SRC
+}
+
+restic_2() {
+	t $WRK/restic/restic -r $DEST backup $SRC
+}
+
+sudo apt-get -yqq install time exiftool \
+	golang-go \
+	bup bup-doc borgbackup obnam zbackup
+
 TOOL=$1
+
+if type ${TOOL}_0 >/dev/null 2>&1; then
+	${TOOL}_0
+fi
 
 prepare
 
