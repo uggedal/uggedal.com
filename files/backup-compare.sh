@@ -62,7 +62,6 @@ borg_1() {
 
 borg_2() {
 	t borg create $DEST::test2 $SRC
-	stats dest 2
 }
 
 obnam_1() {
@@ -109,6 +108,10 @@ restic_2() {
 sudo apt-get -yqq install time exiftool \
 	golang-go \
 	bup bup-doc borgbackup obnam zbackup
+
+if [ $# -eq 0 ]; then
+	set -- bup borg obnam zbackup restic
+fi
 
 for tool; do
 
