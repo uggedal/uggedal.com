@@ -8,11 +8,11 @@ DEST=$ROOT/dest
 
 TIME=$(which time)
 
-sudo apt-get -yqq install time exiftool bup bup-doc borgbackup obnam
+sudo apt-get -yqq install time exiftool bup bup-doc borgbackup obnam zbackup
 
 t() {
 	printf '%s\n' "$*"
-	$TIME -f 'real\t%e\nuser\t%U\nsys\t%S\nmem\t%MKB\n' "$@"
+	eval \$TIME -f 'real\t%e\nuser\t%U\nsys\t%S\nmem\t%MKB\n' "$@"
 }
 
 flushcache() {
@@ -72,18 +72,30 @@ obnam_2() {
 	t obnam backup -r $DEST $SRC
 }
 
+zbackup_1() {
+	t zbackup init --non-encrypted $DEST
+	t "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test1"
+}
+
+zbackup_2() {
+	t "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test2"
+}
+
 TOOL=$1
 
 prepare
-stats src 1
 
-rm -rf $DEST
-flushcache
-${TOOL}_1
-stats dest 1
+{
+	stats src 1
 
-modify
-stats src 2
+	rm -rf $DEST
+	flushcache
+	${TOOL}_1
+	stats dest 1
 
-${TOOL}_2
-stats dest 2
+	modify
+	stats src 2
+
+	${TOOL}_2
+	stats dest 2
+} 2>&1 | tee $ROOT/$TOOL.txt
