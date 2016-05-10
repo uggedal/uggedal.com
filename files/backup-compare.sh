@@ -46,13 +46,11 @@ stats() {
 bup_1() {
 	export BUP_DIR=$DEST
 	t bup init
-	t bup index $SRC
-	t bup save -n test $SRC
+	t sh -c "bup index $SRC && bup save -n test $SRC"
 }
 
 bup_2() {
-	t bup index $SRC
-	t bup save -n test $SRC
+	t sh -c "bup index $SRC && bup save -n test $SRC"
 }
 
 borg_1() {
