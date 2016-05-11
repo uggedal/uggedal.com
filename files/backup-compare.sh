@@ -99,7 +99,7 @@ zbackup_snapshot() {
 
 zbackup_restore() {
 	mkdir -p $REST
-	t sh -ec "zbackup restore $DEST/backups/testm_100 | tar -C $REST -x"
+	t sh -ec "zbackup restore --non-encrypted $DEST/backups/testm_100 | tar -C $REST -x"
 }
 
 restic_setup() {
@@ -135,11 +135,11 @@ duplicity_init() {
 }
 
 duplicity_snapshot() {
-	duplicity $SRC file://$DEST
+	t duplicity --no-encryption $SRC file://$DEST
 }
 
 duplicity_restore() {
-	duplicity file://$DEST $REST
+	t duplicity --no-encryption file://$DEST $REST
 }
 
 sudo apt-get -yqq install time exiftool \
