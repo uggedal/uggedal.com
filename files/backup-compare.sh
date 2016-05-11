@@ -6,6 +6,7 @@ RAW=$ROOT/raw
 SRC=$ROOT/src
 DEST=$ROOT/dest
 WRK=$ROOT/wrk
+REST=$ROOT/rest
 
 TIME=$(which time)
 
@@ -56,12 +57,24 @@ bup_snapshot() {
 	t sh -ec "bup index $SRC && bup save -n test $SRC"
 }
 
+bup_restore() {
+	t bup restore -C $REST test/latest
+}
+
 borg_init() {
 	t borg init -e none $DEST
 }
 
 borg_snapshot() {
 	t borg create $DEST::test$1 $SRC
+}
+
+borg_restore() {
+	(
+		mkdir -p $REST
+		cd $REST
+		t borg extract $DEST::testm_100
+	)
 }
 
 obnam_init() {
@@ -72,12 +85,21 @@ obnam_snapshot() {
 	t obnam backup -r $DEST $SRC
 }
 
+obnam_restore() {
+	t obnam restore -r $DEST --to $REST
+}
+
 zbackup_init() {
 	t zbackup init --non-encrypted $DEST
 }
 
 zbackup_snapshot() {
-	t sh -ec "tar c $SRC | zbackup backup --non-encrypted $DEST/backups/test$1"
+	t sh -ec "tar -c $SRC | zbackup backup --non-encrypted $DEST/backups/test$1"
+}
+
+zbackup_restore() {
+	mkdir -p $REST
+	t sh -ec "zbackup restore $DEST/backups/testm_100 | tar -C $REST -x"
 }
 
 restic_setup() {
@@ -103,12 +125,29 @@ restic_snapshot() {
 	t $WRK/restic/restic -r $DEST backup $SRC
 }
 
+restic_restore() {
+	local last=$($WRK/restic/restic -r $DEST snapshots | awk 'END { print $1 }')
+	t $WRK/restic/restic -r $DEST restore $last --target $REST
+}
+
+duplicity_init() {
+	:
+}
+
+duplicity_snapshot() {
+	duplicity $SRC file://$DEST
+}
+
+duplicity_restore() {
+	duplicity file://$DEST $REST
+}
+
 sudo apt-get -yqq install time exiftool \
 	golang-go \
 	bup bup-doc borgbackup obnam zbackup duplicity
 
 if [ $# -eq 0 ]; then
-	set -- bup borg obnam zbackup restic
+	set -- bup borg obnam zbackup restic duplicity
 fi
 
 for tool; do
@@ -144,5 +183,8 @@ for tool; do
 		done
 
 		stats dest 4
+
+		rm -rf $REST
+		${tool}_restore
 	} 2>&1 | tee $ROOT/$tool.txt
 done
