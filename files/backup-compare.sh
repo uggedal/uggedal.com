@@ -131,7 +131,7 @@ restic_restore() {
 }
 
 duplicity_init() {
-	:
+	rm -rf $HOME/.cache/duplicity
 }
 
 duplicity_snapshot() {
