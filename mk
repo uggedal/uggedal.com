@@ -98,7 +98,7 @@ index() {
   [ "$1" = '--limit' ] && {
     cat <<EOF >> $target
     <section class=about>
-      I'm a programmer at <a href=http://bekk.no>BEKK</a>.
+      I'm a programmer at <a href=https://mca.sh>mCASH</a>.
       I share <a href=http://git.uggedal.com>open source code</a>
       written in my pastime.
       I created <a href=http://mediaqueri.es>mediaqueri.es</a>, <em>the</em>
