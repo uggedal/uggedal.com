@@ -56,7 +56,8 @@ for l in sorted(s):
     print(l)
 ```
 
-Save it to somewhere on your `$PATH` and make it executable.
+Download [apt-backports][/apt-backports]
+and save it to somewhere on your `$PATH` and make it executable.
 It does not require superuser privileges, so `~/.local/bin/` can be a good
 place.
 
