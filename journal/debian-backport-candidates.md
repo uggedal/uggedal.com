@@ -60,6 +60,10 @@ Save it to somewhere on your `$PATH` and make it executable.
 It does not require superuser privileges, so `~/.local/bin/` can be a good
 place.
 
+It requires that you have the `python3-apt` package installed. It's likely that
+you already have it since it's a dependency of `unattended-upgrades`,
+`apt-listchanges`. `command-not-found` and more.
+
 Example output where packages which are already upgraded to Debian Backports are
 marked with `[x]`:
 
