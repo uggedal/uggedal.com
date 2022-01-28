@@ -2,7 +2,7 @@
 % 2022-01-19
 
 As an avid user of Debian Stable there are occasions where I want to move to
-newer upstream versions for some packages. If you're lucky Debian Developers
+newer upstream versions for some packages. If you're lucky, Debian Developers
 have provided a fresh backport from Debian Testing in the [Debian
 Backports][bpo] repositories.
 
@@ -62,7 +62,7 @@ It does not require superuser privileges, so `~/.local/bin/` can be a good
 place.
 
 It requires that you have the `python3-apt` package installed. It's likely that
-you already have it since it's a dependency of `unattended-upgrades`,
+you already have it, since it's a dependency of `unattended-upgrades`,
 `apt-listchanges`. `command-not-found` and more.
 
 Example output where packages which are already upgraded to Debian Backports are
