@@ -37,11 +37,11 @@ EOF
 }
 
 header() {
-	sed $2'q;d' $1 | sed 's/^% //'
+	sed "${2}q;d" "$1" | sed 's/^% //'
 }
 
 htmlext() {
-	printf '%s' ${1%*.md}
+	printf '%s' "${1%*.md}"
 }
 
 article() {
@@ -49,11 +49,11 @@ article() {
 
 	input=$1
 	target=$2
-	title=$(header $1 1)
-	date=$(header $1 2)
+	title=$(header "$1" 1)
+	date=$(header "$1" 2)
 
-	tmpl_head "$title" >$target
-	cat <<EOF >>$target
+	tmpl_head "$title" >"$target"
+	cat <<EOF >>"$target"
     <article>
       <header>
         <h1>$title</h1>
@@ -64,10 +64,10 @@ article() {
         </p>
       </header>
 
-      $(sed '1,2d' $input | ./md)
+      $(sed '1,2d' "$input" | ./md)
     </article>
 EOF
-	tmpl_foot >>$target
+	tmpl_foot >>"$target"
 }
 
 reverse_chronological() {
@@ -80,23 +80,23 @@ reverse_chronological() {
 	}
 
 	for f; do
-		date=$(header $f 2)
-		[ "$date" = draft ] || printf '%s %s\n' $date $f
-	done | sort -r | head -n$limit | cut -d' ' -f2
+		date=$(header "$f" 2)
+		[ "$date" = draft ] || printf '%s %s\n' "$date" "$f"
+	done | sort -r | head -n"$limit" | cut -d' ' -f2
 }
 
 index() {
-	local article ar_title ar_date ar_href
+	local ar_title ar_date ar_href
 
-	local target=$1
+	local target="$1"
 	local head_title="$2"
 	local index_title="$3"
 	shift 3
 
-	tmpl_head "$head_title" >$target
+	tmpl_head "$head_title" >"$target"
 
 	[ "$1" = '--limit' ] && {
-		cat <<EOF >>$target
+		cat <<EOF >>"$target"
     <section class=about>
       I'm a technical janitor at <a href=https://vipps.no>Vipps</a>.
       I share <a href=http://github.com/uggedal>open source code</a>
@@ -111,7 +111,7 @@ index() {
     </section>
 EOF
 	}
-	cat <<EOF >>$target
+	cat <<EOF >>"$target"
     <section class=entries>
       <header>
         <h1>$index_title</h1>
@@ -120,11 +120,11 @@ EOF
 EOF
 
 	for ar in $(reverse_chronological "$@"); do
-		ar_title=$(header $ar 1)
-		ar_date=$(header $ar 2)
-		ar_href=/$(htmlext $ar)
+		ar_title=$(header "$ar" 1)
+		ar_date=$(header "$ar" 2)
+		ar_href=/$(htmlext "$ar")
 
-		cat <<EOF >>$target
+		cat <<EOF >>"$target"
         <li>
           $ar_date<br>
           <a href=$ar_href>$ar_title</a>
@@ -132,10 +132,10 @@ EOF
 EOF
 	done
 
-	printf '      </ol>\n' >>$target
+	printf '      </ol>\n' >>"$target"
 
 	[ "$1" = '--limit' ] && {
-		cat <<EOF >>$target
+		cat <<EOF >>"$target"
       <p>
         <a href=/journal>
           <em>All journal entries</em>
@@ -144,9 +144,9 @@ EOF
 EOF
 	}
 
-	printf '    </section>\n' >>$target
+	printf '    </section>\n' >>"$target"
 
-	tmpl_foot >>$target
+	tmpl_foot >>"$target"
 }
 
 feed() {
@@ -155,7 +155,7 @@ feed() {
 	target=$1
 	shift
 
-	cat <<EOF >$target
+	cat <<EOF >"$target"
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Journal of Eivind Uggedal</title>
@@ -170,24 +170,24 @@ feed() {
 EOF
 
 	for f in $(reverse_chronological "$@"); do
-		f_title=$(header $f 1)
-		f_date=$(header $f 2)
-		f_url=http://uggedal.com/$(htmlext $f)
+		f_title=$(header "$f" 1)
+		f_date=$(header "$f" 2)
+		f_url=http://uggedal.com/$(htmlext "$f")
 
-		cat <<EOF >>$target
+		cat <<EOF >>"$target"
   <entry xml:base="http://uggedal.com/journal/index.atom">
     <title type="text">$f_title</title>
     <id>$f_url</id>
     <updated>${f_date}T00:00:00Z</updated>
     <link href="$f_url" />
     <content type="html">
-      <![CDATA[$(sed '1,2d' $f | ./md)]]>
+      <![CDATA[$(sed '1,2d' "$f" | ./md)]]>
     </content>
   </entry>
 EOF
 	done
 
-	printf '</feed>\n' >>$target
+	printf '</feed>\n' >>"$target"
 }
 
 action=$1
