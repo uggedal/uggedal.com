@@ -18,5 +18,5 @@ class Renderer(mistune.HTMLRenderer):
         return pygments.highlight(text, lexer, self.formatter)
 
 sys.stdout.write(
-    mistune.create_markdown(renderer=Renderer()))(sys.stdin.read())
+    mistune.create_markdown(renderer=Renderer())(sys.stdin.read())
 )
