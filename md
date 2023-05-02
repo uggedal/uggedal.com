@@ -10,7 +10,7 @@ import mistune
 class Renderer(mistune.HTMLRenderer):
     formatter = pygments.formatters.HtmlFormatter()
 
-    def block_code(self, text, lang):
+    def block_code(self, text, lang=None):
         try:
             lexer = pygments.lexers.get_lexer_by_name(lang)
         except ValueError:
