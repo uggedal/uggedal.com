@@ -7,7 +7,7 @@ import pygments.formatters
 import pygments.lexers
 import mistune
 
-class Renderer(mistune.Renderer):
+class Renderer(mistune.HTMLRenderer):
     formatter = pygments.formatters.HtmlFormatter()
 
     def block_code(self, text, lang):
@@ -17,4 +17,6 @@ class Renderer(mistune.Renderer):
             lexer = pygments.lexers.TextLexer()
         return pygments.highlight(text, lexer, self.formatter)
 
-sys.stdout.write(mistune.Markdown(Renderer())(sys.stdin.read()))
+sys.stdout.write(
+    mistune.create_markdown(renderer=Renderer()))(sys.stdin.read())
+)
