@@ -103,9 +103,6 @@ index() {
       written in my pastime.
       I created <a href=http://mediaqueri.es>mediaqueri.es</a>, <em>the</em>
       collection of responsively designed web sites.
-      Previously I ran <a href=http://wasitup.com>wasitup.com</a>,
-      a free HTTP monitor doing 4.5 million outgoing requests each
-      day.
       You can contact me at
       <a href=mailto:eivind@uggedal.com>eivind@uggedal.com</a>.
     </section>
